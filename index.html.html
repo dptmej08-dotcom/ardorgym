@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARDOR GYM — 친절하고 다정한 이웃, PT전문 아르더짐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --color-bg:#f2ede3; --color-sidebar:#f8f4ec; --color-accent:#8b5c38;
+  --color-accent2:#6e4828; --color-text:#3a2510; --color-soft:#7a5035; --color-muted:#b08060;
+}
+body { background:var(--color-bg); color:var(--color-text); font-family:'Noto Sans KR',sans-serif; overflow-x:hidden; }
+.deco-circle { position:fixed; width:500px; height:500px; border-radius:50%; border:1px solid rgba(139,92,56,0.10); top:-120px; right:-120px; pointer-events:none; z-index:0; }
+.deco-circle2 { position:fixed; width:260px; height:260px; border-radius:50%; border:1px solid rgba(139,92,56,0.07); bottom:80px; left:-80px; pointer-events:none; z-index:0; }
+header { position:fixed; top:0; left:0; right:0; display:flex; align-items:center; padding:22px 36px; z-index:100; background:linear-gradient(to bottom,rgba(242,237,227,0.97) 70%,transparent); }
+.menu-btn { background:none; border:none; cursor:pointer; display:flex; flex-direction:column; gap:5px; padding:6px; }
+.menu-btn span { display:block; width:24px; height:1.5px; background:var(--color-accent); transition:all 0.32s ease; }
+.menu-btn.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity:0; }
+.menu-btn.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+.header-logo { margin-left:20px; font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; letter-spacing:5px; color:var(--color-accent); text-decoration:none; }
+.header-logo:hover { color:var(--color-accent2); }
+.overlay { position:fixed; inset:0; background:rgba(58,37,16,0.35); z-index:150; opacity:0; pointer-events:none; transition:opacity 0.35s; }
+.overlay.open { opacity:1; pointer-events:auto; }
+.sidebar { position:fixed; top:0; left:-320px; width:300px; height:100%; background:var(--color-sidebar); border-right:1px solid rgba(139,92,56,0.18); z-index:200; padding-top:80px; overflow-y:auto; transition:left 0.38s cubic-bezier(0.4,0,0.2,1); }
+.sidebar.open { left:0; }
+.sidebar-brand { padding:0 36px 28px; border-bottom:1px solid rgba(139,92,56,0.15); margin-bottom:8px; }
+.sidebar-brand h2 { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; letter-spacing:5px; color:var(--color-accent); margin-bottom:6px; }
+.sidebar-brand small { font-size:11px; color:var(--color-muted); letter-spacing:1.5px; }
+.nav-item { border-bottom:1px solid rgba(139,92,56,0.07); }
+.nav-btn { width:100%; background:none; border:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; padding:17px 36px; color:#5a3820; font-family:'Noto Sans KR',sans-serif; font-size:14px; font-weight:700; letter-spacing:1.5px; text-align:left; transition:color 0.2s,background 0.2s; }
+.nav-btn:hover { color:var(--color-accent); background:rgba(139,92,56,0.05); }
+.nav-btn.active { color:var(--color-accent); }
+.nav-arrow { font-size:10px; transition:transform 0.3s; color:var(--color-muted); }
+.nav-btn.active .nav-arrow { transform:rotate(180deg); }
+.submenu { max-height:0; overflow:hidden; transition:max-height 0.35s ease; background:rgba(139,92,56,0.04); }
+.submenu.open { max-height:400px; }
+.submenu a { display:block; padding:13px 36px 13px 52px; color:#5a3820; text-decoration:none; font-size:13px; font-weight:700; letter-spacing:1px; border-bottom:1px solid rgba(139,92,56,0.05); transition:color 0.2s,padding-left 0.2s; }
+.submenu a:hover { color:var(--color-accent); padding-left:60px; }
+.nav-branch-label { padding:18px 36px 8px; font-size:10px; color:var(--color-muted); letter-spacing:3px; border-bottom:1px solid rgba(139,92,56,0.07); font-weight:700; }
+.nav-branch-btn { width:100%; background:none; border:none; cursor:pointer; display:block; padding:15px 36px 15px 52px; color:#5a3820; font-family:'Noto Sans KR',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-align:left; border-bottom:1px solid rgba(139,92,56,0.05); transition:color 0.2s,background 0.2s; }
+.nav-branch-btn:hover { color:var(--color-accent); background:rgba(139,92,56,0.05); }
+.page { display:none; }
+.page.active { display:block; }
+.hero { position:relative; z-index:1; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:100px 32px 80px; }
+.badge { display:inline-block; padding:7px 22px; border:1px solid rgba(139,92,56,0.3); font-size:10px; letter-spacing:3.5px; color:var(--color-accent); margin-bottom:36px; }
+.hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(44px,8vw,80px); font-weight:600; letter-spacing:6px; color:var(--color-text); line-height:1.05; margin-bottom:10px; }
+.hero h1 span { color:var(--color-accent); }
+.ornament { display:flex; align-items:center; gap:18px; margin:30px auto; }
+.orn-line { width:56px; height:1px; background:rgba(139,92,56,0.3); }
+.orn-dot { width:5px; height:5px; border-radius:50%; background:var(--color-accent); }
+.slogan { font-family:'Noto Serif KR',serif; font-size:clamp(15px,2.5vw,20px); color:var(--color-soft); letter-spacing:1px; line-height:1.8; margin-bottom:50px; }
+.cta { display:inline-block; padding:17px 48px; background:var(--color-accent); color:#f8f4ec; font-size:14px; letter-spacing:2px; text-decoration:none; transition:background 0.25s,transform 0.2s; }
+.cta:hover { background:var(--color-accent2); transform:translateY(-2px); }
+.scroll-hint { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--color-muted); font-size:10px; letter-spacing:2px; animation:bounce 2s infinite; }
+.scroll-hint::after { content:''; display:block; width:1px; height:36px; background:var(--color-muted); }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+.content-section { position:relative; z-index:1; padding:100px 48px; max-width:900px; margin:0 auto; }
+.content-section.section-alt { max-width:100%; background:rgba(139,92,56,0.05); padding:100px 48px; }
+.content-section.section-alt > * { max-width:900px; margin-left:auto; margin-right:auto; }
+.section-eyebrow { font-size:10px; letter-spacing:4px; color:var(--color-accent); margin-bottom:16px; }
+.section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(28px,5vw,48px); font-weight:600; letter-spacing:2px; color:var(--color-text); margin-bottom:24px; line-height:1.2; }
+.section-divider { width:48px; height:1px; background:var(--color-accent); margin:0 0 32px; }
+.section-body { font-size:17px; line-height:2.2; color:rgba(255,255,255,0.92); font-weight:400; word-break:keep-all; }
+.map-desc { font-size:15px; line-height:2; color:var(--color-soft); font-weight:300; word-break:keep-all; }
+.parking-desc { font-size:15px; line-height:2; color:var(--color-soft); font-weight:300; margin-bottom:20px; word-break:keep-all; }
+.trainer-desc { font-size:14px; line-height:2; color:var(--color-soft); font-weight:300; word-break:keep-all; }
+.price-desc { font-size:13px; line-height:2; color:var(--color-soft); font-weight:300; margin-top:8px; word-break:keep-all; }
+
+/* ── 섹션 배경 (영상 + 패럴랙스 사진 공통) ── */
+.section-video-wrap {
+  position:relative; overflow:hidden;
+  display:block; width:100%;
+}
+.section-video-wrap .section-bg-video {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%; min-height:100%;
+  width:auto; height:auto;
+  object-fit:cover; z-index:0;
+}
+.section-video-wrap .section-bg-img {
+  position:absolute; top:-20%; left:0;
+  width:100%; height:140%;
+  object-fit:cover; z-index:0;
+  will-change:transform;
+}
+.section-video-wrap .section-overlay {
+  position:absolute; inset:0;
+  background:rgba(30,15,5,0.3);
+  z-index:1;
+}
+.section-video-wrap .section-inner {
+  position:relative; z-index:2;
+  max-width:900px;
+  margin-left:auto; margin-right:auto;
+  padding-top:100px; padding-bottom:100px;
+  padding-left:48px; padding-right:48px;
+  box-sizing:border-box;
+}
+.section-video-wrap .section-eyebrow { color:rgba(255,210,170,0.85); }
+.section-video-wrap .section-title { color:#fff; }
+.section-video-wrap .section-divider { background:rgba(255,200,150,0.6); }
+.content-page { min-height:100vh; padding:120px 48px 80px; max-width:900px; margin:0 auto; position:relative; z-index:1; }
+.content-page-eyebrow { font-size:10px; letter-spacing:4px; color:var(--color-accent); margin-bottom:16px; }
+.content-page-title { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,5vw,56px); font-weight:600; letter-spacing:3px; color:var(--color-text); margin-bottom:20px; line-height:1.2; }
+.content-page-divider { width:48px; height:1px; background:var(--color-accent); margin-bottom:48px; }
+.content-placeholder { padding:60px 40px; border:1px dashed rgba(139,92,56,0.25); text-align:center; }
+.content-placeholder p { font-size:13px; color:var(--color-muted); letter-spacing:1px; line-height:2.2; }
+.branch-page { min-height:100vh; padding:120px 48px 80px; max-width:900px; margin:0 auto; position:relative; z-index:1; }
+.branch-header { margin-bottom:60px; text-align:center; }
+.branch-eyebrow { font-size:10px; letter-spacing:4px; color:var(--color-accent); margin-bottom:16px; }
+.branch-title { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,6vw,60px); font-weight:600; letter-spacing:4px; color:var(--color-text); margin-bottom:16px; }
+.branch-subtitle { font-size:14px; color:var(--color-muted); letter-spacing:1px; margin-bottom:4px; }
+.branch-tabs { display:flex; flex-wrap:wrap; margin-bottom:48px; border-bottom:1px solid rgba(139,92,56,0.2); }
+.branch-tab { background:none; border:none; cursor:pointer; padding:14px 20px; font-family:'Noto Sans KR',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; color:var(--color-muted); border-bottom:2px solid transparent; margin-bottom:-1px; transition:color 0.2s,border-color 0.2s; }
+.branch-tab:hover { color:var(--color-accent); }
+.branch-tab.active { color:var(--color-accent); border-bottom-color:var(--color-accent); }
+.branch-content { display:none; }
+.branch-content.active { display:block; }
+.video-grid { display:flex; gap:16px; flex-wrap:wrap; }
+.video-grid > div { flex:1; min-width:200px; }
+.video-grid video, .video-grid img { width:100%; border-radius:4px; display:block; }
+.video-label { text-align:center; margin-top:8px; font-size:13px; color:var(--color-accent); font-weight:700; }
+.slideshow { position:relative; width:100%; background:#000; border-radius:4px; overflow:hidden; }
+.slideshow-track { display:flex; transition:transform 0.4s ease; }
+.slide { min-width:100%; }
+.slide img { width:100%; max-height:520px; object-fit:cover; display:block; }
+.slide-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(139,92,56,0.7); border:none; color:#f8f4ec; font-size:20px; width:44px; height:44px; cursor:pointer; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:background 0.2s; z-index:2; }
+.slide-btn:hover { background:var(--color-accent2); }
+.slide-btn.prev { left:12px; }
+.slide-btn.next { right:12px; }
+.slide-dots { display:flex; justify-content:center; gap:8px; margin-top:16px; }
+.slide-dot { width:7px; height:7px; border-radius:50%; background:rgba(139,92,56,0.25); border:none; cursor:pointer; transition:background 0.2s; padding:0; }
+.slide-dot.active { background:var(--color-accent); }
+.slide-placeholder { display:flex; align-items:center; justify-content:center; min-height:300px; border:1px dashed rgba(139,92,56,0.25); }
+.slide-placeholder p { font-size:13px; color:var(--color-muted); letter-spacing:1px; text-align:center; line-height:2.2; }
+.map-wrap { width:100%; border-radius:4px; overflow:hidden; margin-bottom:28px; }
+.map-wrap iframe { width:100%; height:380px; border:none; display:block; }
+.parking-section { display:flex; flex-direction:column; gap:28px; }
+.parking-img-wrap { width:100%; border-radius:4px; overflow:hidden; }
+.parking-img-wrap img { width:100%; display:block; }
+.price-section-title { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; letter-spacing:2px; color:var(--color-text); margin:40px 0 16px; padding-bottom:10px; border-bottom:1px solid rgba(139,92,56,0.2); }
+.price-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+.price-card { position:relative; padding:24px 20px; border:1px solid rgba(139,92,56,0.2); background:rgba(139,92,56,0.03); }
+.price-card.best { border-color:var(--color-accent); background:rgba(139,92,56,0.06); }
+.price-best-badge { display:inline-block; background:var(--color-accent); color:#f8f4ec; font-size:9px; letter-spacing:2px; font-weight:700; padding:3px 10px; margin-bottom:10px; }
+.price-name { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--color-text); margin-bottom:4px; }
+.price-period { font-size:11px; color:var(--color-muted); letter-spacing:1px; margin-bottom:12px; }
+.price-original { font-size:12px; color:var(--color-muted); text-decoration:line-through; margin-bottom:4px; }
+.price-amount { font-size:24px; font-weight:700; color:var(--color-accent); margin-bottom:4px; }
+.price-per { font-size:11px; color:var(--color-muted); letter-spacing:1px; }
+.price-card-info { background:rgba(139,92,56,0.04); }
+
+.price-notice { margin-top:36px; padding:24px 28px; background:rgba(139,92,56,0.05); border-left:3px solid var(--color-accent); }
+.price-notice p { font-size:14px; line-height:2; color:var(--color-soft); font-weight:400; }
+.price-notice-highlight { color:var(--color-accent) !important; font-weight:700 !important; }
+.price-img-btn { background:none; border:1px solid var(--color-accent); color:var(--color-accent); padding:14px 36px; font-family:'Noto Sans KR',sans-serif; font-size:14px; font-weight:700; letter-spacing:1.5px; cursor:pointer; transition:background 0.2s,color 0.2s; }
+.membership-branch-badge { display:inline-block; background:var(--color-accent); color:#f8f4ec; font-size:12px; font-weight:700; letter-spacing:1.5px; padding:8px 20px; margin-bottom:28px; }
+.membership-desc-box { background:rgba(139,92,56,0.05); border-left:3px solid var(--color-accent); padding:24px 28px; margin-bottom:36px; }
+.membership-desc-text { font-size:14px; line-height:2; color:var(--color-soft); margin-bottom:16px; font-weight:400; }
+.membership-check-list { display:flex; flex-direction:column; gap:6px; }
+.membership-check-list p { font-size:13px; line-height:1.8; color:var(--color-soft); font-weight:300; }
+.membership-link-grid { display:flex; flex-direction:column; gap:12px; }
+.membership-link-btn { display:flex; align-items:center; gap:16px; padding:20px 24px; border:1px solid rgba(139,92,56,0.2); background:rgba(139,92,56,0.03); text-decoration:none; transition:background 0.2s,transform 0.2s; }
+.membership-link-btn:hover { background:rgba(139,92,56,0.08); transform:translateY(-2px); }
+.membership-link-icon { font-size:24px; flex-shrink:0; }
+.membership-link-text { flex:1; display:flex; flex-direction:column; gap:3px; }
+.membership-link-text strong { font-size:15px; font-weight:700; color:var(--color-text); }
+.membership-link-text small { font-size:12px; color:var(--color-muted); }
+.membership-link-arrow { font-size:18px; color:var(--color-muted); }
+
+/* ── 매칭핏 ── */
+.matching-intro { font-size:15px; line-height:2; color:var(--color-soft); margin-bottom:36px; word-break:keep-all; }
+.matching-intro strong { color:var(--color-accent); font-weight:700; }
+.matching-info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:48px; }
+.matching-info-item { padding:20px; background:rgba(139,92,56,0.05); border-top:2px solid var(--color-accent); }
+.matching-info-label { font-size:10px; letter-spacing:3px; color:var(--color-accent); font-weight:700; margin-bottom:8px; }
+.matching-info-value { font-size:15px; font-weight:700; color:var(--color-text); margin-bottom:4px; }
+.matching-info-note { font-size:11px; color:var(--color-muted); line-height:1.6; }
+.matching-section { margin-bottom:48px; padding-bottom:48px; border-bottom:1px solid rgba(139,92,56,0.1); }
+.matching-section:last-of-type { border-bottom:none; }
+.matching-section-num { font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:600; color:rgba(139,92,56,0.15); line-height:1; margin-bottom:4px; }
+.matching-section-title { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; letter-spacing:1px; color:var(--color-text); margin-bottom:12px; }
+.matching-section-divider { width:32px; height:1px; background:var(--color-accent); margin-bottom:20px; }
+.matching-section-body { font-size:14px; line-height:2.2; color:var(--color-soft); font-weight:300; margin-bottom:20px; word-break:keep-all; }
+.matching-promise-list { display:flex; flex-direction:column; gap:16px; }
+.matching-promise-item { padding:20px 24px; background:rgba(139,92,56,0.04); border-left:3px solid var(--color-accent); }
+.matching-promise-title { font-size:14px; font-weight:700; color:var(--color-text); margin-bottom:8px; }
+.matching-promise-desc { font-size:13px; line-height:2; color:var(--color-soft); font-weight:300; word-break:keep-all; }
+.matching-contact-grid { display:flex; flex-direction:column; gap:16px; }
+.matching-contact-item { padding:24px 28px; border:1px solid rgba(139,92,56,0.2); background:rgba(139,92,56,0.03); }
+.matching-contact-branch { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; letter-spacing:2px; color:var(--color-text); margin-bottom:8px; }
+.matching-contact-addr { font-size:13px; line-height:1.8; color:var(--color-muted); margin-bottom:16px; word-break:keep-all; }
+.matching-contact-links { display:flex; flex-direction:column; gap:8px; }
+.matching-contact-link { font-size:13px; color:var(--color-soft); text-decoration:none; font-weight:400; transition:color 0.2s; }
+.matching-contact-link:hover { color:var(--color-accent); }
+.matching-closing { margin-top:56px; padding:40px 32px; text-align:center; border:1px solid rgba(139,92,56,0.2); background:rgba(139,92,56,0.03); }
+.matching-closing p { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; letter-spacing:1px; color:var(--color-text); margin-bottom:12px; }
+.matching-closing-sub { font-family:'Noto Sans KR',sans-serif !important; font-size:14px !important; font-weight:300 !important; color:var(--color-soft) !important; line-height:2 !important; letter-spacing:0 !important; word-break:keep-all; }
+.oneone-phase-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-top:8px; }
+.oneone-phase-item { padding:20px 16px; background:rgba(139,92,56,0.05); border-top:2px solid var(--color-accent); text-align:center; }
+.oneone-phase-label { font-size:9px; letter-spacing:3px; color:var(--color-accent); font-weight:700; margin-bottom:8px; }
+.oneone-phase-title { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:600; color:var(--color-text); margin-bottom:6px; }
+.oneone-phase-desc { font-size:12px; color:var(--color-muted); line-height:1.6; }
+.family-table-wrap { overflow-x:auto; margin-top:8px; }
+.family-table { width:100%; border-collapse:collapse; font-size:13px; }
+.family-table th { background:var(--color-accent); color:#f8f4ec; padding:12px 16px; text-align:center; font-weight:700; letter-spacing:1px; font-size:11px; }
+.family-table td { padding:14px 16px; text-align:center; border-bottom:1px solid rgba(139,92,56,0.1); color:var(--color-soft); }
+.family-table-highlight td { background:rgba(139,92,56,0.07); color:var(--color-text); }
+.family-table-note { font-size:13px; color:var(--color-accent); font-weight:700; margin-top:14px; }
+.family-recommend-list { display:flex; flex-direction:column; gap:10px; padding:24px 28px; background:rgba(139,92,56,0.04); border-left:3px solid var(--color-accent); }
+.family-recommend-list p { font-size:14px; line-height:1.8; color:var(--color-soft); font-weight:300; word-break:keep-all; }
+.price-img-btn:hover { background:var(--color-accent); color:#f8f4ec; }
+.parking-info { display:flex; flex-direction:column; gap:20px; }
+.parking-info-row { display:flex; align-items:flex-start; gap:16px; padding:20px 24px; background:rgba(139,92,56,0.05); border-left:3px solid var(--color-accent); }
+.parking-icon { font-size:22px; flex-shrink:0; margin-top:2px; }
+.parking-info-title { font-size:11px; letter-spacing:2px; font-weight:700; color:var(--color-accent); margin-bottom:6px; }
+.parking-info-text { font-size:14px; line-height:1.9; color:var(--color-soft); font-weight:300; }
+.blog-card { display:flex; align-items:center; gap:20px; padding:28px 32px; border:1px solid rgba(139,92,56,0.2); background:rgba(139,92,56,0.03); text-decoration:none; transition:background 0.2s,transform 0.2s; }
+.blog-card:hover { background:rgba(139,92,56,0.08); transform:translateY(-2px); }
+.blog-card-icon { width:48px; height:48px; background:var(--color-accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#f8f4ec; font-size:18px; font-weight:700; flex-shrink:0; }
+.blog-card-text strong { display:block; font-size:15px; font-weight:700; color:var(--color-text); margin-bottom:4px; }
+.blog-card-text span { font-size:12px; color:var(--color-muted); }
+.blog-card-arrow { margin-left:auto; font-size:18px; color:var(--color-muted); }
+.back-btn { display:inline-flex; align-items:center; gap:8px; background:none; border:1px solid rgba(139,92,56,0.3); cursor:pointer; padding:10px 20px; color:var(--color-accent); font-family:'Noto Sans KR',sans-serif; font-size:12px; font-weight:700; letter-spacing:1.5px; margin-bottom:40px; transition:background 0.2s; }
+.back-btn:hover { background:rgba(139,92,56,0.06); }
+footer { position:relative; z-index:1; text-align:center; padding:24px 16px; font-size:10px; color:var(--color-muted); letter-spacing:2.5px; font-weight:700; border-top:1px solid rgba(139,92,56,0.1); }
+.trainer-card { display:flex; gap:36px; align-items:flex-start; padding:36px 0; border-bottom:1px solid rgba(139,92,56,0.15); }
+.trainer-card:last-child { border-bottom:none; }
+.trainer-photo-box { width:160px; height:200px; flex-shrink:0; background:rgba(139,92,56,0.08); overflow:hidden; }
+.trainer-photo-box img { width:100%; height:100%; object-fit:cover; display:block; }
+.trainer-name { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; letter-spacing:2px; color:var(--color-text); margin-bottom:6px; }
+.trainer-role { font-size:11px; letter-spacing:3px; font-weight:700; color:var(--color-accent); margin-bottom:16px; }
+.trainer-divider { width:32px; height:1px; background:var(--color-accent); margin-bottom:16px; }
+
+.trainer-career-divider { width:32px; height:1px; background:var(--color-accent); margin:16px 0; }
+.trainer-career-label { font-size:10px; letter-spacing:3px; color:var(--color-accent); font-weight:700; margin-bottom:10px; }
+.trainer-career { font-size:13px; line-height:2; color:var(--color-soft); font-weight:300; padding-left:2px; }
+.trainer-career li { list-style:none; padding-left:14px; position:relative; }
+.trainer-career li::before { content:'—'; position:absolute; left:0; color:var(--color-muted); }
+@media (max-width:768px) {
+
+  /* ── 헤더 ── */
+  header { padding:16px 20px; }
+
+  /* ── 히어로 ── */
+  .hero { padding:80px 24px 60px; }
+  .badge { font-size:9px; letter-spacing:2px; padding:6px 16px; margin-bottom:24px; }
+  .slogan { font-size:15px; margin-bottom:32px; }
+  .cta { padding:14px 32px; font-size:13px; }
+
+  /* ── 홈 섹션 ── */
+  .content-section { padding:64px 24px; }
+  .content-section.section-alt { padding:64px 24px; }
+  .section-title { font-size:clamp(24px,6vw,36px); }
+  .section-body { font-size:15px; }
+
+  /* ── 콘텐츠 페이지 (프로그램/가격) ── */
+  .content-page { padding:90px 20px 60px; }
+  .content-page-title { font-size:clamp(26px,6vw,40px); }
+
+  /* ── 지점 페이지 ── */
+  .branch-page { padding:90px 20px 60px; }
+  .branch-title { font-size:clamp(30px,7vw,48px); }
+  .branch-subtitle { font-size:13px; }
+
+  /* ── 탭 슬라이딩 ── */
+  .branch-tabs { overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .branch-tabs::-webkit-scrollbar { display:none; }
+  .branch-tab { flex-shrink:0; padding:14px 20px; font-size:13px; }
+
+  /* ── 강사 카드 ── */
+  .trainer-card { flex-direction:column; gap:20px; padding:28px 0; }
+  .trainer-photo-box { width:100%; height:260px; }
+  .trainer-name { font-size:22px; }
+
+  /* ── 가격표 ── */
+  .price-grid { grid-template-columns:1fr; }
+  .price-card { padding:20px 18px; }
+  .price-amount { font-size:20px; }
+  .price-section-title { font-size:18px; }
+  .price-notice { padding:18px 20px; }
+
+  /* ── 주차 안내 ── */
+  .parking-info-row { padding:16px 18px; gap:12px; }
+  .parking-icon { font-size:18px; }
+
+  /* ── 월구독 ── */
+  .membership-desc-box { padding:18px 20px; }
+  .membership-link-btn { padding:16px 18px; }
+
+  /* ── 슬라이드 ── */
+  .slide img { max-height:260px; }
+  .slide-btn { width:36px; height:36px; font-size:16px; }
+
+  /* ── 지도 ── */
+  .map-wrap iframe { height:280px; }
+
+  /* ── 블로그 카드 ── */
+  .blog-card { padding:20px; gap:14px; }
+  .blog-card-text strong { font-size:13px; }
+
+  /* ── 뒤로가기 버튼 ── */
+  .back-btn { font-size:11px; padding:8px 16px; margin-bottom:28px; }
+
+  /* ── 푸터 ── */
+  footer { font-size:9px; letter-spacing:1.5px; }
+
+  /* ── 장식 원 숨기기 ── */
+  .deco-circle, .deco-circle2 { display:none; }
+
+  /* ── 섹션 비디오/이미지 배경 ── */
+  .section-video-wrap .section-inner { padding:64px 24px !important; }
+}
+</style>
+</head>
+<body>
+<div class="deco-circle"></div>
+<div class="deco-circle2"></div>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-brand">
+  <h2>ARDOR GYM</h2>
+  <small>PT 전문 퍼스널 트레이닝</small>
+</div>
+<div class="nav-item">
+  <button class="nav-btn" style="justify-content:flex-start;" onclick="closeMenu();showPage('story')">아르더짐 STORY</button>
+</div>
+<div class="nav-item">
+  <button class="nav-btn" onclick="toggleSubmenu('menu-program',this)">프로그램 소개 <span class="nav-arrow">▼</span></button>
+  <div class="submenu" id="menu-program">
+    <a href="#" onclick="closeMenu();showPage('program-1on1')">1:1 개인 PT</a>
+    <a href="#" onclick="closeMenu();showPage('program-family')">1:1 가족결합 PT</a>
+    <a href="#" onclick="closeMenu();showPage('program-group')">2:1 그룹 PT</a>
+    <a href="#" onclick="closeMenu();showPage('program-matching')">2:1 매칭핏</a>
+    <a href="#" onclick="closeMenu();showPage('program-oneday')">One Day Give Class</a>
+  </div>
+</div>
+<div class="nav-item">
+  <button class="nav-btn" onclick="toggleSubmenu('menu-price',this)">가격 안내 <span class="nav-arrow">▼</span></button>
+  <div class="submenu" id="menu-price">
+    <a href="#" onclick="closeMenu();showPage('price-pt')">PT 가격표</a>
+    <a href="#" onclick="closeMenu();showPage('price-membership')">월 구독 회원권 안내</a>
+  </div>
+</div>
+<div class="nav-branch-label">지점 안내</div>
+<div class="nav-item"><button class="nav-branch-btn" onclick="closeMenu();showPage('branch-seocheon')">▸ 서천점</button></div>
+<div class="nav-item"><button class="nav-branch-btn" onclick="closeMenu();showPage('branch-mangpo')">▸ 망포점</button></div>
+</aside>
+
+<header>
+  <button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <a class="header-logo" href="#" onclick="showPage('home')">ARDOR GYM</a>
+</header>
+
+<!-- 홈 -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="badge">PREMIUM PERSONAL TRAINING STUDIO</div>
+    <h1>WELCOME TO<br><span>ARDOR</span>GYM</h1>
+    <div class="ornament"><div class="orn-line"></div><div class="orn-dot"></div><div class="orn-line"></div></div>
+    <p class="slogan">친절하고 다정한 이웃, PT전문 아르더짐</p>
+    <a class="cta" href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%95%84%EB%A5%B4%EB%8D%94%EC%A7%90&ackey=mqpiiyqb" target="_blank">가까운 지점 찾기</a>
+    <div class="scroll-hint">SCROLL</div>
+  </section>
+  <section class="content-section section-video-wrap">
+    <video class="section-bg-video" src="videos/section-about.mp4" autoplay muted loop playsinline></video>
+    <div class="section-overlay"></div>
+    <div class="section-inner" style="max-width:900px;margin-left:auto;margin-right:auto;padding-top:100px;padding-bottom:100px;padding-left:48px;padding-right:48px;position:relative;z-index:2;box-sizing:border-box;">
+      <p class="section-eyebrow">ABOUT US</p>
+      <h2 class="section-title">당신만을 위한 트레이닝</h2>
+      <div class="section-divider"></div>
+      <p class="section-body">운동이 어렵게 느껴지셨나요?<br>친절함으로 마음의 벽을 낮추고, 전문성으로 몸의 변화를 만들어 드립니다.<br>친절하고 다정한 트레이너들이 여러분의 건강한 변화를 응원합니다.</p>
+    </div>
+  </section>
+  <section class="content-section section-alt section-video-wrap">
+    <video class="section-bg-video" src="videos/section-space.mp4" autoplay muted loop playsinline></video>
+    <div class="section-overlay"></div>
+    <div class="section-inner" style="max-width:900px;margin-left:auto;margin-right:auto;padding-top:100px;padding-bottom:100px;padding-left:48px;padding-right:48px;position:relative;z-index:2;box-sizing:border-box;">
+      <p class="section-eyebrow">ARDOR GYM</p>
+      <h2 class="section-title">마음이 편해지는 공간</h2>
+      <div class="section-divider"></div>
+      <p class="section-body">들어서는 순간 쾌적하고 편안한 환경을 느낄 수 있도록 음악·향기·청결·온습도까지 세심하게 관리합니다.<br>운동하러 가는 곳이 아닌, 기분 좋게 찾아오는 공간을 만들었습니다.</p>
+    </div>
+  </section>
+  <section class="content-section section-alt section-video-wrap">
+    <video class="section-bg-video" src="videos/section-trainer.mp4" autoplay muted loop playsinline></video>
+    <div class="section-overlay"></div>
+    <div class="section-inner" style="max-width:900px;margin-left:auto;margin-right:auto;padding-top:100px;padding-bottom:100px;padding-left:48px;padding-right:48px;position:relative;z-index:2;box-sizing:border-box;">
+      <p class="section-eyebrow">TRAINER</p>
+      <h2 class="section-title">다정함 뒤의 진짜 전문성</h2>
+      <div class="section-divider"></div>
+      <p class="section-body">NASM, NSCA 등 국내외 공인 자격증을 갖춘 트레이너가<br>체형·움직임·건강 상태를 세밀히 분석해 1:1 맞춤 프로그램을 설계합니다.</p>
+    </div>
+  </section>
+  <section class="content-section section-alt section-video-wrap">
+    <video class="section-bg-video" src="videos/section-motivation.mp4" autoplay muted loop playsinline></video>
+    <div class="section-overlay"></div>
+    <div class="section-inner" style="max-width:900px;margin-left:auto;margin-right:auto;padding-top:100px;padding-bottom:100px;padding-left:48px;padding-right:48px;position:relative;z-index:2;box-sizing:border-box;">
+      <p class="section-eyebrow">MOTIVATION</p>
+      <h2 class="section-title">성공 경험이 꾸준함을 만듭니다</h2>
+      <div class="section-divider"></div>
+      <p class="section-body">작은 성취가 쌓이면 변화가 생기고, 그 변화가 다시 동기부여로 이어집니다.<br>부담 없이 "할 수 있다"는 자신감을 드리는 것이 아르더짐의 방식입니다.</p>
+    </div>
+  </section>
+  <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+
+<!-- STORY 페이지 -->
+<div class="page" id="page-story">
+  <div class="content-page">
+    <button class="back-btn" onclick="showPage('home')">← 홈으로</button>
+    <p class="content-page-eyebrow">OUR STORY</p>
+    <h2 class="content-page-title">아르더짐 STORY</h2>
+    <div class="content-page-divider"></div>
+    <div class="content-placeholder">
+      <p>아르더짐의 이야기를 여기에 작성해 주세요.<br>창업 계기, 철학, 비전 등을 자유롭게 넣으실 수 있어요.</p>
+    </div>
+  </div>
+  <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+
+<!-- 프로그램 페이지들 -->
+<div class="page" id="page-program-1on1">
+  <div class="content-page">
+    <button class="back-btn" onclick="showPage('home')">← 홈으로</button>
+    <p class="content-page-eyebrow">PROGRAM</p>
+    <h2 class="content-page-title">1:1 개인 PT</h2>
+    <div class="content-page-divider"></div>
+
+    <!-- 인트로 -->
+    <p class="matching-intro">
+      <strong>ARDOR만의 전문적인 1:1 맞춤 PT</strong>입니다.<br>
+      미국 스포츠 의학회(NASM)의 Personal Fitness Training 프로그램을 기반으로,<br>
+      움직임 평가 · 정렬 검사 · 골반 균형 검사 · 근력 검사 등 정밀 평가 후 개인 맞춤 트레이닝을 시작합니다.
+    </p>
+
+    <!-- 섹션 1: 핵심 특징 -->
+    <div class="matching-section">
+      <p class="matching-section-num">01</p>
+      <h3 class="matching-section-title">아르더짐 1:1 PT의 특징</h3>
+      <div class="matching-section-divider"></div>
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">📊 체성분 검사를 통한 건강한 다이어트</p>
+          <p class="matching-promise-desc">체성분 검사로 골격근량과 체지방량을 측정해요.<br>근력을 최대한 보존하면서 체지방만 빠지게 만들어 요요 없는 건강한 다이어트 프로그램을 진행합니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🎯 재미있는 운동으로 꾸준함 유지</p>
+          <p class="matching-promise-desc">건강하고 멋진 몸을 위해 가장 중요한 건 꾸준함이에요.<br>개개인의 체력과 근력을 평가해 맞는 운동을 진행하고, 운동의 재미를 붙일 수 있도록 옆에서 정성껏 도와드립니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 섹션 2: 상담 및 평가 프로세스 -->
+    <div class="matching-section">
+      <p class="matching-section-num">02</p>
+      <h3 class="matching-section-title">상담 및 평가 프로세스</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">먼저 상담을 통해 운동 목적을 파악하고, 인바디 체성분 측정으로 목표를 설정해요.</p>
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">💬 운동 목적 파악</p>
+          <p class="matching-promise-desc">다이어트 · 근력 증가 / 체력 증진 / 건강 관리 · 체형 교정 · 체중 증가 · 보디 프로필 · 라이프 개선 · 기타</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">📏 인바디 체성분 측정 및 목표 설정</p>
+          <p class="matching-promise-desc">정확한 수치를 바탕으로 현실적이고 건강한 목표를 함께 설정해드려요.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 섹션 3: 트레이닝 프로그램 -->
+    <div class="matching-section">
+      <p class="matching-section-num">03</p>
+      <h3 class="matching-section-title">NASM OPT 기반 트레이닝</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">개개인의 체력 · 체형 · 근력에 따라 미국 스포츠 의학회 NASM의 OPT 프로그램을 기반으로 진행합니다.</p>
+      <div class="oneone-phase-grid">
+        <div class="oneone-phase-item">
+          <p class="oneone-phase-label">PHASE 1</p>
+          <p class="oneone-phase-title">Mobility / Flexibility</p>
+          <p class="oneone-phase-desc">자가근막이완 · 정적/동적 스트레칭</p>
+        </div>
+        <div class="oneone-phase-item">
+          <p class="oneone-phase-label">PHASE 2</p>
+          <p class="oneone-phase-title">Stability</p>
+          <p class="oneone-phase-desc">안정화 지구력</p>
+        </div>
+        <div class="oneone-phase-item">
+          <p class="oneone-phase-label">PHASE 3</p>
+          <p class="oneone-phase-title">Strength</p>
+          <p class="oneone-phase-desc">근지구력 · 근비대 · 최대근력</p>
+        </div>
+        <div class="oneone-phase-item">
+          <p class="oneone-phase-label">PHASE 4</p>
+          <p class="oneone-phase-title">Power</p>
+          <p class="oneone-phase-desc">파워 트레이닝</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 섹션 4: 트레이닝 종류 -->
+    <div class="matching-section">
+      <p class="matching-section-num">04</p>
+      <h3 class="matching-section-title">트레이닝 종류</h3>
+      <div class="matching-section-divider"></div>
+      <div class="family-recommend-list">
+        <p>① 체력 평가</p>
+        <p>② 유연성 트레이닝</p>
+        <p>③ 심폐 체력 트레이닝</p>
+        <p>④ 코어 트레이닝</p>
+        <p>⑤ 밸런스 트레이닝</p>
+        <p>⑥ 플라이오매트릭 트레이닝</p>
+        <p>⑦ 속도 · 민첩성 · 순발력 트레이닝</p>
+        <p>⑧ 저항 트레이닝 (웨이트 트레이닝)</p>
+      </div>
+    </div>
+
+    <!-- 마무리 -->
+    <div class="matching-closing">
+      <p>목적에 맞는 운동과 식단</p>
+      <p class="matching-closing-sub">
+        상담을 통해 파악한 목적에 맞게 운동과 식단을 함께 진행해드려요.<br>
+        건강한 몸과 삶의 질 향상, 아르더짐이 옆에서 정성껏 도와드리겠습니다 💪
+      </p>
+    </div>
+
+  </div>
+  <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+<div class="page" id="page-program-family">
+  <div class="content-page">
+    <button class="back-btn" onclick="showPage('home')">← 홈으로</button>
+    <p class="content-page-eyebrow">PROGRAM</p>
+    <h2 class="content-page-title">1:1 가족결합 PT</h2>
+    <div class="content-page-divider"></div>
+
+    <!-- 인트로 -->
+    <p class="matching-intro">
+      가족끼리 횟수를 나눠쓰는 <strong>결합 PT 요금제</strong>입니다.<br>
+      온 가족이 함께 건강해지면서, 개별 PT보다 훨씬 경제적으로 이용할 수 있어요.
+    </p>
+
+    <!-- 기본 정보 -->
+    <div class="matching-info-grid">
+      <div class="matching-info-item">
+        <p class="matching-info-label">공유 인원</p>
+        <p class="matching-info-value">최대 3인</p>
+        <p class="matching-info-note">가족·커플·지인 모두 가능</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">세션 배분</p>
+        <p class="matching-info-value">자유롭게 분리 가능</p>
+        <p class="matching-info-note">예) 30회 → A 21회 + B 9회</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">절약 효과</p>
+        <p class="matching-info-value">최대 33만원 절약</p>
+        <p class="matching-info-note">개별 결제 대비</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">이용 지점</p>
+        <p class="matching-info-value">같은 지점 내 사용</p>
+        <p class="matching-info-note">망포점 또는 서천점</p>
+      </div>
+    </div>
+
+    <!-- 섹션 1: 가격 비교 -->
+    <div class="matching-section">
+      <p class="matching-section-num">01</p>
+      <h3 class="matching-section-title">얼마나 절약되나요?</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">30회 세션을 가족이 나눠 사용하면 개별 결제보다 훨씬 경제적이에요.</p>
+      <div class="family-table-wrap">
+        <table class="family-table">
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>방식</th>
+              <th>총비용</th>
+              <th>1인당</th>
+              <th>1회당</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>개별 결제</td>
+              <td>3명 각 10회</td>
+              <td>1,815,000원</td>
+              <td>605,000원</td>
+              <td>60,500원</td>
+            </tr>
+            <tr class="family-table-highlight">
+              <td><strong>가족결합</strong></td>
+              <td>30회 나눔</td>
+              <td><strong>1,485,000원</strong></td>
+              <td><strong>495,000원</strong></td>
+              <td><strong>49,500원</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="family-table-note">💰 33만원 절약! 가족 외식 몇 번 비용으로 온 가족의 건강을 챙길 수 있어요.</p>
+      </div>
+    </div>
+
+    <!-- 섹션 2: 가족 맞춤 프로그램 -->
+    <div class="matching-section">
+      <p class="matching-section-num">02</p>
+      <h3 class="matching-section-title">가족 맞춤 운동 프로그램</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">가족이라도 각자 다른 운동 목표가 있어요. 아르더짐 트레이너가 한 분 한 분 꼼꼼하게 케어해드립니다.</p>
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">👨 아빠를 위한 운동</p>
+          <p class="matching-promise-desc">하체·복부 집중 / 기능적 근력 향상 / 스트레스 해소 / 체력 증진<br>직장 생활로 쌓인 스트레스와 뱃살 고민, 아르더짐이 해결해드려요.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">👩 엄마를 위한 운동</p>
+          <p class="matching-promise-desc">산후 체형 관리 / 코어 강화 / 어깨·목 케어 / 다이어트 / 골다공증 예방<br>육아와 집안일로 지친 몸, 건강하게 회복할 수 있도록 도와드려요.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">👶 자녀를 위한 운동</p>
+          <p class="matching-promise-desc">자세 교정 / 기초 체력 향상 / 성장 촉진 / 운동 습관 형성 / 자신감 향상<br>거북목·굽은 어깨 개선부터 성장기 체력 발달까지 세심하게 지도해드려요.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">👴👵 어르신을 위한 운동</p>
+          <p class="matching-promise-desc">관절 건강 / 균형감각 향상 / 근력 유지 / 유연성 증진<br>안전하고 꾸준히 할 수 있는 운동으로 활기찬 노후를 도와드려요.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 섹션 3: 실제 사례 -->
+    <div class="matching-section">
+      <p class="matching-section-num">03</p>
+      <h3 class="matching-section-title">실제 가족결합 사례</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">아르더짐에 실제로 있었던 이야기예요.</p>
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">👨 아버님 — 6개월 만에 골격근량 4kg 증량</p>
+          <p class="matching-promise-desc">무릎 연골 문제로 주변 근육 강화를 위해 큰마음 먹고 등록하셨어요. PT의 진가를 느끼시고 아내분을 아르더짐으로 초대하셨답니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">👩 어머님 — 4개월 만에 7.4kg 감량</p>
+          <p class="matching-promise-desc">아버님의 수업 1회를 체험해보시고 9회 이상을 함께 운동하시게 됐어요. 맞춤 프로그램으로 무릎과 체중 모두 눈에 띄게 좋아지셨답니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">👧 따님 — 체력·골격근량 함께 증가</p>
+          <p class="matching-promise-desc">부모님의 변화에 자극받아 체력과 건강관리 목적으로 방문해주셨어요. 운동 효과뿐 아니라 가족이 함께 주말마다 호수공원 산책도 나가게 되는 아름다운 변화가 생겼답니다 😊</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 섹션 4: 이런 분들에게 -->
+    <div class="matching-section">
+      <p class="matching-section-num">04</p>
+      <h3 class="matching-section-title">이런 분들께 추천해요</h3>
+      <div class="matching-section-divider"></div>
+      <div class="family-recommend-list">
+        <p>✔ 부모님의 건강을 걱정하는 자녀분들</p>
+        <p>✔ 자녀의 굽은 등·체형 불균형을 걱정하시는 부모님</p>
+        <p>✔ 자녀와 함께 운동 습관을 들이고 싶은 부모님</p>
+        <p>✔ 커플끼리 실속 있는 운동 루틴을 만들고 싶은 분</p>
+        <p>✔ 형제자매 간 운동 목표가 비슷한 분</p>
+        <p>✔ PT를 해보고 싶은데 가격이 부담스러운 경우</p>
+      </div>
+      <div class="matching-closing" style="margin-top:28px;">
+        <p>건강한 가족, 행복한 가족</p>
+        <p class="matching-closing-sub">
+          가족의 건강은 돈으로 살 수 없는 가장 소중한 자산입니다.<br>
+          혼자서는 어려울 수 있지만, 가족과 함께라면 분명히 할 수 있어요.<br>
+          아르더짐이 여러분 가족의 건강한 변화를 위해 최선을 다해 도와드리겠습니다 💪
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+<div class="page" id="page-program-group">
+  <div class="content-page">
+    <button class="back-btn" onclick="showPage('home')">← 홈으로</button>
+    <p class="content-page-eyebrow">PROGRAM</p>
+    <h2 class="content-page-title">2:1 그룹 PT</h2>
+    <div class="content-page-divider"></div>
+
+    <!-- 인트로 -->
+    <p class="matching-intro">
+      지인 혹은 가족과 함께 <strong>2:1로 50분간 진행되는 PT 프로그램</strong>입니다.<br>
+      2:1이라고 해서 1:1보다 신경을 덜 쓰는 것이 아니에요.<br>
+      회원님 각각의 근력과 체력을 고려하여 맞춤 트레이닝을 진행합니다.
+    </p>
+
+    <!-- 기본 정보 -->
+    <div class="matching-info-grid">
+      <div class="matching-info-item">
+        <p class="matching-info-label">수업 시간</p>
+        <p class="matching-info-value">50분</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">구성 인원</p>
+        <p class="matching-info-value">2명</p>
+        <p class="matching-info-note">지인·가족·커플 모두 가능</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">결제 방식</p>
+        <p class="matching-info-value">파트너와 따로 결제</p>
+        <p class="matching-info-note">금액 부담 없이 시작 가능</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">트레이닝</p>
+        <p class="matching-info-value">개인 맞춤 관리</p>
+        <p class="matching-info-note">각자의 근력·체력 고려</p>
+      </div>
+    </div>
+
+    <!-- 장점 섹션 -->
+    <div class="matching-section">
+      <p class="matching-section-num">01</p>
+      <h3 class="matching-section-title">2:1 수업의 장점</h3>
+      <div class="matching-section-divider"></div>
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">😄 즐거운 분위기 속 운동</p>
+          <p class="matching-promise-desc">친구·지인과 함께해서 수업 시간 내내 즐거운 분위기가 이어져요.<br>어렵고 힘든 운동도 서로의 격려와 응원 속에서 할 수 있답니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">💰 합리적인 비용</p>
+          <p class="matching-promise-desc">파트너와 따로 결제하기 때문에 1:1 PT보다 금액 부담이 훨씬 적어요.<br>경제적으로 PT를 시작할 수 있는 가장 좋은 방법이에요.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">📚 빠른 지식 습득</p>
+          <p class="matching-promise-desc">서로 모르는 지식이나 정보를 공유하며 더 빠르게 습득할 수 있어요.<br>파트너의 운동을 보면서 배우는 것도 큰 도움이 된답니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🌱 PT 입문자에게 딱!</p>
+          <p class="matching-promise-desc">혼자 PT를 처음 접하기 어렵고 어색한 분들이 시작하기 아주 좋아요.<br>파트너가 있으면 낯선 환경도 훨씬 편안하게 느껴진답니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">👫 부부 함께 다이어트</p>
+          <p class="matching-promise-desc">한 분만 다이어트할 때 식단 때문에 서로 눈치 보이셨나요?<br>부부가 함께 2:1 트레이닝을 진행하면 식사도 서로 눈치 없이 다이어트식으로 즐길 수 있어요 😊</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 마무리 -->
+    <div class="matching-closing">
+      <p>꾸준함이 만드는 변화</p>
+      <p class="matching-closing-sub">
+        운동에서 가장 중요한 것 중 하나는 꾸준함입니다.<br>
+        서로 동기부여를 심어주고 목표를 함께 달성하는 성취감을 느껴보세요!
+      </p>
+    </div>
+
+  </div>
+  <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+<div class="page" id="page-program-matching">
+  <div class="content-page">
+    <button class="back-btn" onclick="showPage('home')">← 홈으로</button>
+    <p class="content-page-eyebrow">PROGRAM</p>
+    <h2 class="content-page-title">2:1 매칭핏</h2>
+    <div class="content-page-divider"></div>
+
+    <!-- 인트로 -->
+    <p class="matching-intro">
+      친절하고 다정한 이웃, 아르더짐에서 선보이는 <strong>매칭핏(2:1 PT)</strong>입니다.<br>
+      나와 성향, 운동 목적, 스케줄이 잘 맞는 파트너를 매칭하여 시너지를 내는 프로그램입니다.
+    </p>
+
+    <!-- 프로그램 기본 정보 -->
+    <div class="matching-info-grid">
+      <div class="matching-info-item">
+        <p class="matching-info-label">진행 세션</p>
+        <p class="matching-info-value">총 10회 (단일 코스)</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">유효 기간</p>
+        <p class="matching-info-value">기본 40일 + 연장 15일</p>
+        <p class="matching-info-note">총 55일 경과 시 남은 세션 자동 소멸</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">제공 혜택</p>
+        <p class="matching-info-value">팀당 개인 신발장 1개</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">재매칭 보장</p>
+        <p class="matching-info-value">최대 1회 (1주일 이내)</p>
+        <p class="matching-info-note">대기 기간 중 유효기간 자동 연장</p>
+      </div>
+    </div>
+
+    <!-- 섹션 1 -->
+    <div class="matching-section">
+      <p class="matching-section-num">01</p>
+      <h3 class="matching-section-title">신중하게 매칭해드립니다</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">
+        아르더짐의 매칭핏은 단순히 인원수를 채우기 위해 빠르게 연결하는 시스템이 아닙니다.<br>
+        회원님의 성별, 평소 운동 시간대, 그리고 다이어트나 체력 증진 같은 운동 목적까지 꼼꼼히 분석합니다.<br>
+        조금 시간이 걸리더라도 "나와 꼭 맞는 파트너"를 만났을 때 운동의 시너지가 나기 때문이죠.<br>
+        저희는 회원님의 소중한 시간을 헛되이 쓰지 않도록, 최대한 회원님과 맞는 파트너와의 만남을 약속드립니다.
+      </p>
+    </div>
+
+    <!-- 섹션 2 -->
+    <div class="matching-section">
+      <p class="matching-section-num">02</p>
+      <h3 class="matching-section-title">서로를 향한 존중, 매칭핏의 약속</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">매칭핏은 파트너와 함께하는 약속입니다.<br>아르더짐은 두 분 모두의 운동 시간을 소중히 여기기에 합리적인 약속 체계를 만들었습니다.</p>
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🤝 노쇼 방지 시스템</p>
+          <p class="matching-promise-desc">파트너 중 한 분의 사정으로 일정이 바뀌더라도, 수업을 희망하는 다른 한 분이 계신다면 수업은 예정대로 진행됩니다. 상황에 맞춰 유연하게 관리하며 소중한 수업권을 지켜드립니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🔄 재매칭 보장 (최대 1회)</p>
+          <p class="matching-promise-desc">혹시 파트너와 성향이 맞지 않더라도 걱정 마세요. 1회에 한해 일주일 이내로 새로운 인연을 찾아드립니다. 대기 기간 동안에는 유효기간이 자동으로 연장되니 안심하고 기다려주셔도 됩니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 섹션 3 -->
+    <div class="matching-section">
+      <p class="matching-section-num">03</p>
+      <h3 class="matching-section-title">결과로 증명하는 클래스</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">저희의 2:1 PT의 자부심은 '1:1 PT에 준하는 정교한 관리'에 있습니다.</p>
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">⚡ 집중형 세션</p>
+          <p class="matching-promise-desc">더욱 밀도 높은 관리를 위해 매칭핏은 10회 집중 세션으로만 운영됩니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🎯 1:1에 준하는 맞춤 PT</p>
+          <p class="matching-promise-desc">누적 팀 약 200팀 이상을 지도한 경험을 토대로 만든 2:1 PT 수업에 특화된 온보딩 교육을 받은 전문 트레이너가 지도합니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">💬 전용 커뮤니티</p>
+          <p class="matching-promise-desc">매칭이 성사되면 담당 트레이너와 함께하는 단톡방이 개설됩니다. 준비물부터 식단 가이드까지, 아르더짐다운 다정함으로 밀착 케어해 드립니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 실제 후기 스토리 -->
+    <div class="matching-section">
+      <p class="matching-section-num">04</p>
+      <h3 class="matching-section-title">실제 매칭 성공 스토리</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">매칭핏 프로그램을 시작한 지 일주일도 채 되지 않아 첫 매칭이 성사됐어요. 실제 있었던 이야기를 공유해드릴게요.</p>
+
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🤝 첫 매칭 성사!</p>
+          <p class="matching-promise-desc">50대 다이어트·근력증가 목적의 회원님께 처음 연락을 드렸어요. 운동을 빨리 시작하고 싶다고 강조하셨는데, 비슷한 연령대와 운동 목적을 가진 이웃 주민분의 추가 문의로 기다리시던 운동 파트너 매칭이 성사되었답니다!</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">😊 낯섦이 설렘으로</p>
+          <p class="matching-promise-desc">처음 오시는 공간에 잠깐 어색한 분위기가 감돌기도 했지만, 체계적인 운동 프로그램 설명과 목표 설정, 수업 진행으로 성실한 땀방울과 달아오른 심박수로 어색함은 금방 사라졌어요.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🎯 2:1 PT임에도 꼼꼼한 케어</p>
+          <p class="matching-promise-desc">"2:1 PT라고 퍼스널하지 못하면 어쩌지?" 천만에요. 동기부여와 꾸준한 습관 형성을 위한 식단 피드백, 운동 루틴 관리까지. 근력 수준이 조금 달라도 무게 설정만 알맞게 해드리면 문제없었습니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">💪 5회차가 되어서는...</p>
+          <p class="matching-promise-desc">벌써부터 운동 전에 오셔서 개인별 스트레칭 루틴을 외우신 채 능숙하게 준비하시고, 파트너 분들도 함께 러닝머신 위에서 담소를 나누시며 웃으시는 모습에 뿌듯함과 보람을 많이 느끼게 되었답니다.</p>
+        </div>
+      </div>
+
+      <div class="matching-closing" style="margin-top:28px;">
+        <p>"운동은, 의지가 아니라 환경입니다."</p>
+        <p class="matching-closing-sub">
+          지금 내 옆에 함께 땀 흘리는 파트너가 있다면,<br>
+          한 발 더 나아가고 싶은 마음이 저절로 생깁니다.<br>
+          이웃이 운동 파트너가 되는 곳, 아르더짐 매칭핏에서 기다리고 있겠습니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- 후기 블로그 -->
+    <div class="price-section-title" style="margin-top:48px;">블로그 후기 보기</div>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <a class="blog-card" href="https://blog.naver.com/ardorgym2/223939598729" target="_blank">
+        <div class="blog-card-icon">N</div>
+        <div class="blog-card-text"><strong>아르더짐 매칭핏 회원님 후기</strong><span>blog.naver.com/ardorgym2</span></div>
+        <div class="blog-card-arrow">→</div>
+      </a>
+    </div>
+
+    <!-- 마무리 문구 -->
+    <div class="matching-closing">
+      <p>아르더짐은 당신의 활기찬 일상을 응원합니다.</p>
+      <p class="matching-closing-sub">가장 합리적이면서도, 가장 정교한 운동 경험.<br>아르더짐 매칭핏에서 당신의 건강한 이웃을 만나보세요.</p>
+    </div>
+
+  </div>
+  <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+<div class="page" id="page-program-oneday">
+  <div class="content-page">
+    <button class="back-btn" onclick="showPage('home')">← 홈으로</button>
+    <p class="content-page-eyebrow">PROGRAM</p>
+    <h2 class="content-page-title">One Day Give Class</h2>
+    <div class="content-page-divider"></div>
+
+    <!-- 인트로 -->
+    <p class="matching-intro">
+      아르더짐이 동네를 더 건강하게 만들기 위해 시작한 <strong>재능기부 클래스</strong>입니다.<br>
+      회원님이라면 무료로 참석 가능하고, 지인과 함께 와도 언제나 환영해요!
+    </p>
+
+    <!-- 기본 정보 -->
+    <div class="matching-info-grid">
+      <div class="matching-info-item">
+        <p class="matching-info-label">진행 일정</p>
+        <p class="matching-info-value">매월 토요일 1~2회</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">참가 대상</p>
+        <p class="matching-info-value">아르더짐 회원 무료</p>
+        <p class="matching-info-note">지인과 함께 방문도 환영!</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">진행 장소</p>
+        <p class="matching-info-value">망포점 및 외부 행사</p>
+      </div>
+      <div class="matching-info-item">
+        <p class="matching-info-label">주요 프로그램</p>
+        <p class="matching-info-value">서킷 · 러닝 · 웰니스</p>
+      </div>
+    </div>
+
+    <!-- 섹션 1: 시작 계기 -->
+    <div class="matching-section">
+      <p class="matching-section-num">01</p>
+      <h3 class="matching-section-title">우리 동네를 건강하게 만들기</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">
+        아르더짐 선생님들이 뭉쳐 시작한 특별한 프로젝트입니다.<br>
+        망포동 교통공원에서 누구나 부담 없이 운동을 경험할 수 있도록 재능기부 형식으로 시작했어요.<br>
+        풀업 챌린지, 간단한 근력 운동, 체험형 피트니스 퀘스트까지 준비해 아이들부터 어른들까지 함께 즐겼답니다.<br>
+        예상보다 훨씬 많은 분들이 발걸음 해주셔서, 현장은 완전 힐링 그 자체였어요.
+      </p>
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">💬 참가자 한마디</p>
+          <p class="matching-promise-desc">"이런 운동은 헬스장 아니면 접하기 어려운데, 직접 알려주시니까 되게 좋네요."<br>운동이 멀게 느껴지던 분이 용기 내서 체험하고 남겨주신 말씀이에요. 이 한마디가 저희가 이 클래스를 계속하는 이유랍니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 섹션 2: 현재 프로그램 -->
+    <div class="matching-section">
+      <p class="matching-section-num">02</p>
+      <h3 class="matching-section-title">현재 진행 중인 클래스</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">매달 두 번, 토요일마다 다양한 프로그램으로 찾아가요.</p>
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🔥 서킷 트레이닝</p>
+          <p class="matching-promise-desc">여러 운동을 연속으로 이어가는 고효율 운동 방식으로 체력과 근력을 동시에 끌어올려요. 현재 가장 자주 진행되는 메인 클래스예요.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🏃 러닝 클래스</p>
+          <p class="matching-promise-desc">올바른 러닝 자세와 호흡법을 배우며 함께 달리는 클래스예요. 혼자 달리는 것보다 훨씬 즐겁고 오래 달릴 수 있어요!</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🌿 웰니스 프로그램</p>
+          <p class="matching-promise-desc">대표님이 직접 진행하는 특별 클래스예요. 몸과 마음의 균형을 위한 회복 운동, 스트레칭, 건강한 생활 습관 등을 함께 나눠요.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">💡 일상 운동 가이드</p>
+          <p class="matching-promise-desc">회원님들의 일상에 실질적으로 도움이 되는 운동들을 알려드려요. PT 시간 외에도 혼자서 잘 운동할 수 있도록 도와드립니다.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+
+<!-- 가격 페이지들 -->
+<div class="page" id="page-price-pt">
+  <div class="content-page">
+    <button class="back-btn" onclick="showPage('home')">← 홈으로</button>
+    <p class="content-page-eyebrow">PRICING</p>
+    <h2 class="content-page-title">PT 가격표</h2>
+    <div class="content-page-divider"></div>
+
+    <!-- 1:1 개인 PT -->
+    <div class="price-section-title">1:1 개인 PT</div>
+    <div class="price-grid">
+      <div class="price-card best">
+        <div class="price-best-badge">BEST</div>
+        <p class="price-name">10회</p>
+        <p class="price-period">PT기간 40일</p>
+        <p class="price-original">800,000원</p>
+        <p class="price-amount">605,000원</p>
+        <p class="price-per">회당 55,000원</p>
+      </div>
+      <div class="price-card best">
+        <div class="price-best-badge">BEST</div>
+        <p class="price-name">20회</p>
+        <p class="price-period">PT기간 80일</p>
+        <p class="price-original">1,600,000원</p>
+        <p class="price-amount">1,100,000원</p>
+        <p class="price-per">회당 50,000원</p>
+      </div>
+      <div class="price-card">
+        <p class="price-name">30회</p>
+        <p class="price-period">PT기간 120일</p>
+        <p class="price-original">2,400,000원</p>
+        <p class="price-amount">1,485,000원</p>
+        <p class="price-per">회당 45,000원</p>
+      </div>
+    </div>
+
+    <!-- 가족결합 피티 -->
+    <div class="price-grid" style="margin-top:12px;">
+      <div class="price-card price-card-info" style="grid-column:1/-1;">
+        <p class="price-name">가족 결합피티</p>
+        <p class="price-desc">나눠서 운동하고 건강은 더하고!<br>가족끼리 나눠쓰는 횟수 — 엄마한번 아빠한번 PT로 관리하기</p>
+      </div>
+    </div>
+
+    <!-- 2:1 그룹 PT -->
+    <div class="price-section-title">2:1 그룹 PT</div>
+    <div class="price-grid">
+      <div class="price-card">
+        <p class="price-name">10회</p>
+        <p class="price-period">PT기간 40일</p>
+        <p class="price-original">400,000원</p>
+        <p class="price-amount">350,000원</p>
+        <p class="price-per">회당 35,000원</p>
+      </div>
+      <div class="price-card">
+        <p class="price-name">20회</p>
+        <p class="price-period">PT기간 80일</p>
+        <p class="price-original">800,000원</p>
+        <p class="price-amount">600,000원</p>
+        <p class="price-per">회당 30,000원</p>
+      </div>
+    </div>
+
+    <!-- 시그니처 매칭핏 -->
+    <div class="price-grid" style="margin-top:12px;">
+      <div class="price-card price-card-info" style="grid-column:1/-1;">
+        <p class="price-name">시그니처 2:1 매칭핏</p>
+        <p class="price-desc">운동 파트너 찾아드립니다.<br>나와 비슷한 근력과 분위기의 이웃이 필요해요!<br>시간, 성별, 운동 목적에 맞춰 함께 운동할 이웃을 매칭해드려요!</p>
+      </div>
+    </div>
+
+    <!-- 안내사항 -->
+    <div class="price-notice">
+      <p>✱ PT 기간은 10회 당 40일이며, 20회 80일, 30회 120일입니다.</p>
+      <p class="price-notice-highlight">PT기간 만료시 개인운동 및 신발장의 이용이 제한됩니다.</p>
+      <p style="margin-top:12px; font-size:13px; color:var(--color-muted); line-height:2;">
+        아르더짐에서는 피티이용권을 구매시 피티기간동안 개인운동을 자유롭게 별도의 비용없이 가능하며,<br>일반 회원권을 판매하지 않아 사람이 많을 시간에도 복잡이지않고 쾌적하게 수업 및 개인운동을 진행하실 수 있습니다.
+      </p>
+    </div>
+
+    <!-- 이미지로 확인하기 -->
+    <div style="text-align:center; margin-top:40px;">
+      <button class="price-img-btn" onclick="document.getElementById('price-img-modal').style.display='flex'">
+        🖼 이미지로 확인하기
+      </button>
+    </div>
+
+    <!-- 이미지 모달 -->
+    <div id="price-img-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:999; align-items:center; justify-content:center;" onclick="this.style.display='none'">
+      <div style="position:relative; max-width:90vw; max-height:90vh;" onclick="event.stopPropagation()">
+        <img src="images/가격표.png" alt="아르더짐 가격표" style="max-width:90vw; max-height:85vh; object-fit:contain; display:block; border-radius:8px;">
+        <button onclick="document.getElementById('price-img-modal').style.display='none'" style="position:absolute; top:-16px; right:-16px; background:var(--color-accent); border:none; color:#fff; width:36px; height:36px; border-radius:50%; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">✕</button>
+      </div>
+    </div>
+
+  </div>
+  <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+<div class="page" id="page-price-membership">
+  <div class="content-page">
+    <button class="back-btn" onclick="showPage('home')">← 홈으로</button>
+    <p class="content-page-eyebrow">PRICING</p>
+    <h2 class="content-page-title">월 구독 회원권</h2>
+    <div class="content-page-divider"></div>
+
+    <!-- 망포점 전용 안내 -->
+    <div class="membership-branch-badge">🏋 망포점 전용 프로그램</div>
+
+    <!-- 설명 -->
+    <div class="membership-desc-box">
+      <p class="membership-desc-text">기존 회원님들께는 회원권 구매 시 우선권을 제공하며, 불편함을 최소화하기 위해 최선을 다하겠습니다!</p>
+      <div class="membership-check-list">
+        <p>✔ 정직한 운영 — 회원님들의 신뢰를 지키는 헬스장으로 언제나 최선을 다하겠습니다.</p>
+        <p>✔ 쾌적한 환경 유지 — 불편함 없이 만족스러운 운동 환경을 제공하겠습니다.</p>
+        <p>✔ 우선권 제공 — 기존 PT회원님들께 회원권 구매 우선권을 드립니다.</p>
+        <p>✔ 한 달 단위 결제로 부담 없이 이용 가능!</p>
+        <p>✔ 장기이용권 가격으로 한달씩 이용 가능!</p>
+        <p>✔ 투명하고 믿을 수 있는 정직한 운영!</p>
+      </div>
+    </div>
+
+    <!-- 가격 -->
+    <div class="price-section-title">회원권 종류 <span style="font-size:13px; font-weight:400; color:var(--color-muted); letter-spacing:1px;">부가세 포함</span></div>
+    <div class="price-grid">
+      <div class="price-card">
+        <p class="price-name">주간권</p>
+        <p class="price-period">08:00 ~ 17:00</p>
+        <p class="price-amount">44,000원</p>
+        <p class="price-per">월 / 최대 20명</p>
+      </div>
+      <div class="price-card best">
+        <div class="price-best-badge">ALL DAY</div>
+        <p class="price-name">올데이권</p>
+        <p class="price-period">08:00 ~ 23:00</p>
+        <p class="price-amount">55,000원</p>
+        <p class="price-per">월 / 최대 10명</p>
+      </div>
+    </div>
+
+    <!-- 안내 -->
+    <div class="price-notice" style="margin-top:24px;">
+      <p>✱ 인원 마감 시 대기가 있을 수 있습니다.</p>
+      <p>✱ 신발장 별도 — 10,000원</p>
+    </div>
+
+    <!-- 신청 링크 -->
+    <div class="price-section-title" style="margin-top:48px;">신청 방법</div>
+    <p style="font-size:14px; color:var(--color-soft); line-height:2; margin-bottom:28px;">
+      월 구독 회원권은 <strong>운톡 앱</strong>을 통해 신청하실 수 있어요.<br>
+      아래 버튼을 눌러 앱 연동 또는 마켓 접속 후 신청해주세요!
+    </p>
+    <div class="membership-link-grid">
+      <a class="membership-link-btn" href="http://link.broj.co.kr/qr-connect/486537219" target="_blank">
+        <span class="membership-link-icon">📱</span>
+        <span class="membership-link-text">
+          <strong>운톡 앱 연동</strong>
+          <small>앱으로 바로 연결하기</small>
+        </span>
+        <span class="membership-link-arrow">→</span>
+      </a>
+      <a class="membership-link-btn" href="https://bmarket.broj.co.kr/groups/486537219" target="_blank">
+        <span class="membership-link-icon">🛒</span>
+        <span class="membership-link-text">
+          <strong>마켓 바로가기</strong>
+          <small>브라우저로 접속하기</small>
+        </span>
+        <span class="membership-link-arrow">→</span>
+      </a>
+    </div>
+
+  </div>
+  <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+
+<!-- 서천점 -->
+<div class="page" id="page-branch-seocheon">
+  <div class="branch-page">
+    <button class="back-btn" onclick="showPage('home')">← 홈으로</button>
+    <div class="branch-header">
+      <p class="branch-eyebrow">ARDOR GYM</p>
+      <h2 class="branch-title">서천점</h2>
+      <p class="branch-subtitle">경기도 용인시 기흥구 예현로 23 우진프라자 3층 307호</p>
+      <p class="branch-subtitle">📞 0507-1469-5523</p>
+    </div>
+    <div class="branch-tabs">
+      <button class="branch-tab active" onclick="switchTab('seocheon','trainer',this)">강사 소개</button>
+      <button class="branch-tab" onclick="switchTab('seocheon','video',this)">운동 영상</button>
+      <button class="branch-tab" onclick="switchTab('seocheon','photo',this)">지점 사진</button>
+      <button class="branch-tab" onclick="switchTab('seocheon','directions',this)">찾아오는 길</button>
+      <button class="branch-tab" onclick="switchTab('seocheon','parking',this)">주차 안내</button>
+      <button class="branch-tab" onclick="switchTab('seocheon','blog',this)">블로그</button>
+    </div>
+
+    <div class="branch-content active" id="seocheon-trainer">
+      <div class="trainer-card">
+        <div class="trainer-photo-box"><img src="images/망포승현.jpg" alt="용승현 대표 트레이너"></div>
+        <div class="trainer-info">
+          <p class="trainer-name">용승현</p>
+          <p class="trainer-role">대표 트레이너</p>
+          <div class="trainer-divider"></div>
+          <p class="trainer-desc">최고의 실력으로 친절하고 다정하게.</p>
+          <div class="trainer-career-divider"></div>
+          <p class="trainer-career-label">CAREER</p>
+          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo-box"><img src="images/서천태윤.jpg" alt="김태윤 팀장"></div>
+        <div class="trainer-info">
+          <p class="trainer-name">김태윤</p>
+          <p class="trainer-role">팀장</p>
+          <div class="trainer-divider"></div>
+          <p class="trainer-desc">회원님에게 꼭 필요한 운동을 찾아드립니다.</p>
+          <div class="trainer-career-divider"></div>
+          <p class="trainer-career-label">CAREER</p>
+          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo-box"><img src="images/서천유성.jpg" alt="장유성 트레이너"></div>
+        <div class="trainer-info">
+          <p class="trainer-name">장유성</p>
+          <p class="trainer-role">트레이너</p>
+          <div class="trainer-divider"></div>
+          <p class="trainer-desc">친절함으로 마음의 벽을 낮추고, 전문성으로 몸의 변화를 확실히 만들어 드리겠습니다.</p>
+          <div class="trainer-career-divider"></div>
+          <p class="trainer-career-label">CAREER</p>
+          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo-box"><img src="images/망포명선.jpg" alt="김명선 트레이너"></div>
+        <div class="trainer-info">
+          <p class="trainer-name">김명선</p>
+          <p class="trainer-role">트레이너</p>
+          <div class="trainer-divider"></div>
+          <p class="trainer-desc">운동을 즐겁게! 재밌게!</p>
+          <div class="trainer-career-divider"></div>
+          <p class="trainer-career-label">CAREER</p>
+          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="branch-content" id="seocheon-video">
+      <div class="video-grid">
+        <div style="flex:1"><video src="videos/영상1.mp4" autoplay muted loop></video><p class="video-label">영상 제목 1</p></div>
+        <div style="flex:1"><video src="videos/영상2.mp4" autoplay muted loop></video><p class="video-label">영상 제목 2</p></div>
+        <div style="flex:1"><video src="videos/영상3.mp4" autoplay muted loop></video><p class="video-label">영상 제목 3</p></div>
+      </div>
+    </div>
+
+    <div class="branch-content" id="seocheon-photo">
+      <div class="slideshow" id="slideshow-seocheon">
+        <div class="slideshow-track" id="track-seocheon">
+          <div class="slide"><img src="images/서천-지점1.jpg" alt="서천점 사진 1"></div>
+          <div class="slide"><img src="images/서천-지점2.jpg" alt="서천점 사진 2"></div>
+          <div class="slide"><img src="images/서천-지점3.jpg" alt="서천점 사진 3"></div>
+          <div class="slide"><img src="images/서천-지점4.jpg" alt="서천점 사진 4"></div>
+        </div>
+        <button class="slide-btn prev" onclick="moveSlide('seocheon',-1)">&#8249;</button>
+        <button class="slide-btn next" onclick="moveSlide('seocheon',1)">&#8250;</button>
+      </div>
+      <div class="slide-dots" id="dots-seocheon">
+        <button class="slide-dot active" onclick="goSlide('seocheon',0)"></button>
+        <button class="slide-dot" onclick="goSlide('seocheon',1)"></button>
+        <button class="slide-dot" onclick="goSlide('seocheon',2)"></button>
+        <button class="slide-dot" onclick="goSlide('seocheon',3)"></button>
+      </div>
+    </div>
+
+    <div class="branch-content" id="seocheon-directions">
+      <div class="map-wrap">
+        <iframe
+          src="https://map.naver.com/p/entry/place/1192125587"
+          width="100%" height="380"
+          frameborder="0" scrolling="no"
+          allow="geolocation">
+        </iframe>
+      </div>
+      <p class="map-desc">찾아오는 길 안내 내용을 여기에 입력하세요.<br>예) 버스 이용 시, 지하철 이용 시, 자가용 이용 시 안내</p>
+    </div>
+
+    <div class="branch-content" id="seocheon-parking">
+      <div class="parking-section">
+        <div class="parking-img-wrap">
+          <img src="images/서천-주차.jpg" alt="서천점 주차 안내">
+        </div>
+        <div class="parking-info">
+          <div class="parking-info-row">
+            <span class="parking-icon">🅿</span>
+            <div>
+              <p class="parking-info-title">주차 공간</p>
+              <p class="parking-info-text">야외 주차장 · 지하 주차장 모두 이용 가능</p>
+            </div>
+          </div>
+          <div class="parking-info-row">
+            <span class="parking-icon">⏱</span>
+            <div>
+              <p class="parking-info-title">무료 주차</p>
+              <p class="parking-info-text">최초 40분 무료 이용 가능</p>
+            </div>
+          </div>
+          <div class="parking-info-row">
+            <span class="parking-icon">🎁</span>
+            <div>
+              <p class="parking-info-title">추가 제공</p>
+              <p class="parking-info-text">필요 시 1시간 추가 제공</p>
+            </div>
+          </div>
+        </div>
+        <a class="blog-card" href="https://blog.naver.com/ardorgym/223336844849" target="_blank">
+          <div class="blog-card-icon">N</div>
+          <div class="blog-card-text"><strong>자세한 주차 안내 블로그 포스팅</strong><span>blog.naver.com/ardorgym</span></div>
+          <div class="blog-card-arrow">→</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="branch-content" id="seocheon-blog">
+      <a class="blog-card" href="https://blog.naver.com/ardorgym" target="_blank">
+        <div class="blog-card-icon">N</div>
+        <div class="blog-card-text"><strong>아르더짐 서천점 블로그</strong><span>blog.naver.com/ardorgym</span></div>
+        <div class="blog-card-arrow">→</div>
+      </a>
+    </div>
+  </div>
+  <footer>ARDOR GYM 서천점 &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+
+<!-- 망포점 -->
+<div class="page" id="page-branch-mangpo">
+  <div class="branch-page">
+    <button class="back-btn" onclick="showPage('home')">← 홈으로</button>
+    <div class="branch-header">
+      <p class="branch-eyebrow">ARDOR GYM</p>
+      <h2 class="branch-title">망포점</h2>
+      <p class="branch-subtitle">경기도 수원시 영통구 영통로154번길 74 3층 301호</p>
+      <p class="branch-subtitle">📞 0507-1414-1741</p>
+    </div>
+    <div class="branch-tabs">
+      <button class="branch-tab active" onclick="switchTab('mangpo','trainer',this)">강사 소개</button>
+      <button class="branch-tab" onclick="switchTab('mangpo','video',this)">운동 영상</button>
+      <button class="branch-tab" onclick="switchTab('mangpo','photo',this)">지점 사진</button>
+      <button class="branch-tab" onclick="switchTab('mangpo','directions',this)">찾아오는 길</button>
+      <button class="branch-tab" onclick="switchTab('mangpo','parking',this)">주차 안내</button>
+      <button class="branch-tab" onclick="switchTab('mangpo','blog',this)">블로그</button>
+    </div>
+
+    <div class="branch-content active" id="mangpo-trainer">
+      <div class="trainer-card">
+        <div class="trainer-photo-box"><img src="images/망포승현.jpg" alt="용승현 대표 트레이너"></div>
+        <div class="trainer-info">
+          <p class="trainer-name">용승현</p>
+          <p class="trainer-role">대표 트레이너</p>
+          <div class="trainer-divider"></div>
+          <p class="trainer-desc">최고의 실력으로 친절하고 다정하게.</p>
+          <div class="trainer-career-divider"></div>
+          <p class="trainer-career-label">CAREER</p>
+          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo-box"><img src="images/망포명선.jpg" alt="김명선 트레이너"></div>
+        <div class="trainer-info">
+          <p class="trainer-name">김명선</p>
+          <p class="trainer-role">트레이너</p>
+          <div class="trainer-divider"></div>
+          <p class="trainer-desc">운동을 즐겁게! 재밌게!</p>
+          <div class="trainer-career-divider"></div>
+          <p class="trainer-career-label">CAREER</p>
+          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo-box"><img src="images/망포유준.jpg" alt="이유준 트레이너"></div>
+        <div class="trainer-info">
+          <p class="trainer-name">이유준</p>
+          <p class="trainer-role">트레이너</p>
+          <div class="trainer-divider"></div>
+          <p class="trainer-desc">당신의 하루가 다시 편안해지길 바랍니다, 저는 항상 그 마음으로 회원님을 돕는 트레이너 입니다.</p>
+          <div class="trainer-career-divider"></div>
+          <p class="trainer-career-label">CAREER</p>
+          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo-box"><img src="images/망포주명.jpg" alt="이주명 트레이너"></div>
+        <div class="trainer-info">
+          <p class="trainer-name">이주명</p>
+          <p class="trainer-role">트레이너</p>
+          <div class="trainer-divider"></div>
+          <p class="trainer-desc">원하시는 목적을 정성을 다해 확실히 이뤄드립니다.</p>
+          <div class="trainer-career-divider"></div>
+          <p class="trainer-career-label">CAREER</p>
+          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="branch-content" id="mangpo-video">
+      <div class="video-grid">
+        <div style="flex:1"><video src="videos/영상1.mp4" autoplay muted loop></video><p class="video-label">영상 제목 1</p></div>
+        <div style="flex:1"><video src="videos/영상2.mp4" autoplay muted loop></video><p class="video-label">영상 제목 2</p></div>
+      </div>
+    </div>
+
+    <div class="branch-content" id="mangpo-photo">
+      <div class="slideshow" id="slideshow-mangpo">
+        <div class="slideshow-track" id="track-mangpo">
+          <div class="slide"><img src="images/망포-지점1.jpg" alt="망포점 사진 1"></div>
+          <div class="slide"><img src="images/망포-지점2.jpg" alt="망포점 사진 2"></div>
+          <div class="slide"><img src="images/망포-지점3.jpg" alt="망포점 사진 3"></div>
+          <div class="slide"><img src="images/망포-지점4.jpg" alt="망포점 사진 4"></div>
+          <div class="slide"><img src="images/망포-지점5.jpg" alt="망포점 사진 5"></div>
+          <div class="slide"><img src="images/망포-지점6.jpg" alt="망포점 사진 6"></div>
+        </div>
+        <button class="slide-btn prev" onclick="moveSlide('mangpo',-1)">&#8249;</button>
+        <button class="slide-btn next" onclick="moveSlide('mangpo',1)">&#8250;</button>
+      </div>
+      <div class="slide-dots" id="dots-mangpo">
+        <button class="slide-dot active" onclick="goSlide('mangpo',0)"></button>
+        <button class="slide-dot" onclick="goSlide('mangpo',1)"></button>
+        <button class="slide-dot" onclick="goSlide('mangpo',2)"></button>
+        <button class="slide-dot" onclick="goSlide('mangpo',3)"></button>
+        <button class="slide-dot" onclick="goSlide('mangpo',4)"></button>
+        <button class="slide-dot" onclick="goSlide('mangpo',5)"></button>
+      </div>
+    </div>
+
+    <div class="branch-content" id="mangpo-directions">
+      <div class="map-wrap">
+        <iframe
+          src="https://map.naver.com/p/entry/place/1533832702"
+          width="100%" height="380"
+          frameborder="0" scrolling="no"
+          allow="geolocation">
+        </iframe>
+      </div>
+      <p class="map-desc">찾아오는 길 안내 내용을 여기에 입력하세요.<br>예) 버스 이용 시, 지하철 이용 시, 자가용 이용 시 안내</p>
+    </div>
+
+    <div class="branch-content" id="mangpo-parking">
+      <div class="parking-section">
+        <div class="parking-img-wrap">
+          <img src="images/망포주차2.jpg" alt="망포점 주차 안내">
+        </div>
+        <div class="parking-img-wrap" style="margin-top:16px;">
+          <video src="videos/망포-주차.mp4" controls style="width:100%; display:block; border-radius:4px;"></video>
+        </div>
+        <div class="parking-info">
+          <div class="parking-info-row">
+            <span class="parking-icon">🅿</span>
+            <div>
+              <p class="parking-info-title">주차 공간</p>
+              <p class="parking-info-text">야외 주차장 · 지하 주차장 무료 이용 가능.<br>야외 주차장은 최근 확장되어 더 넓어졌어요!</p>
+            </div>
+          </div>
+          <div class="parking-info-row">
+            <span class="parking-icon">🌙</span>
+            <div>
+              <p class="parking-info-title">저녁 8시 이후</p>
+              <p class="parking-info-text">야외 주차장만 이용 가능</p>
+            </div>
+          </div>
+          <div class="parking-info-row">
+            <span class="parking-icon">🚗</span>
+            <div>
+              <p class="parking-info-title">지하 주차장 안내</p>
+              <p class="parking-info-text">입구가 일방통행(One Way) 구조이나,<br>관리자가 상주하고 있어 안전하게 이용 가능</p>
+            </div>
+          </div>
+        </div>
+        <a class="blog-card" href="https://blog.naver.com/ardorgym2/224220813075" target="_blank">
+          <div class="blog-card-icon">N</div>
+          <div class="blog-card-text"><strong>자세한 주차 안내 블로그 포스팅</strong><span>blog.naver.com/ardorgym2</span></div>
+          <div class="blog-card-arrow">→</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="branch-content" id="mangpo-blog">
+      <a class="blog-card" href="https://blog.naver.com/ardorgym2" target="_blank">
+        <div class="blog-card-icon">N</div>
+        <div class="blog-card-text"><strong>아르더짐 망포점 블로그</strong><span>blog.naver.com/ardorgym2</span></div>
+        <div class="blog-card-arrow">→</div>
+      </a>
+    </div>
+  </div>
+  <footer>ARDOR GYM 망포점 &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+
+<script>
+const slideIndex = {};
+function moveSlide(id, dir) {
+  const slides = document.querySelectorAll('#track-' + id + ' .slide');
+  if (!slides.length) return;
+  slideIndex[id] = ((slideIndex[id] || 0) + dir + slides.length) % slides.length;
+  updateSlide(id, slides.length);
+}
+function goSlide(id, idx) {
+  const slides = document.querySelectorAll('#track-' + id + ' .slide');
+  slideIndex[id] = idx;
+  updateSlide(id, slides.length);
+}
+function updateSlide(id, total) {
+  const idx = slideIndex[id] || 0;
+  document.getElementById('track-' + id).style.transform = 'translateX(-' + (idx * 100) + '%)';
+  document.querySelectorAll('#dots-' + id + ' .slide-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === idx);
+  });
+}
+function toggleMenu() {
+  const s=document.getElementById('sidebar'),o=document.getElementById('overlay'),b=document.getElementById('menuBtn');
+  const open=s.classList.contains('open');
+  s.classList.toggle('open',!open); o.classList.toggle('open',!open); b.classList.toggle('open',!open);
+}
+function closeMenu() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('menuBtn').classList.remove('open');
+}
+function toggleSubmenu(id, btn) {
+  const menu=document.getElementById(id), isOpen=menu.classList.contains('open');
+  document.querySelectorAll('.submenu').forEach(m=>m.classList.remove('open'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  if (!isOpen) { menu.classList.add('open'); btn.classList.add('active'); }
+}
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const t=document.getElementById('page-'+name);
+  if (t) { t.classList.add('active'); window.scrollTo(0,0); }
+}
+function switchTab(branch, tab, btn) {
+  btn.closest('.branch-tabs').querySelectorAll('.branch-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('[id^="'+branch+'-"]').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(branch+'-'+tab).classList.add('active');
+}
+
+// 패럴랙스 효과
+function applyParallax() {
+  document.querySelectorAll('.section-bg-img').forEach(img => {
+    const wrap = img.closest('.section-video-wrap');
+    const rect = wrap.getBoundingClientRect();
+    const center = rect.top + rect.height / 2;
+    const viewH = window.innerHeight;
+    const offset = (center - viewH / 2) * 0.25;
+    img.style.transform = 'translateY(' + offset + 'px)';
+  });
+}
+window.addEventListener('scroll', applyParallax, { passive: true });
+window.addEventListener('load', applyParallax);
+</script>
+</body>
+</html>
