@@ -137,6 +137,11 @@ header { position:fixed; top:0; left:0; right:0; display:flex; align-items:cente
 .slide-dot.active { background:var(--color-accent); }
 .slide-placeholder { display:flex; align-items:center; justify-content:center; min-height:300px; border:1px dashed rgba(139,92,56,0.25); }
 .slide-placeholder p { font-size:13px; color:var(--color-muted); letter-spacing:1px; text-align:center; line-height:2.2; }
+.map-btn-wrap { display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.map-open-btn { display:inline-flex; align-items:center; gap:8px; padding:14px 24px; background:var(--color-accent); color:#f8f4ec; text-decoration:none; font-size:14px; font-weight:700; letter-spacing:1px; border-radius:4px; transition:background 0.2s; }
+.map-open-btn:hover { background:var(--color-accent2); }
+.map-open-btn-kakao { background:#FEE500; color:#3C1E1E; }
+.map-open-btn-kakao:hover { background:#f0d800; }
 .map-wrap { width:100%; border-radius:4px; overflow:hidden; margin-bottom:28px; }
 .map-wrap iframe { width:100%; height:380px; border:none; display:block; }
 .parking-section { display:flex; flex-direction:column; gap:28px; }
@@ -1350,6 +1355,14 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     </div>
 
     <div class="branch-content" id="seocheon-directions">
+      <div class="map-btn-wrap">
+        <a class="map-open-btn" href="https://map.naver.com/p/entry/place/1192125587" target="_blank">
+          🗺 네이버지도에서 보기
+        </a>
+        <a class="map-open-btn map-open-btn-kakao" href="https://map.kakao.com/link/map/아르더짐서천점,37.274,127.115" target="_blank">
+          🗺 카카오맵에서 보기
+        </a>
+      </div>
       <div class="map-wrap">
         <iframe
           src="https://map.naver.com/p/entry/place/1192125587"
@@ -1509,6 +1522,14 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     </div>
 
     <div class="branch-content" id="mangpo-directions">
+      <div class="map-btn-wrap">
+        <a class="map-open-btn" href="https://map.naver.com/p/entry/place/1533832702" target="_blank">
+          🗺 네이버지도에서 보기
+        </a>
+        <a class="map-open-btn map-open-btn-kakao" href="https://map.kakao.com/link/map/아르더짐망포점,37.258,127.065" target="_blank">
+          🗺 카카오맵에서 보기
+        </a>
+      </div>
       <div class="map-wrap">
         <iframe
           src="https://map.naver.com/p/entry/place/1533832702"
