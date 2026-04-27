@@ -231,7 +231,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 .trainer-card { display:flex; gap:36px; align-items:flex-start; padding:36px 0; border-bottom:1px solid rgba(139,92,56,0.15); }
 .trainer-card:last-child { border-bottom:none; }
 .trainer-photo-box { width:160px; height:200px; flex-shrink:0; background:rgba(139,92,56,0.08); overflow:hidden; }
-.trainer-photo-box img { width:100%; height:100%; object-fit:cover; display:block; }
+.trainer-photo-box img { width:100%; height:100%; object-fit:cover; display:block; object-position:top center; }
 .trainer-name { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; letter-spacing:2px; color:var(--color-text); margin-bottom:6px; }
 .trainer-role { font-size:11px; letter-spacing:3px; font-weight:700; color:var(--color-accent); margin-bottom:16px; }
 .trainer-divider { width:32px; height:1px; background:var(--color-accent); margin-bottom:16px; }
@@ -274,7 +274,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
   /* ── 강사 카드 ── */
   .trainer-card { flex-direction:column; gap:20px; padding:28px 0; }
-  .trainer-photo-box { width:100%; height:260px; }
+  .trainer-photo-box { width:100%; height:320px; }
+  .trainer-photo-box img { object-position:top center; }
   .trainer-name { font-size:22px; }
 
   /* ── 가격표 ── */
