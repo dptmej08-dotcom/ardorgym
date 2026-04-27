@@ -268,7 +268,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
   .branch-subtitle { font-size:13px; }
 
   /* ── 탭 슬라이딩 ── */
-  .branch-tabs { overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .branch-tabs { overflow-x:auto; overflow-y:hidden; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:none; overscroll-behavior-x:contain; touch-action:pan-x; }
   .branch-tabs::-webkit-scrollbar { display:none; }
   .branch-tab { flex-shrink:0; padding:14px 20px; font-size:13px; }
 
@@ -298,7 +298,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
   .slide-btn { width:36px; height:36px; font-size:16px; }
 
   /* ── 지도 ── */
-  .map-wrap iframe { height:280px; }
+  .map-wrap { height:280px; }
+  .map-wrap iframe { height:280px; min-height:280px; }
 
   /* ── 블로그 카드 ── */
   .blog-card { padding:20px; gap:14px; }
@@ -418,9 +419,99 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <p class="content-page-eyebrow">OUR STORY</p>
     <h2 class="content-page-title">아르더짐 STORY</h2>
     <div class="content-page-divider"></div>
-    <div class="content-placeholder">
-      <p>아르더짐의 이야기를 여기에 작성해 주세요.<br>창업 계기, 철학, 비전 등을 자유롭게 넣으실 수 있어요.</p>
+
+    <!-- 인트로 -->
+    <p class="matching-intro">
+      저희 PT샵은 회원님들의 건강과 행복을 위한 전문적인 서비스를<br>
+      <strong>친절하고 다정하게</strong> 제공하기 위해 열었습니다.<br>
+      아르더짐의 목표는 회원님들의 건강과 행복입니다.
+    </p>
+
+    <!-- 슬로건 -->
+    <div class="matching-closing" style="margin-top:0; margin-bottom:48px;">
+      <p>'친절한 이웃'</p>
+      <p class="matching-closing-sub">
+        전문적인 지식과 친절한 서비스를 통해 회원님들의 건강과 삶의 질이 올라가게끔 도와드리고,<br>
+        좋은 취미, 좋은 추억을 남겨드릴 수 있도록 최대한 노력하겠습니다.<br>
+        또한 청결과 쾌적한 환경을 최우선으로 여기며 건강한 운동 공간을 제공하겠습니다.
+      </p>
     </div>
+
+    <!-- 섹션 1: 전문성 -->
+    <div class="matching-section">
+      <p class="matching-section-num">01</p>
+      <h3 class="matching-section-title">트레이너의 기본이자 본질 — 전문성</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">
+        몸만 좋다고 트레이너를 하는 시대는 이제 많이 사라진 듯합니다.<br>
+        요즘은 운동에 대하여, PT에 대하여 정보 제공이 잘 되어있고,
+        트레이너를 선별하는 회원님들의 수준이 상당히 높아졌습니다.
+      </p>
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🏅 NASM CPT · CES 공인 자격증</p>
+          <p class="matching-promise-desc">저희 아르더짐은 대다수가 미국 NCCA 검증기관에서 인증한 미국 공인자격증 NASM CPT, CES(미국스포츠의학회) PT 자격증을 갖고 있으며, 트레이너로서의 기본인 전문성 또한 갖추고 있습니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 섹션 2: 친절함 -->
+    <div class="matching-section">
+      <p class="matching-section-num">02</p>
+      <h3 class="matching-section-title">친절함 그리고 정성</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">
+        저희 아르더짐에서 가장 강조하는 부분은 친절함, 다정함, 그리고 정성을 다하여 회원님들을 케어하는 것입니다.<br>
+        모든 선생님들이 이 마음으로 회원님들을 대할 수 있도록 항상 노력합니다.
+      </p>
+    </div>
+
+    <!-- 섹션 3: 청결 -->
+    <div class="matching-section">
+      <p class="matching-section-num">03</p>
+      <h3 class="matching-section-title">청결 · 쾌적한 환경</h3>
+      <div class="matching-section-divider"></div>
+      <p class="matching-section-body">
+        헬스장, PT샵이라는 운동하는 공간일수록 저희는 더욱 쾌적하고 청결해야 된다고 생각합니다.<br>
+        매일 환기를 하고 시간대별로 청소를 하며 알코올을 뿌려가며 기구를 닦습니다.<br>
+        회원님들에게 최대한 쾌적한 환경을 제공하기 위해 노력합니다.
+      </p>
+    </div>
+
+    <!-- 섹션 4: 프로그램 -->
+    <div class="matching-section">
+      <p class="matching-section-num">04</p>
+      <h3 class="matching-section-title">전문적인 PT 프로그램</h3>
+      <div class="matching-section-divider"></div>
+      <div class="matching-promise-list">
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">📋 1:1 맞춤 PT</p>
+          <p class="matching-promise-desc">미국 스포츠 의학회의 Personal Fitness Training 프로그램 기반으로 움직임 평가, 정렬 검사, 골반 균형 검사, 근력 검사 등 평가를 한 후 1:1 개인 전문 트레이닝 프로그램을 시작합니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">🥗 체성분 검사 + 식단 관리</p>
+          <p class="matching-promise-desc">체성분 검사로 골격근량과 체지방량을 토대로 근력을 최대한 보존하고 체지방만 빠지게 만들어 요요 없는 건강한 다이어트를 진행합니다. 전문 스포츠 영양학 자격증을 갖춘 선생님들의 식단 가이드도 제공해드립니다.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">😄 재밌는 운동</p>
+          <p class="matching-promise-desc">개개인의 체력과 근력을 평가하고 개인에 맞는 운동을 진행하여 최대한 운동의 재미를 붙일 수 있도록 옆에서 정성껏 도와드립니다. 건강한 몸을 위한 운동 중 가장 중요한 건 꾸준함이니까요.</p>
+        </div>
+        <div class="matching-promise-item">
+          <p class="matching-promise-title">👫 2:1 PT — 재미는 2배, 금액은 더 저렴하게</p>
+          <p class="matching-promise-desc">부부, 친구, 가족 혹은 지인과 함께하는 아르더짐만의 시그니처 2:1 PT입니다. 혼자보단 같이하면 운동이 더욱 재밌고, 건강한 식사도 눈치 없이 함께할 수 있어요. 1:1보다 저렴하지만 수업 퀄리티는 절대 떨어지지 않습니다. 서로에게 좋은 추억과 건강한 취미생활을 함께 즐겨보세요.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 마무리 -->
+    <div class="matching-closing">
+      <p>친절한 이웃, 아르더짐</p>
+      <p class="matching-closing-sub">
+        바르고 친절한 마인드로 항상 회원님들을 대할 수 있도록 하며,<br>
+        정성을 다해 회원님들의 건강이 조금이라도 더 좋아질 수 있도록 노력하는 아르더짐이 되겠습니다 💪
+      </p>
+    </div>
+
   </div>
   <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
 </div>
