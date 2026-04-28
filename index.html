@@ -224,6 +224,9 @@ header { position:fixed; top:0; left:0; right:0; display:flex; align-items:cente
 .parking-icon { font-size:22px; flex-shrink:0; margin-top:2px; }
 .parking-info-title { font-size:11px; letter-spacing:2px; font-weight:700; color:var(--color-accent); margin-bottom:6px; }
 .parking-info-text { font-size:14px; line-height:1.9; color:var(--color-soft); font-weight:300; }
+.program-media-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+.program-media-item img, .program-media-item video { width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:4px; display:block; }
+@media (max-width:768px) { .program-media-grid { grid-template-columns:repeat(2,1fr); } }
 .blog-card { display:flex; align-items:center; gap:20px; padding:28px 32px; border:1px solid rgba(139,92,56,0.2); background:rgba(139,92,56,0.03); text-decoration:none; transition:background 0.2s,transform 0.2s; }
 .blog-card:hover { background:rgba(139,92,56,0.08); transform:translateY(-2px); }
 .blog-card-icon { width:48px; height:48px; background:var(--color-accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#f8f4ec; font-size:18px; font-weight:700; flex-shrink:0; }
@@ -627,6 +630,54 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       </p>
     </div>
 
+    <!-- 미디어 섹션 -->
+    <div class="price-section-title" style="margin-top:56px;">📸 트레이닝 현장</div>
+    <div class="program-media-grid">
+      <div class="program-media-item"><img src="1대1사진1.jpg" alt="1:1 PT 사진 1"></div>
+      <div class="program-media-item"><img src="1대1사진2.jpg" alt="1:1 PT 사진 2"></div>
+      <div class="program-media-item"><img src="1대1사진3.jpg" alt="1:1 PT 사진 3"></div>
+      <div class="program-media-item"><video src="1대1영상1.mp4" autoplay muted loop playsinline></video></div>
+      <div class="program-media-item"><video src="1대1영상2.mp4" autoplay muted loop playsinline></video></div>
+    </div>
+
+    <!-- 나맞트 섹션 -->
+    <div class="price-section-title" style="margin-top:56px;">🎯 나맞트 — 나에게 딱 맞는 트레이너 찾기</div>
+    <p class="matching-intro" style="margin-top:16px;">
+      회원님의 운동 스타일, 성향, 목표에 맞는 <strong>최적의 트레이너 2명</strong>을 추천해드리는 아르더짐만의 새로운 프로젝트예요.<br>
+      단순 추천이 아니라 <strong>2025년도 전체 트레이너의 재등록 회원 데이터</strong>를 기반으로 분석해 가장 잘 맞는 트레이너를 찾아드립니다.
+    </p>
+
+    <div class="matching-promise-list">
+      <div class="matching-promise-item">
+        <p class="matching-promise-title">STEP 1 — 간단 설문 참여</p>
+        <p class="matching-promise-desc">몇 가지 질문에 답해주시면 회원님의 성향과 운동 목적을 확인합니다. 예상 소요 시간 약 1분, 총 15개 질문이에요!</p>
+      </div>
+      <div class="matching-promise-item">
+        <p class="matching-promise-title">STEP 2 — 최적화된 트레이너 1·2지망 추천</p>
+        <p class="matching-promise-desc">어떤 성향의 회원과 잘 맞았는지, 어떤 운동 목적을 가진 회원들의 만족도가 높았는지, 지도 스타일 선호도까지 모든 데이터를 종합해 가장 잘 맞는 트레이너 두 분을 추천드립니다.</p>
+      </div>
+      <div class="matching-promise-item">
+        <p class="matching-promise-title">STEP 3 — 선택 후 예약 → 특별 무료체험쿠폰 제공 🎁</p>
+        <p class="matching-promise-desc">추천받은 트레이너 중 한 분을 선택해서 예약하시면, 온·오프라인 어디에서도 받을 수 없는 특별 무료체험쿠폰을 드립니다. 설문 참여 외에는 제공하지 않는 쿠폰이에요!</p>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:12px; margin-top:28px;">
+      <a class="membership-link-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSe5ysMdbIkBKWrdxpf8gyXlEoGlpYXHOOwk0p53CczBCQNaOA/viewform" target="_blank">
+        <span class="membership-link-icon">📋</span>
+        <span class="membership-link-text">
+          <strong>나맞트 설문 참여하기</strong>
+          <small>약 1분 · 나에게 맞는 트레이너 찾기</small>
+        </span>
+        <span class="membership-link-arrow">→</span>
+      </a>
+      <a class="blog-card" href="https://blog.naver.com/ardorgym2/224108458161" target="_blank">
+        <div class="blog-card-icon">N</div>
+        <div class="blog-card-text"><strong>나맞트 자세히 보기</strong><span>blog.naver.com/ardorgym2</span></div>
+        <div class="blog-card-arrow">→</div>
+      </a>
+    </div>
+
   </div>
   <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
 </div>
@@ -845,6 +896,16 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       </div>
     </div>
 
+    <!-- 미디어 섹션 -->
+    <div class="price-section-title" style="margin-top:56px;">📸 트레이닝 현장</div>
+    <div class="program-media-grid">
+      <div class="program-media-item"><img src="2대1사진1.jpg" alt="2:1 PT 사진 1"></div>
+      <div class="program-media-item"><img src="2대1사진2.jpg" alt="2:1 PT 사진 2"></div>
+      <div class="program-media-item"><img src="2대1사진3.jpg" alt="2:1 PT 사진 3"></div>
+      <div class="program-media-item"><video src="2대1영상1.mp4" autoplay muted loop playsinline></video></div>
+      <div class="program-media-item"><video src="2대1영상2.mp4" autoplay muted loop playsinline></video></div>
+    </div>
+
     <!-- 마무리 -->
     <div class="matching-closing">
       <p>꾸준함이 만드는 변화</p>
@@ -997,6 +1058,41 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <p class="matching-closing-sub">가장 합리적이면서도, 가장 정교한 운동 경험.<br>아르더짐 매칭핏에서 당신의 건강한 이웃을 만나보세요.</p>
     </div>
 
+    <!-- 매칭핏 신청 섹션 -->
+    <div class="price-section-title" style="margin-top:56px;">📝 매칭핏 신청하기</div>
+    <p class="matching-intro" style="margin-top:16px;">
+      아래 신청 폼을 작성해주시면 아르더짐에서 확인 후 <strong>빠르게 연락드릴게요!</strong><br>
+      성별 · 운동 목적 · 희망 시간대 등을 입력해주시면 더 잘 맞는 파트너를 찾아드릴 수 있어요 😊
+    </p>
+
+    <div class="matching-promise-list" style="margin-bottom:28px;">
+      <div class="matching-promise-item">
+        <p class="matching-promise-title">📌 신청 전 확인해주세요</p>
+        <p class="matching-promise-desc">
+          ✔ 매칭핏은 총 10회 집중 세션으로 운영돼요.<br>
+          ✔ 유효 기간은 기본 40일 + 연장 15일이에요.<br>
+          ✔ 파트너 매칭 후 성향이 맞지 않으면 1회에 한해 재매칭 가능해요.<br>
+          ✔ 신청 후 담당 트레이너가 직접 연락드려요.
+        </p>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <a class="membership-link-btn" href="https://forms.gle/매칭핏신청폼링크" target="_blank">
+        <span class="membership-link-icon">✍️</span>
+        <span class="membership-link-text">
+          <strong>매칭핏 신청 폼 작성하기</strong>
+          <small>신청 후 담당 트레이너가 연락드려요</small>
+        </span>
+        <span class="membership-link-arrow">→</span>
+      </a>
+      <a class="blog-card" href="https://blog.naver.com/ardorgym2/223939598729" target="_blank">
+        <div class="blog-card-icon">N</div>
+        <div class="blog-card-text"><strong>매칭핏 회원님 후기 보기</strong><span>blog.naver.com/ardorgym2</span></div>
+        <div class="blog-card-arrow">→</div>
+      </a>
+    </div>
+
   </div>
   <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
 </div>
@@ -1077,6 +1173,16 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
           <p class="matching-promise-desc">회원님들의 일상에 실질적으로 도움이 되는 운동들을 알려드려요. PT 시간 외에도 혼자서 잘 운동할 수 있도록 도와드립니다.</p>
         </div>
       </div>
+    </div>
+
+    <!-- 미디어 섹션 -->
+    <div class="price-section-title" style="margin-top:56px;">📸 현장 모습</div>
+    <div class="program-media-grid">
+      <div class="program-media-item"><img src="원데이기브1.jpg" alt="원데이 기브 클래스 1"></div>
+      <div class="program-media-item"><img src="원데이기브2.jpg" alt="원데이 기브 클래스 2"></div>
+      <div class="program-media-item"><img src="원데이기브3.jpg" alt="원데이 기브 클래스 3"></div>
+      <div class="program-media-item"><video src="원데이영상1.mp4" autoplay muted loop playsinline></video></div>
+      <div class="program-media-item"><video src="원데이영상2.mp4" autoplay muted loop playsinline></video></div>
     </div>
 
   </div>
@@ -1285,8 +1391,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
           <div class="trainer-divider"></div>
           <p class="trainer-desc">최고의 실력으로 친절하고 다정하게.</p>
           <div class="trainer-career-divider"></div>
-          <p class="trainer-career-label">CAREER</p>
-          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+          <a class="blog-card" href="https://blog.naver.com/ardorgym/224115711064" target="_blank" style="margin-top:4px; text-decoration:none;">
+            <div class="blog-card-icon" style="width:36px;height:36px;font-size:14px;">N</div>
+            <div class="blog-card-text"><strong>강사 소개 블로그</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
         </div>
       </div>
       <div class="trainer-card">
@@ -1297,8 +1406,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
           <div class="trainer-divider"></div>
           <p class="trainer-desc">회원님에게 꼭 필요한 운동을 찾아드립니다.</p>
           <div class="trainer-career-divider"></div>
-          <p class="trainer-career-label">CAREER</p>
-          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+          <a class="blog-card" href="https://blog.naver.com/ardorgym/223239322301" target="_blank" style="margin-top:4px; text-decoration:none;">
+            <div class="blog-card-icon" style="width:36px;height:36px;font-size:14px;">N</div>
+            <div class="blog-card-text"><strong>강사 소개 블로그</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
         </div>
       </div>
       <div class="trainer-card">
@@ -1309,8 +1421,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
           <div class="trainer-divider"></div>
           <p class="trainer-desc">친절함으로 마음의 벽을 낮추고, 전문성으로 몸의 변화를 확실히 만들어 드리겠습니다.</p>
           <div class="trainer-career-divider"></div>
-          <p class="trainer-career-label">CAREER</p>
-          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+          <a class="blog-card" href="https://blog.naver.com/ardorgym/224105234520" target="_blank" style="margin-top:4px; text-decoration:none;">
+            <div class="blog-card-icon" style="width:36px;height:36px;font-size:14px;">N</div>
+            <div class="blog-card-text"><strong>강사 소개 블로그</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
         </div>
       </div>
       <div class="trainer-card">
@@ -1321,8 +1436,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
           <div class="trainer-divider"></div>
           <p class="trainer-desc">운동을 즐겁게! 재밌게!</p>
           <div class="trainer-career-divider"></div>
-          <p class="trainer-career-label">CAREER</p>
-          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+          <a class="blog-card" href="https://blog.naver.com/ardorgym/223727648434" target="_blank" style="margin-top:4px; text-decoration:none;">
+            <div class="blog-card-icon" style="width:36px;height:36px;font-size:14px;">N</div>
+            <div class="blog-card-text"><strong>강사 소개 블로그</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
         </div>
       </div>
     </div>
@@ -1449,8 +1567,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
           <div class="trainer-divider"></div>
           <p class="trainer-desc">최고의 실력으로 친절하고 다정하게.</p>
           <div class="trainer-career-divider"></div>
-          <p class="trainer-career-label">CAREER</p>
-          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+          <a class="blog-card" href="https://blog.naver.com/ardorgym2/224115747732" target="_blank" style="margin-top:4px; text-decoration:none;">
+            <div class="blog-card-icon" style="width:36px;height:36px;font-size:14px;">N</div>
+            <div class="blog-card-text"><strong>강사 소개 블로그</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
         </div>
       </div>
       <div class="trainer-card">
@@ -1461,8 +1582,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
           <div class="trainer-divider"></div>
           <p class="trainer-desc">운동을 즐겁게! 재밌게!</p>
           <div class="trainer-career-divider"></div>
-          <p class="trainer-career-label">CAREER</p>
-          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+          <a class="blog-card" href="https://blog.naver.com/ardorgym2/224107783109" target="_blank" style="margin-top:4px; text-decoration:none;">
+            <div class="blog-card-icon" style="width:36px;height:36px;font-size:14px;">N</div>
+            <div class="blog-card-text"><strong>강사 소개 블로그</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
         </div>
       </div>
       <div class="trainer-card">
@@ -1473,8 +1597,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
           <div class="trainer-divider"></div>
           <p class="trainer-desc">당신의 하루가 다시 편안해지길 바랍니다, 저는 항상 그 마음으로 회원님을 돕는 트레이너 입니다.</p>
           <div class="trainer-career-divider"></div>
-          <p class="trainer-career-label">CAREER</p>
-          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+          <a class="blog-card" href="https://blog.naver.com/ardorgym2/224108265622" target="_blank" style="margin-top:4px; text-decoration:none;">
+            <div class="blog-card-icon" style="width:36px;height:36px;font-size:14px;">N</div>
+            <div class="blog-card-text"><strong>강사 소개 블로그</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
         </div>
       </div>
       <div class="trainer-card">
@@ -1485,8 +1612,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
           <div class="trainer-divider"></div>
           <p class="trainer-desc">원하시는 목적을 정성을 다해 확실히 이뤄드립니다.</p>
           <div class="trainer-career-divider"></div>
-          <p class="trainer-career-label">CAREER</p>
-          <ul class="trainer-career"><li>경력을 여기에 입력하세요</li><li>경력을 여기에 입력하세요</li></ul>
+          <a class="blog-card" href="https://blog.naver.com/ardorgym2/224099726823" target="_blank" style="margin-top:4px; text-decoration:none;">
+            <div class="blog-card-icon" style="width:36px;height:36px;font-size:14px;">N</div>
+            <div class="blog-card-text"><strong>강사 소개 블로그</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
         </div>
       </div>
     </div>
