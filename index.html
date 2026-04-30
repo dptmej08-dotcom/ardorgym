@@ -340,9 +340,6 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
   <small>PT 전문 퍼스널 트레이닝</small>
 </div>
 <div class="nav-item">
-  <button class="nav-btn" style="justify-content:flex-start;" onclick="closeMenu();showPage('story')">아르더짐 STORY</button>
-</div>
-<div class="nav-item">
   <button class="nav-btn" onclick="toggleSubmenu('menu-program',this)">프로그램 소개 <span class="nav-arrow">▼</span></button>
   <div class="submenu" id="menu-program">
     <a href="#" onclick="closeMenu();showPage('program-1on1')">1:1 개인 PT</a>
@@ -419,6 +416,69 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <p class="section-body">작은 성취가 쌓이면 변화가 생기고, 그 변화가 다시 동기부여로 이어집니다.<br>부담 없이 "할 수 있다"는 자신감을 드리는 것이 아르더짐의 방식입니다.</p>
     </div>
   </section>
+
+  <!-- 핵심 가치 섹션 -->
+  <section style="padding:100px 0; background:#f8f4ec;">
+    <div style="max-width:900px; margin:0 auto; padding:0 48px;">
+      <p style="font-size:10px; letter-spacing:4px; color:var(--color-accent); margin-bottom:16px; text-align:center;">OUR CORE VALUES</p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(26px,4vw,38px); font-weight:600; text-align:center; color:var(--color-text); margin-bottom:16px; letter-spacing:2px;">아르더짐이 소중히 여기는 네 가지</h2>
+      <div style="width:48px; height:1px; background:var(--color-accent); margin:0 auto 64px;"></div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px;">
+        <div style="padding:32px 24px; background:rgba(139,92,56,0.05); border-top:2px solid var(--color-accent); text-align:center;">
+          <div style="font-size:40px; margin-bottom:12px;">⏱</div>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--color-text); margin-bottom:8px;">시간</p>
+          <p style="font-size:12px; color:var(--color-accent); font-weight:700; margin-bottom:12px;">회원님의 50분은 절대 가볍지 않습니다.</p>
+          <p style="font-size:13px; line-height:1.8; color:var(--color-soft); font-weight:300;">운동이 단지 운동으로 끝나지 않고,<br>삶의 질을 높이는 시간이 되도록 최선을 다합니다.</p>
+        </div>
+        <div style="padding:32px 24px; background:rgba(139,92,56,0.05); border-top:2px solid var(--color-accent); text-align:center;">
+          <div style="font-size:40px; margin-bottom:12px;">🏠</div>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--color-text); margin-bottom:8px;">공간</p>
+          <p style="font-size:12px; color:var(--color-accent); font-weight:700; margin-bottom:12px;">다시 오고 싶은 곳이어야 합니다.</p>
+          <p style="font-size:13px; line-height:1.8; color:var(--color-soft); font-weight:300;">조명, 향, 청결, 음악까지 세심하게 신경 씁니다.<br>일상의 활력을 재충전하는 공간입니다.</p>
+        </div>
+        <div style="padding:32px 24px; background:rgba(139,92,56,0.05); border-top:2px solid var(--color-accent); text-align:center;">
+          <div style="font-size:40px; margin-bottom:12px;">✨</div>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--color-text); margin-bottom:8px;">에너지</p>
+          <p style="font-size:12px; color:var(--color-accent); font-weight:700; margin-bottom:12px;">밝고 따뜻한 에너지로 맞이합니다.</p>
+          <p style="font-size:13px; line-height:1.8; color:var(--color-soft); font-weight:300;">어떤 하루를 보내셨더라도 이곳에서는<br>긍정적인 에너지를 받아가실 수 있도록 노력합니다.</p>
+        </div>
+        <div style="padding:32px 24px; background:rgba(139,92,56,0.05); border-top:2px solid var(--color-accent); text-align:center;">
+          <div style="font-size:40px; margin-bottom:12px;">🔄</div>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--color-text); margin-bottom:8px;">꾸준함</p>
+          <p style="font-size:12px; color:var(--color-accent); font-weight:700; margin-bottom:12px;">진짜 변화는 꾸준함에서 시작됩니다.</p>
+          <p style="font-size:13px; line-height:1.8; color:var(--color-soft); font-weight:300;">하고 싶다는 마음이 생기도록<br>아르더짐이 함께 만들어드립니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 전문성 섹션 -->
+  <section style="padding:100px 0; background:var(--color-bg);">
+    <div style="max-width:900px; margin:0 auto; padding:0 48px;">
+      <p style="font-size:10px; letter-spacing:4px; color:var(--color-accent); margin-bottom:16px; text-align:center;">REAL EXPERTISE</p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(26px,4vw,38px); font-weight:600; text-align:center; color:var(--color-text); margin-bottom:16px; letter-spacing:2px;">다정함 속의 진짜 전문성</h2>
+      <div style="width:48px; height:1px; background:var(--color-accent); margin:0 auto 40px;"></div>
+      <p style="text-align:center; font-size:15px; line-height:2; color:var(--color-soft); font-weight:300; margin-bottom:40px;">아르더짐은 친절하고 다정한 분위기를 가장 소중하게 생각합니다.<br>하지만 그 다정함 뒤에는, 누구나 쉽게 따라올 수 없는 깊은 전문성이 있습니다.</p>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; align-items:center; gap:16px; padding:18px 24px; background:rgba(139,92,56,0.05); border-radius:4px;"><div style="width:8px; height:8px; border-radius:50%; background:var(--color-accent); flex-shrink:0;"></div><span style="font-size:14px; color:var(--color-text); line-height:1.5;">NSCA CSCS (미국 체력학회 선수체력관리사)</span></div>
+        <div style="display:flex; align-items:center; gap:16px; padding:18px 24px; background:rgba(139,92,56,0.05); border-radius:4px;"><div style="width:8px; height:8px; border-radius:50%; background:var(--color-accent); flex-shrink:0;"></div><span style="font-size:14px; color:var(--color-text); line-height:1.5;">NASM CES (미국 스포츠의학회 교정운동전문가)</span></div>
+        <div style="display:flex; align-items:center; gap:16px; padding:18px 24px; background:rgba(139,92,56,0.05); border-radius:4px;"><div style="width:8px; height:8px; border-radius:50%; background:var(--color-accent); flex-shrink:0;"></div><span style="font-size:14px; color:var(--color-text); line-height:1.5;">NSCA CPT (미국 체력학회 공인 퍼스널 트레이너)</span></div>
+        <div style="display:flex; align-items:center; gap:16px; padding:18px 24px; background:rgba(139,92,56,0.05); border-radius:4px;"><div style="width:8px; height:8px; border-radius:50%; background:var(--color-accent); flex-shrink:0;"></div><span style="font-size:14px; color:var(--color-text); line-height:1.5;">NASM CPT (미국 스포츠의학회 공인 퍼스널 트레이너)</span></div>
+        <div style="display:flex; align-items:center; gap:16px; padding:18px 24px; background:rgba(139,92,56,0.05); border-radius:4px;"><div style="width:8px; height:8px; border-radius:50%; background:var(--color-accent); flex-shrink:0;"></div><span style="font-size:14px; color:var(--color-text); line-height:1.5;">NSCA SNC Level 1, 2 (미국 체력학회 스포츠 영양코치)</span></div>
+        <div style="display:flex; align-items:center; gap:16px; padding:18px 24px; background:rgba(139,92,56,0.05); border-radius:4px;"><div style="width:8px; height:8px; border-radius:50%; background:var(--color-accent); flex-shrink:0;"></div><span style="font-size:14px; color:var(--color-text); line-height:1.5;">생활체육지도자 자격증 외 국내외 근거 기반 트레이닝 워크샵 및 움직임 평가 과정 수료</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 클로징 섹션 -->
+  <section style="padding:100px 0; background:var(--color-text); text-align:center;">
+    <div style="max-width:700px; margin:0 auto; padding:0 48px;">
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(22px,4vw,32px); font-weight:600; color:#f8f4ec; line-height:1.8; margin-bottom:32px;">아르더짐은 언제나<br>회원님의 건강을 최우선으로 생각하며,<br>운동이 생활 속에서 <span style="color:var(--color-accent);">자연스럽게</span><br>계속 이어질 수 있도록 하겠습니다.</p>
+      <p style="font-size:15px; color:rgba(255,255,255,0.6); line-height:2; font-weight:300; margin-bottom:48px;">우리는 시간의 소중함을 아는 사람들과 함께,<br>낯선 공간을 익숙한 쉼터로 만들고,<br>긍정적인 에너지를 주고받으며,<br>지속 가능한 건강한 습관을 만들어가는 곳입니다.</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; letter-spacing:5px; color:#f8f4ec;">ARDOR GYM</p>
+    </div>
+  </section>
+
   <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
 </div>
 
@@ -1241,16 +1301,14 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <div class="price-card">
         <p class="price-name">10회</p>
         <p class="price-period">PT기간 40일</p>
-        <p class="price-original">400,000원</p>
-        <p class="price-amount">350,000원</p>
-        <p class="price-per">회당 35,000원</p>
+        <p class="price-amount">385,000원</p>
+        <p class="price-per">회당 38,500원</p>
       </div>
       <div class="price-card">
         <p class="price-name">20회</p>
         <p class="price-period">PT기간 80일</p>
-        <p class="price-original">800,000원</p>
-        <p class="price-amount">600,000원</p>
-        <p class="price-per">회당 30,000원</p>
+        <p class="price-amount">660,000원</p>
+        <p class="price-per">회당 33,000원</p>
       </div>
     </div>
 
@@ -1387,7 +1445,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <div class="branch-content active" id="seocheon-trainer">
       <div class="trainer-card">
         <div class="trainer-photo-box"><img src="%EB%A7%9D%ED%8F%AC%EC%8A%B9%ED%98%84.jpg" alt="용승현 대표 트레이너"></div>
-        <div class="trainer-info">
+        <div class="trainer-info" style="flex:1; min-width:0; width:100%;">
           <p class="trainer-name">용승현</p>
           <p class="trainer-role">대표 트레이너</p>
           <div class="trainer-divider"></div>
@@ -1402,7 +1460,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       </div>
       <div class="trainer-card">
         <div class="trainer-photo-box"><img src="%EC%84%9C%EC%B2%9C%ED%83%9C%EC%9C%A4.jpg" alt="김태윤 팀장"></div>
-        <div class="trainer-info">
+        <div class="trainer-info" style="flex:1; min-width:0; width:100%;">
           <p class="trainer-name">김태윤</p>
           <p class="trainer-role">팀장</p>
           <div class="trainer-divider"></div>
@@ -1417,7 +1475,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       </div>
       <div class="trainer-card">
         <div class="trainer-photo-box"><img src="%EC%84%9C%EC%B2%9C%EC%9C%A0%EC%84%B1.jpg" alt="장유성 트레이너"></div>
-        <div class="trainer-info">
+        <div class="trainer-info" style="flex:1; min-width:0; width:100%;">
           <p class="trainer-name">장유성</p>
           <p class="trainer-role">트레이너</p>
           <div class="trainer-divider"></div>
@@ -1432,7 +1490,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       </div>
       <div class="trainer-card">
         <div class="trainer-photo-box"><img src="%EB%A7%9D%ED%8F%AC%EB%AA%85%EC%84%A0.jpg" alt="김명선 트레이너"></div>
-        <div class="trainer-info">
+        <div class="trainer-info" style="flex:1; min-width:0; width:100%;">
           <p class="trainer-name">김명선</p>
           <p class="trainer-role">트레이너</p>
           <div class="trainer-divider"></div>
@@ -1563,7 +1621,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <div class="branch-content active" id="mangpo-trainer">
       <div class="trainer-card">
         <div class="trainer-photo-box"><img src="%EB%A7%9D%ED%8F%AC%EC%8A%B9%ED%98%84.jpg" alt="용승현 대표 트레이너"></div>
-        <div class="trainer-info">
+        <div class="trainer-info" style="flex:1; min-width:0; width:100%;">
           <p class="trainer-name">용승현</p>
           <p class="trainer-role">대표 트레이너</p>
           <div class="trainer-divider"></div>
@@ -1578,7 +1636,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       </div>
       <div class="trainer-card">
         <div class="trainer-photo-box"><img src="%EB%A7%9D%ED%8F%AC%EB%AA%85%EC%84%A0.jpg" alt="김명선 트레이너"></div>
-        <div class="trainer-info">
+        <div class="trainer-info" style="flex:1; min-width:0; width:100%;">
           <p class="trainer-name">김명선</p>
           <p class="trainer-role">트레이너</p>
           <div class="trainer-divider"></div>
@@ -1593,7 +1651,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       </div>
       <div class="trainer-card">
         <div class="trainer-photo-box"><img src="%EB%A7%9D%ED%8F%AC%EC%9C%A0%EC%A4%80.jpg" alt="이유준 트레이너"></div>
-        <div class="trainer-info">
+        <div class="trainer-info" style="flex:1; min-width:0; width:100%;">
           <p class="trainer-name">이유준</p>
           <p class="trainer-role">트레이너</p>
           <div class="trainer-divider"></div>
@@ -1608,7 +1666,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       </div>
       <div class="trainer-card">
         <div class="trainer-photo-box"><img src="%EB%A7%9D%ED%8F%AC%EC%A3%BC%EB%AA%85.jpg" alt="이주명 트레이너"></div>
-        <div class="trainer-info">
+        <div class="trainer-info" style="flex:1; min-width:0; width:100%;">
           <p class="trainer-name">이주명</p>
           <p class="trainer-role">트레이너</p>
           <div class="trainer-divider"></div>
@@ -1784,6 +1842,73 @@ function applyParallax() {
 }
 window.addEventListener('scroll', applyParallax, { passive: true });
 window.addEventListener('load', applyParallax);
+</script>
+
+<!-- 플로팅 예약 버튼 -->
+<div id="floating-btns" style="
+  position:fixed;
+  bottom:28px;
+  right:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:500;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.4s ease, transform 0.4s ease;
+">
+  <a href="https://booking.naver.com/booking/13/bizes/781277/items/6476669?area=ple&lang=ko&startDate=2026-04-30&theme=place" target="_blank" style="
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 18px;
+    background:var(--color-accent);
+    color:#f8f4ec;
+    text-decoration:none;
+    font-family:'Noto Sans KR',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1px;
+    border-radius:4px;
+    box-shadow:0 4px 16px rgba(139,92,56,0.4);
+    white-space:nowrap;
+    transition:background 0.2s,transform 0.2s;
+  " onmouseover="this.style.background='#6e4828'" onmouseout="this.style.background='#8b5c38'">
+    📅 1일 체험권 예약 (서천점)
+  </a>
+  <a href="https://booking.naver.com/booking/13/bizes/1171875/items/7108170?area=ple&lang=ko&startDate=2026-04-30&theme=place" target="_blank" style="
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 18px;
+    background:var(--color-accent);
+    color:#f8f4ec;
+    text-decoration:none;
+    font-family:'Noto Sans KR',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1px;
+    border-radius:4px;
+    box-shadow:0 4px 16px rgba(139,92,56,0.4);
+    white-space:nowrap;
+    transition:background 0.2s,transform 0.2s;
+  " onmouseover="this.style.background='#6e4828'" onmouseout="this.style.background='#8b5c38'">
+    📅 1일 체험권 예약 (망포점)
+  </a>
+</div>
+
+<script>
+// 플로팅 버튼 스크롤 감지
+window.addEventListener('scroll', function() {
+  const btns = document.getElementById('floating-btns');
+  if (window.scrollY > 200) {
+    btns.style.opacity = '1';
+    btns.style.transform = 'translateY(0)';
+  } else {
+    btns.style.opacity = '0';
+    btns.style.transform = 'translateY(20px)';
+  }
+}, { passive: true });
 </script>
 </body>
 </html>
