@@ -127,7 +127,7 @@ header { position:fixed; top:0; left:0; right:0; display:flex; align-items:cente
 .slideshow { position:relative; width:100%; background:#000; border-radius:4px; overflow:hidden; }
 .slideshow-track { display:flex; transition:transform 0.4s ease; }
 .slide { min-width:100%; }
-.slide img { width:100%; max-height:520px; object-fit:cover; display:block; }
+.slide img { width:100%; max-height:520px; object-fit:contain; display:block; background:#f2ede3; }
 .slide-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(139,92,56,0.7); border:none; color:#f8f4ec; font-size:20px; width:44px; height:44px; cursor:pointer; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:background 0.2s; z-index:2; }
 .slide-btn:hover { background:var(--color-accent2); }
 .slide-btn.prev { left:12px; }
@@ -334,6 +334,12 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 .story-closing-quote{font-size:clamp(20px,4vw,30px);font-weight:700;line-height:1.8;color:#2C2C2C;max-width:600px;margin:0 auto 24px}
 .story-closing-quote em{font-style:normal;color:#C4A882}
 .story-closing-sub{font-size:16px;color:#6B6560;font-weight:300;line-height:1.8}
+.review-scroll-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding-bottom:16px; }
+.review-scroll-wrap::-webkit-scrollbar { display:none; }
+.review-track { display:flex; gap:16px; width:max-content; }
+.review-card { width:280px; flex-shrink:0; background:rgba(255,255,255,0.92); border-radius:16px; padding:24px 20px; border:1px solid rgba(255,255,255,0.8); box-shadow:0 4px 20px rgba(0,0,0,0.15); }
+.review-stars { color:#C4A882; font-size:14px; margin-bottom:10px; letter-spacing:2px; }
+.review-text { font-size:13px; line-height:1.8; color:#2C2C2C; font-weight:400; word-break:keep-all; }
 .story-closing-logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;letter-spacing:4px;color:#2C2C2C;margin-top:56px}
 @media(max-width:768px){
   .story-hero-section{padding:80px 20px 60px}
@@ -651,6 +657,170 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     </div>
   </section>
 
+
+  <!-- ===== 리뷰 섹션 ===== -->
+  <section class="story-give-section" style="padding:80px 0;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
+      <div class="story-fade-in">
+        <div class="story-section-title-area">
+          <div class="story-section-label">Real Reviews</div>
+          <h2 class="story-section-title">회원님들의 솔직한 후기</h2>
+          <div class="story-section-divider" style="background:#D4B896;"></div>
+        </div>
+      </div>
+
+      <!-- 서천점 리뷰 -->
+      <div class="story-fade-in" style="margin-bottom:12px;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:18px; letter-spacing:3px; color:#D4B896; margin-bottom:16px;">서천점</p>
+      </div>
+      <div class="review-scroll-wrap story-fade-in">
+        <div class="review-track">
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">헬스장은 너무 많은데 pt 받는 사람만 언제든 사용할 수 있는 pt샵 개념이라 훨씬 쾌적하고, 운동에 열의 넘치는 사람들이 많아서 동기 부여도 확실합니다. 트레이너들의 경력이나 자격 사항들도 투명하게 공개하시고 있어서 믿고 상담부터 받을 수 있어요. 명선쌤 최고 💕</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">김명선 트레이너님께 1년 넘게 수업받고 있습니다. 살도 많이 빠지고 몸도 건강해지면서 운동에 취미를 붙이게 되어서 아르더짐으로 퇴근하는게 일상이 되었습니다 ㅎㅎ</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">헬스장을 다녀보면서 가장 만족스러웠던 점은 트레이너분들의 꼼꼼한 지도였습니다. 개인의 체형과 목표에 맞춰 세심하게 자세를 교정해주시고 꾸준히 피드백을 주셔서 운동 효과를 확실히 느낄 수 있었습니다. 처음 시작하시는 분들께 추천드리고 싶은 헬스장입니다.</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">23.1월 ~ 26.4월 현재까지 꾸준히 다니고 있습니다. 50이 되면서 있는 근육이라도 유지해야겠다는 맘으로 시작했는데 살도 빠지고 근육도 늘고 운동에 대한 열정도 생기고ᆢ 아르더짐 장점 넘 많아요~ 친절 굿! 환경 쾌적 굿! 진짜 잘가르침!!</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">프라이빗 PT 헬스를 다닌지는 얼마되지 않았어요. 처음에는 조용하고 작은 운동공간으로 머쓱하기도 했지만 트레이너분들 너무 친절하시고 동네 운동 맛집같아서 이제는 편안한 마음으로 운동하러 가고 있어요. 장유성 트레이너님 덕분에 너무 좋습니다 🎶</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">다이어트를 위해 난생 처음 PT를 받아봤는데 정말 잘한 선택이었다고 생각합니다. 제대로 운동을 배우는게 처음인 초보자도 잘 따라올 수 있도록 쉽고 친절하게 지도해 주셨고, 지금은 PT 이전에 비해 몸무게 앞자리가 달라졌어요!</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">커플 피티 20회 완! 20회 연장 완! 늘 즐거운 선생님과 운동 재밌어요. 두달반동안 5키로 뺐어요 하하하. 선생님 티칭이 정확해서 몸이 근육을 쓸 줄 안달까!! 이 동네 사는동안 꾸준히 다닐꺼에요 - 토복토멍 커플 올림</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">친구와 2:1 수업 받은지 6개월 되었어요. 태윤쌤께 수업받는데 항상 열정적이고 전문적으로 수업해주세요. 저의 낮은 체력 수준에 맞게 운동 강도를 조절해주셔서 힘든 운동도 해낼 수 있게 해주세요. 앞으로도 잘 부탁드려요🫡</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">등록한지 3개월이 지나니 허리·어깨 통증의 빈도와 강도가 확실히 줄었고, 다리 힘도 좋아져 계단 오르내릴 때 한결 가벼워졌습니다. 코어·둔근 활성화와 자세 교정을 꼼꼼히 잡아줘서 '몸이 좋아지는 게 체감되는' 곳이라 자신 있게 추천합니다.</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">장유성 트레이너님의 세심한 지도를 통해 자세의 중요성, 코어 잡기의 중요성, 호흡의 중요성을 깨닫게 되었습니다. 밝고 유쾌하게 또 악착같이 지도해주시는 덕분에 몸이 달라지는게 느껴져 매우 기쁩니다. 아르더짐 적극 추천합니다~!! 😊</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">운동을 억지로 하던 예전과 달리, 이 헬스장을 다니면서부터는 오히려 하루 중 가장 즐거운 시간이 됐어요. '재미있게 운동하고 싶다', '지속 가능한 루틴을 만들고 싶다'는 분들께 강력 추천합니다!</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">요즘 조금씩 운동이 재밌어지고 있어요. 선생님들 모두 다 친절하셔서 더 좋습니다 😊</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">올해부터 친구랑 다니는 중인데 시설도 깔끔하고 좋습니다! 2:1 PT 가성비 짱입니다..!!! 1:1이 아니어서 처음에 조금 걱정했는데, 두 명 다 꼼꼼히 골고루 봐주시고, 각자 체력이나 운동량 맞춰서 가르쳐주셔서 너무 좋고 만족합니다 👍👍</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">김명선 트레이너 선생님한테 피티 받고 재등록했어요! 족저근막염도 있었고 발목 인대 파열된 적도 있고 허리도 안 좋아서 걱정이 많았는데 미리 말씀드리니까 다 고려해서 세심하게 챙겨봐주십니다. 깔끔하게 관리되고 있어서 좋아요 :)</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">헬스장 이곳저곳을 전전하던 저에게 정착할 수 있게 해준 곳입니다! 소음 문제나 위생 문제도 없고 프라이빗한 운동을 할 수 있어 너무나 좋습니다. 서천동에 살길 잘했습니다 앞으로도 잘 부탁드려요 🩵</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">체계적인 프로그램과 세심한 피드백 덕분에 운동이 힘들기보단 즐거워졌고, 매 수업마다 확실히 성장하고 있다는 걸 느껴요. PT 고민하시는 분들께 정말 추천드려요!</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">김태윤 쌤께 30회 수업 받았어요. 처음 시작할 때 제가 원하는 운동 방향 체크해주시고 그에 맞춰서 수업해주셨어요! 혼자 헬스장 가서도 내가 할 수 있는 근력운동 루틴을 얻어가게 되어 만족합니다! 태윤쌤 적극추천합니당👍😍</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">20회 완료했는데 선생님께서 매번 신경 잘 써주시고 카톡으로도 운동 어떤 거 했는지, 자세 교정 어떻게 하면 좋은지 보내주세요! 다음에 또 피티 받을 일 있으면 꼭 갈 것 같습니다 추천드려요!</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">아르더짐 16회차! 2달 만에 7kg 감량, 이상적으로 체지방량이 감소해서 턱선이 살아났습니다! 트레이너 선생님께서 식단 관리까지 꼼꼼하게 챙겨 주셔서 의지만 있다면 원하는 것 이상으로 좋은 결과를 얻을 수 있습니다~</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">피티 등록한지 약 2주가 지났어요!! 정말 자세를 꼼꼼하게 봐주시고 제 몸에 맞는 식단과 운동을 체계적으로 해주셔서 정말 만족도가 높습니다! 딱 맞춤형으로 해주신다는 느낌이 들었어요. 선생님이랑 운동할 때마다 즐거워요!!! 😆</p>
+              </div>
+        </div>
+      </div>
+
+      <!-- 망포점 리뷰 -->
+      <div class="story-fade-in" style="margin-top:48px; margin-bottom:12px;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:18px; letter-spacing:3px; color:#D4B896; margin-bottom:16px;">망포점</p>
+      </div>
+      <div class="review-scroll-wrap story-fade-in">
+        <div class="review-track">
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">작년 4월부터 시작해서 최근에도 재등록했어요. 선생님들 모두 친절하시고 시설도 깔끔하고, 특히 유준쌤의 세세한 티칭 덕분에 운동을 가까이 하는 습관과 만족스러운 결과를 얻게 되다보니 지금은 아르더짐에서 벗어날 수 없는 상태가 되어 버렸네요. 아르더짐 덕분이에요! 👍🤩</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">엄청 꼼꼼하게 자세 봐 주세요. 스쿼트, 데드리프트 할 때 느낌이 완전 달라요. 어디를 쓴다는게 딱 느껴져요. 유준쌤한테 배우면 배울수록 내가 잘할 수 있다는 자신감이 생겨요. 아르더짐과 회원분들 모두 화이팅!</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">아르더짐 다닌지 1년째인데!! 진짜 처음으로 운동 꾸준히 다닌 헬스장이에요. 전체적으로 프라이빗하고 조용한 분위기라 사람 많고 시끄러운 헬스장 싫어하는 분들한테 특히 추천하고 싶어요. 아묻따 승현쌤!! 👍</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">이주명 T, PT 20회. 강사님은 제 체형과 운동 목적을 정확히 분석한 뒤 체계적으로 프로그램을 구성해 주셨습니다. 동작 하나하나를 왜 해야 하는지까지 전문적으로 설명해 주셔서 신뢰가 갔고 운동에 대한 이해도도 많이 높아졌어요! 친절하고 전문적인 PT를 찾으신다면 강추 👍👍</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">어느덧 pt 받은지 1년 다되어가네요~~ 48년동안 살면서 제대로 운동했던 적이 없어서 많이 걱정이 되었었는데 제 몸 상태와 컨디션에 맞게 조절해주시고 재활도 도와주셔서 생활 습관도 좋아졌어요. 아르더짐에선 한달에 한번씩 런닝, 써킷, 출석왕 등 여러 동기부여 이벤트들 마련해주셔서 정말 감사해요!</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">추운 겨울에 실내 운동이 필요해서 등록한 아르더짐~ 밝은 분위기에 청결 깔끔하고 기구 관리도 항상 잘 되어 있어서 운동하기 편안해요. 김명선 트레이너님이 친절하게 하나하나 자세히 알려주시고, 동작이 익숙해질 때까지 참을성 있게 기다려주셔서 감사해요! 망포인들께 강추합니다 :) 🤍🤍</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">다른 헬스장이랑 차별성이 확실해요. 머신으로만 수업하기보다는 정확한 자세로 기본적인 움직임을 잘 케어해 주십니다. 모든 선생님들이 인사도 잘하시고 선생님이 밝으니 센터도 밝은^^ 피티샵이 집에서 가까워서 그게 젤 좋아요 ㅋㅋ</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">이명선 코치님께 수업받고 있는데 늘 제 컨디션에 맞게 맞춤운동해주시고, 수업기록도 늘 영상으로 보내줘서 혼자 운동할때도 도움이 많이됩니다. 그리고 제가 다녀본 체육관중 제일 깨끗해서 상쾌한 기분으로 운동할 수 있어요 😊</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">기초 체력이라도 좀 챙기자는 마음으로 헬스장을 찾았는데, 6개월 후 꼼꼼하고 허세 없는 트레이너 쌤! '잘하고 계세요..오늘은 이 정도면 충분해요.' 그 짧은 말들이 저를 붙잡아주고 어느새 매일 운동을 '기다리는' 제가 되었더라고. 아르더짐이 제게는 좋은 건강메이트가 되었죠^^</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">60번째 생일에 바디 프로필을 찍어 보는 게 어때 라는 아내의 권유로 시작한 운동이 1년이 다 되어 간다. 운동을 하면서 내 몸의 가치를 잘 모르고 살아온 것 같다는 생각이 들었다. 나는 오늘도 운동을 하기위해 '아르더짐 망포'로 간다. 그곳엔 내 몸을 사랑하는 방법을 알려주시는 선생님들이 계신다.</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">명선 선생님께서 여러가지 운동도 하시고 진짜 운동을 즐기시는 모습에 궁금해서 체험갔다가 10회 끊고왔습니다 🥹🤍 첫 피티라 걱정했는데 제 니즈에 맞게 그리고 자세 테스트까지 봐주시면서 꼼꼼히 알려주세요! 아르더짐 강추합니다 ✨✨</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">첫 수업이라 그런가 엄청 꼼꼼하게 봐주시고 피드백을 정확하고 자세히 알려주세요! 50분 알차게 인바디 분석 토대로 상담하고 스트레칭부터 근력운동, 유산소까지 전부 다 알려주시려는 모습이 감사했습니당 ㅎㅎ 특히 운동 처음 하시거나 꼼꼼하게 자세 배우고픈 여자분들께 추천드립니다 👍👍</p>
+              </div>
+              <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">여름에 덥다는 핑계로 운동을 너무 안해서 체험 PT 신청했어요! 명선 트레이너님이 친구처럼 엄청 편하게 대해주시고 넘치는 에너지때문에 신나서 운동한 것 같아요! 50분 땀 뻘뻘이었지만 시설도 진짜 깔끔 인테리어도 센스 그자체! 아르더짐 망포점 완전 추천이에요!! 👍</p>
+              </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== ONE DAY GIVE CLASS ===== -->
   <section class="story-give-section">
     <div class="story-section-wrapper">
@@ -921,10 +1091,41 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
     <!-- 미디어 섹션 -->
     <div class="price-section-title" style="margin-top:56px;">📸 트레이닝 현장</div>
+    <div class="slideshow" id="slideshow-1on1" style="margin-bottom:16px;">
+      <div class="slideshow-track" id="track-1on1">
+        <div class="slide"><img src="1대1수업1.jpg" alt="1대1 수업 1"></div>
+        <div class="slide"><img src="1대1수업2.jpg" alt="1대1 수업 2"></div>
+        <div class="slide"><img src="1대1수업3.jpg" alt="1대1 수업 3"></div>
+        <div class="slide"><img src="1대1수업4.jpg" alt="1대1 수업 4"></div>
+        <div class="slide"><img src="1대1수업5.png" alt="1대1 수업 5"></div>
+        <div class="slide"><img src="1대1수업6.jpg" alt="1대1 수업 6"></div>
+        <div class="slide"><img src="1대1수업7.jpg" alt="1대1 수업 7"></div>
+        <div class="slide"><img src="1대1수업8.png" alt="1대1 수업 8"></div>
+        <div class="slide"><img src="1대1수업9.jpg" alt="1대1 수업 9"></div>
+        <div class="slide"><img src="1대1수업10.jpg" alt="1대1 수업 10"></div>
+        <div class="slide"><img src="1대1수업11.jpg" alt="1대1 수업 11"></div>
+        <div class="slide"><img src="1대1수업12.jpg" alt="1대1 수업 12"></div>
+        <div class="slide"><img src="1대1수업13.jpg" alt="1대1 수업 13"></div>
+      </div>
+      <button class="slide-btn prev" onclick="moveSlide('1on1',-1)">&#8249;</button>
+      <button class="slide-btn next" onclick="moveSlide('1on1',1)">&#8250;</button>
+    </div>
+    <div class="slide-dots" id="dots-1on1" style="margin-bottom:24px;">
+      <button class="slide-dot active" onclick="goSlide('1on1',0)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',1)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',2)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',3)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',4)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',5)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',6)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',7)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',8)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',9)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',10)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',11)"></button>
+      <button class="slide-dot" onclick="goSlide('1on1',12)"></button>
+    </div>
     <div class="program-media-grid">
-      <div class="program-media-item"><img src="1대1사진1.jpg" alt="1:1 PT 사진 1"></div>
-      <div class="program-media-item"><img src="1대1사진2.jpg" alt="1:1 PT 사진 2"></div>
-      <div class="program-media-item"><img src="1대1사진3.jpg" alt="1:1 PT 사진 3"></div>
       <div class="program-media-item"><video src="1대1영상1.mp4" autoplay muted loop playsinline></video></div>
       <div class="program-media-item"><video src="1대1영상2.mp4" autoplay muted loop playsinline></video></div>
     </div>
