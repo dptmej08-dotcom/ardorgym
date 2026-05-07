@@ -1188,11 +1188,12 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <!-- 미디어 섹션 -->
     <div class="price-section-title" style="margin-top:56px;">📸 트레이닝 현장</div>
     <div class="program-media-grid">
-      <div class="program-media-item"><img src="2대1사진1.jpg" alt="2:1 PT 사진 1"></div>
-      <div class="program-media-item"><img src="2대1사진2.jpg" alt="2:1 PT 사진 2"></div>
-      <div class="program-media-item"><img src="2대1사진3.jpg" alt="2:1 PT 사진 3"></div>
-      <div class="program-media-item"><video src="2대1영상1.mp4" autoplay muted loop playsinline></video></div>
-      <div class="program-media-item"><video src="2대1영상2.mp4" autoplay muted loop playsinline></video></div>
+      <div class="program-media-item"><img src="매칭핏1.png" alt="2:1 PT 사진 1"></div>
+      <div class="program-media-item"><img src="매칭핏2.png" alt="2:1 PT 사진 2"></div>
+      <div class="program-media-item"><img src="매칭핏3.png" alt="2:1 PT 사진 3"></div>
+      <div class="program-media-item"><video src="2대1수업1.mp4" autoplay muted loop playsinline></video></div>
+      <div class="program-media-item"><video src="2대1수업2.mp4" autoplay muted loop playsinline></video></div>
+      <div class="program-media-item"><video src="2대1수업3.mp4" autoplay muted loop playsinline></video></div>
     </div>
 
     <!-- 마무리 -->
@@ -1341,6 +1342,14 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       </a>
     </div>
 
+    <!-- 미디어 섹션 -->
+    <div class="price-section-title" style="margin-top:56px;">📸 매칭핏 현장</div>
+    <div class="program-media-grid">
+      <div class="program-media-item"><video src="매칭핏10.mp4" autoplay muted loop playsinline></video></div>
+      <div class="program-media-item"><video src="매칭핏11.mp4" autoplay muted loop playsinline></video></div>
+      <div class="program-media-item"><video src="매칭핏12.mp4" autoplay muted loop playsinline></video></div>
+    </div>
+
     <!-- 마무리 문구 -->
     <div class="matching-closing">
       <p>아르더짐은 당신의 활기찬 일상을 응원합니다.</p>
@@ -1466,12 +1475,48 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
     <!-- 미디어 섹션 -->
     <div class="price-section-title" style="margin-top:56px;">📸 현장 모습</div>
+
+    <!-- 사진 슬라이드 -->
+    <div class="slideshow" id="slideshow-oneday" style="margin-bottom:16px;">
+      <div class="slideshow-track" id="track-oneday">
+        <div class="slide"><img src="원데이1.jpg" alt="원데이 1"></div>
+        <div class="slide"><img src="원데이2.jpg" alt="원데이 2"></div>
+        <div class="slide"><img src="원데이3.jpg" alt="원데이 3"></div>
+        <div class="slide"><img src="원데이4.jpg" alt="원데이 4"></div>
+        <div class="slide"><img src="원데이5.png" alt="원데이 5"></div>
+        <div class="slide"><img src="원데이6.jpg" alt="원데이 6"></div>
+        <div class="slide"><img src="원데이7.jpg" alt="원데이 7"></div>
+        <div class="slide"><img src="원데이8.jpg" alt="원데이 8"></div>
+        <div class="slide"><img src="원데이10.jpg" alt="원데이 10"></div>
+        <div class="slide"><img src="원데이11.jpg" alt="원데이 11"></div>
+        <div class="slide"><img src="원데이12.jpg" alt="원데이 12"></div>
+        <div class="slide"><img src="원데이15.jpg" alt="원데이 15"></div>
+        <div class="slide"><img src="원데이16.jpg" alt="원데이 16"></div>
+      </div>
+      <button class="slide-btn prev" onclick="moveSlide('oneday',-1)">&#8249;</button>
+      <button class="slide-btn next" onclick="moveSlide('oneday',1)">&#8250;</button>
+    </div>
+    <div class="slide-dots" id="dots-oneday" style="margin-bottom:32px;">
+      <button class="slide-dot active" onclick="goSlide('oneday',0)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',1)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',2)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',3)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',4)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',5)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',6)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',7)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',8)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',9)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',10)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',11)"></button>
+      <button class="slide-dot" onclick="goSlide('oneday',12)"></button>
+    </div>
+
+    <!-- 영상 -->
     <div class="program-media-grid">
-      <div class="program-media-item"><img src="원데이기브1.jpg" alt="원데이 기브 클래스 1"></div>
-      <div class="program-media-item"><img src="원데이기브2.jpg" alt="원데이 기브 클래스 2"></div>
-      <div class="program-media-item"><img src="원데이기브3.jpg" alt="원데이 기브 클래스 3"></div>
-      <div class="program-media-item"><video src="원데이영상1.mp4" autoplay muted loop playsinline></video></div>
-      <div class="program-media-item"><video src="원데이영상2.mp4" autoplay muted loop playsinline></video></div>
+      <div class="program-media-item"><video src="원데이9.mp4" autoplay muted loop playsinline></video></div>
+      <div class="program-media-item"><video src="원데이13.mp4" autoplay muted loop playsinline></video></div>
+      <div class="program-media-item"><video src="원데이14.mp4" autoplay muted loop playsinline></video></div>
     </div>
 
   </div>
@@ -1781,8 +1826,19 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
     <div class="branch-content" id="seocheon-parking">
       <div class="parking-section">
-        <div class="parking-img-wrap">
-          <div class="slide-placeholder"><p>서천점 주차 안내 사진을<br>준비 중입니다.</p></div>
+        <div class="slideshow" id="slideshow-seocheon-parking" style="background:transparent;">
+          <div class="slideshow-track" id="track-seocheon-parking">
+            <div class="slide"><img src="서천주차1.png" alt="서천점 주차 안내 1"></div>
+            <div class="slide"><img src="서천주차2.png" alt="서천점 주차 안내 2"></div>
+            <div class="slide"><img src="서천주차3.png" alt="서천점 주차 안내 3"></div>
+          </div>
+          <button class="slide-btn prev" onclick="moveSlide('seocheon-parking',-1)">&#8249;</button>
+          <button class="slide-btn next" onclick="moveSlide('seocheon-parking',1)">&#8250;</button>
+        </div>
+        <div class="slide-dots" id="dots-seocheon-parking">
+          <button class="slide-dot active" onclick="goSlide('seocheon-parking',0)"></button>
+          <button class="slide-dot" onclick="goSlide('seocheon-parking',1)"></button>
+          <button class="slide-dot" onclick="goSlide('seocheon-parking',2)"></button>
         </div>
         <div class="parking-info">
           <div class="parking-info-row">
