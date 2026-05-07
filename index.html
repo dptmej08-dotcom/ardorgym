@@ -2217,8 +2217,21 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
     <div class="branch-content" id="mangpo-parking">
       <div class="parking-section">
-        <div class="parking-img-wrap">
-          <img src="%EB%A7%9D%ED%8F%AC%EC%A3%BC%EC%B0%A82.jpg" alt="망포점 주차 안내">
+        <div class="slideshow" id="slideshow-mangpo-parking" style="margin-bottom:16px; background:transparent;">
+          <div class="slideshow-track" id="track-mangpo-parking">
+            <div class="slide"><img src="망포주차1.jpg" alt="망포점 주차 안내 1"></div>
+            <div class="slide"><img src="망포주차2.jpg" alt="망포점 주차 안내 2"></div>
+            <div class="slide"><img src="망포주차3.jpg" alt="망포점 주차 안내 3"></div>
+            <div class="slide"><img src="망포주차4.jpg" alt="망포점 주차 안내 4"></div>
+          </div>
+          <button class="slide-btn prev" onclick="moveSlide('mangpo-parking',-1)">&#8249;</button>
+          <button class="slide-btn next" onclick="moveSlide('mangpo-parking',1)">&#8250;</button>
+        </div>
+        <div class="slide-dots" id="dots-mangpo-parking" style="margin-bottom:16px;">
+          <button class="slide-dot active" onclick="goSlide('mangpo-parking',0)"></button>
+          <button class="slide-dot" onclick="goSlide('mangpo-parking',1)"></button>
+          <button class="slide-dot" onclick="goSlide('mangpo-parking',2)"></button>
+          <button class="slide-dot" onclick="goSlide('mangpo-parking',3)"></button>
         </div>
         <div class="parking-img-wrap" style="margin-top:16px;">
           <video src="망포주차.mp4" autoplay muted loop playsinline style="width:100%; display:block; border-radius:4px;"></video>
