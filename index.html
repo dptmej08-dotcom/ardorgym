@@ -343,6 +343,12 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 .review-card { width:280px; flex-shrink:0; background:rgba(255,255,255,0.92); border-radius:16px; padding:24px 20px; border:1px solid rgba(255,255,255,0.8); box-shadow:0 4px 20px rgba(0,0,0,0.15); }
 .review-stars { color:#C4A882; font-size:14px; margin-bottom:10px; letter-spacing:2px; }
 .review-text { font-size:13px; line-height:1.8; color:#2C2C2C; font-weight:400; word-break:keep-all; }
+.case-block { margin-bottom:48px; padding-bottom:48px; border-bottom:1px solid rgba(139,92,56,0.1); }
+.case-block:last-of-type { border-bottom:none; }
+.case-block-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+.case-block-badge { font-size:10px; letter-spacing:2px; color:var(--color-accent); background:rgba(139,92,56,0.08); border-radius:100px; padding:4px 12px; font-weight:700; }
+.case-block-name { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--color-text); letter-spacing:1px; }
+.case-block-desc { font-size:14px; line-height:1.9; color:var(--color-soft); font-weight:300; margin-bottom:16px; word-break:keep-all; }
 .story-closing-logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;letter-spacing:4px;color:#2C2C2C;margin-top:56px}
 @media(max-width:768px){
   .story-hero-section{padding:80px 20px 60px}
@@ -1413,12 +1419,100 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <!-- 미디어 섹션 -->
     <div class="price-section-title" style="margin-top:56px;">📸 트레이닝 현장</div>
     <div class="program-media-grid">
-      <div class="program-media-item"><img src="매칭핏1.png" alt="2:1 PT 사진 1"></div>
-      <div class="program-media-item"><img src="매칭핏2.png" alt="2:1 PT 사진 2"></div>
-      <div class="program-media-item"><img src="매칭핏3.png" alt="2:1 PT 사진 3"></div>
       <div class="program-media-item"><video src="2대1수업1.mp4" autoplay muted loop playsinline preload="none"></video></div>
       <div class="program-media-item"><video src="2대1수업2.mp4" autoplay muted loop playsinline preload="none"></video></div>
       <div class="program-media-item"><video src="2대1수업3.mp4" autoplay muted loop playsinline preload="none"></video></div>
+    </div>
+
+    <!-- 케이스 섹션 -->
+    <div class="price-section-title" style="margin-top:56px;">이런 분들이 함께 운동해요</div>
+
+    <div class="case-block">
+      <div class="case-block-header">
+        <span class="case-block-badge">COUPLE</span>
+        <span class="case-block-name">👫 부부끼리</span>
+      </div>
+      <p class="case-block-desc">한 분만 다이어트할 때 식단 눈치 보이셨나요?<br>함께하면 서로 응원하며 즐겁게!</p>
+      <div class="slideshow" id="slideshow-couple">
+        <div class="slideshow-track" id="track-couple">
+          <div class="slide"><img src="부부1.jpg" alt="부부 수업 1"></div>
+          <div class="slide"><img src="부부2.jpg" alt="부부 수업 2"></div>
+          <div class="slide"><img src="부부3.jpg" alt="부부 수업 3"></div>
+        </div>
+        <button class="slide-btn prev" onclick="moveSlide('couple',-1)">&#8249;</button>
+        <button class="slide-btn next" onclick="moveSlide('couple',1)">&#8250;</button>
+      </div>
+      <div class="slide-dots" id="dots-couple">
+        <button class="slide-dot active" onclick="goSlide('couple',0)"></button>
+        <button class="slide-dot" onclick="goSlide('couple',1)"></button>
+        <button class="slide-dot" onclick="goSlide('couple',2)"></button>
+      </div>
+    </div>
+
+    <div class="case-block">
+      <div class="case-block-header">
+        <span class="case-block-badge">FAMILY</span>
+        <span class="case-block-name">👨‍👩‍👧 부모님과</span>
+      </div>
+      <p class="case-block-desc">자녀가 부모님 건강을 함께 챙기는 특별한 시간.<br>가족이 함께하면 더 오래 꾸준히!</p>
+      <div class="slideshow" id="slideshow-family">
+        <div class="slideshow-track" id="track-family">
+          <div class="slide"><img src="가족1.jpg" alt="가족 수업 1"></div>
+          <div class="slide"><img src="가족2.jpg" alt="가족 수업 2"></div>
+          <div class="slide"><img src="가족3.jpg" alt="가족 수업 3"></div>
+        </div>
+        <button class="slide-btn prev" onclick="moveSlide('family',-1)">&#8249;</button>
+        <button class="slide-btn next" onclick="moveSlide('family',1)">&#8250;</button>
+      </div>
+      <div class="slide-dots" id="dots-family">
+        <button class="slide-dot active" onclick="goSlide('family',0)"></button>
+        <button class="slide-dot" onclick="goSlide('family',1)"></button>
+        <button class="slide-dot" onclick="goSlide('family',2)"></button>
+      </div>
+    </div>
+
+    <div class="case-block">
+      <div class="case-block-header">
+        <span class="case-block-badge">SISTERS</span>
+        <span class="case-block-name">👯‍♀️ 자매끼리</span>
+      </div>
+      <p class="case-block-desc">서로 격려하며 운동하면 혼자보다 훨씬 오래,<br>즐겁게 꾸준히!</p>
+      <div class="slideshow" id="slideshow-sisters">
+        <div class="slideshow-track" id="track-sisters">
+          <div class="slide"><img src="자매1.jpg" alt="자매 수업 1"></div>
+          <div class="slide"><img src="자매2.jpg" alt="자매 수업 2"></div>
+          <div class="slide"><img src="자매3.jpg" alt="자매 수업 3"></div>
+        </div>
+        <button class="slide-btn prev" onclick="moveSlide('sisters',-1)">&#8249;</button>
+        <button class="slide-btn next" onclick="moveSlide('sisters',1)">&#8250;</button>
+      </div>
+      <div class="slide-dots" id="dots-sisters">
+        <button class="slide-dot active" onclick="goSlide('sisters',0)"></button>
+        <button class="slide-dot" onclick="goSlide('sisters',1)"></button>
+        <button class="slide-dot" onclick="goSlide('sisters',2)"></button>
+      </div>
+    </div>
+
+    <div class="case-block">
+      <div class="case-block-header">
+        <span class="case-block-badge">FRIENDS</span>
+        <span class="case-block-name">🤝 친구끼리</span>
+      </div>
+      <p class="case-block-desc">힘든 운동도 같이면 웃으면서!<br>수업 내내 즐거운 분위기가 이어져요.</p>
+      <div class="slideshow" id="slideshow-friends">
+        <div class="slideshow-track" id="track-friends">
+          <div class="slide"><img src="친구1.jpg" alt="친구 수업 1"></div>
+          <div class="slide"><img src="친구2.jpg" alt="친구 수업 2"></div>
+          <div class="slide"><img src="친구3.jpg" alt="친구 수업 3"></div>
+        </div>
+        <button class="slide-btn prev" onclick="moveSlide('friends',-1)">&#8249;</button>
+        <button class="slide-btn next" onclick="moveSlide('friends',1)">&#8250;</button>
+      </div>
+      <div class="slide-dots" id="dots-friends">
+        <button class="slide-dot active" onclick="goSlide('friends',0)"></button>
+        <button class="slide-dot" onclick="goSlide('friends',1)"></button>
+        <button class="slide-dot" onclick="goSlide('friends',2)"></button>
+      </div>
     </div>
 
     <!-- 마무리 -->
