@@ -7,11 +7,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
 <title>친절하고 다정한 이웃, PT전문 아르더짐</title>
-<meta name="description" content="망포&서천 PT 전문 아르더짐입니다. 친절하고 다정한 이웃처럼, NASM·NSCA 공인 트레이너가 회원님의 건강한 변화를 함께 만들어드립니다.">
-<meta name="keywords" content="아르더짐, 망포헬스, 망포PT, 서천PT, 영통역PT, 망포역PT, 망포헬스장, 망포PT샵, 서천PT샵, 영통PT, 영통헬스, ">
+<meta name="description" content="수원 망포점·용인 서천점 PT 전문 헬스장 아르더짐입니다. NASM·NSCA 공인 자격증을 보유한 전문 트레이너가 1:1 개인PT, 2:1 그룹PT, 매칭핏, 가족결합PT 등 맞춤형 트레이닝을 제공합니다. 친절하고 다정한 이웃처럼, 회원님의 건강한 변화를 함께 만들어드립니다.">
+<meta name="keywords" content="아르더짐, 망포점, 서천점, 수원PT, 망포PT, 용인PT, 퍼스널트레이닝, 헬스장, 1대1PT, 2대1PT, 매칭핏, 가족결합PT, 다이어트, 체형교정, 근력운동">
 <meta property="og:type" content="website">
 <meta property="og:title" content="친절하고 다정한 이웃, PT전문 아르더짐">
-<meta property="og:description" content="망포&서천 PT 전문 아르더짐. NASM·NSCA 공인 트레이너의 맞춤 PT. 친절하고 쾌적한 프라이빗 PT샵.">
+<meta property="og:description" content="수원 망포·용인 서천 PT 전문 아르더짐. NASM·NSCA 공인 트레이너의 1:1·2:1 맞춤 PT, 매칭핏, 가족결합PT. 친절하고 쾌적한 프라이빗 PT샵.">
 <meta property="og:image" content="https://ardorgym-one.vercel.app/pt전문아르더짐.jpg">
 <meta property="og:url" content="https://ardorgym-one.vercel.app">
 <meta name="robots" content="index, follow">
@@ -269,6 +269,36 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 .story-fade-in.story-from-right{transform:translateX(-40px)}
 .story-fade-in.story-visible{opacity:1 !important;transform:none !important}
 .story-d1{transition-delay:.1s}.story-d2{transition-delay:.2s}.story-d3{transition-delay:.3s}.story-d4{transition-delay:.4s}.story-d5{transition-delay:.5s}.story-d8{transition-delay:.8s}
+.story-intro-with-photo { display:flex; gap:48px; align-items:center; }
+.story-intro-text-col { flex:1.2; }
+.story-intro-photo-col { flex:0.8; }
+.story-consistency-with-photo { display:flex; gap:40px; align-items:flex-start; max-width:900px; margin:0 auto; }
+.story-consistency-content { flex:1.3; }
+.story-consistency-photo-col { flex:0.7; display:flex; flex-direction:column; }
+@media(max-width:768px){
+  .story-intro-with-photo { flex-direction:column; }
+  .story-intro-photo-col { width:70%; align-self:flex-end; }
+  .story-consistency-with-photo { flex-direction:column; }
+  .story-consistency-photo-col { flex-direction:row; gap:10px; }
+}
+.trainer-photo-section { background:#FAF8F5; padding:80px 24px; display:flex; flex-direction:column; gap:0; }
+.tp-block { width:60%; max-width:680px; margin-bottom:40px; }
+.tp-left { align-self:flex-start; margin-left:4%; }
+.tp-right { align-self:flex-end; margin-right:4%; margin-top:-60px; }
+.tp-last { margin-top:-40px; }
+.tp-img-wrap { position:relative; overflow:hidden; border-radius:4px; }
+.tp-img-wrap img { width:100%; display:block; object-fit:cover; aspect-ratio:4/3; filter:brightness(0.75); transition:filter 0.4s ease; }
+.tp-img-wrap:hover img { filter:brightness(0.6); }
+.tp-overlay { position:absolute; bottom:28px; left:28px; right:28px; }
+.tp-text { font-family:'Noto Serif KR',serif; font-size:clamp(16px,2.5vw,24px); font-weight:400; color:#fff; line-height:1.7; letter-spacing:1px; }
+.tp-caption { font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:5px; color:var(--color-muted); margin-top:16px; text-align:right; }
+@media(max-width:768px){
+  .tp-block { width:82%; margin-bottom:20px; }
+  .tp-left { margin-left:2%; }
+  .tp-right { margin-right:2%; margin-top:-24px; }
+  .tp-overlay { bottom:14px; left:14px; right:14px; }
+  .tp-text { font-size:14px; }
+}
 .story-hero-section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:40px 20px;background:#FAF8F5}
 .story-hero-bg-circle{position:absolute;border-radius:50%;opacity:.15;pointer-events:none}
 .story-hero-bg-1{width:600px;height:600px;top:-200px;right:-200px;background:radial-gradient(circle,#C4A882 0%,transparent 70%)}
@@ -515,8 +545,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     </div>
     <div class="story-fade-in story-d8">
       <p class="story-hero-subtitle">
-        아르더짐은 <em>'친절함'</em>으로 마음의 벽을 낮추고,<br>
-       <em>'전문성'</em>으로 몸의 변화를 확실히 만들어드립니다.
+        시간을 존중하고, 공간을 따뜻하게 만들며,<br>
+        긍정적인 에너지를 나누고, 꾸준함을 함께 만드는 곳
       </p>
     </div>
     <div class="story-fade-in story-d8" style="margin-top:40px;">
@@ -539,6 +569,82 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <div class="story-scroll-indicator">
       <span>Story</span>
       <div class="story-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== 사진 섹션 ===== -->
+  <section class="trainer-photo-section">
+    <div class="tp-block tp-left">
+      <div class="tp-img-wrap">
+        <img src="CEH_8221.JPG" alt="아르더짐 트레이너">
+        <div class="tp-overlay">
+          <p class="tp-text">친절함으로<br>마음의 벽을 낮추고</p>
+        </div>
+      </div>
+    </div>
+    <div class="tp-block tp-right">
+      <div class="tp-img-wrap">
+        <img src="CEH_8353.JPG" alt="아르더짐 트레이너">
+        <div class="tp-overlay">
+          <p class="tp-text">전문성으로<br>몸의 변화를 만들어드립니다</p>
+        </div>
+      </div>
+    </div>
+    <div class="tp-block tp-left">
+      <div class="tp-img-wrap">
+        <img src="CEH_8436.JPG" alt="아르더짐 트레이너">
+        <div class="tp-overlay">
+          <p class="tp-text">회원님의 50분,<br>가장 가치 있게</p>
+        </div>
+      </div>
+    </div>
+    <div class="tp-block tp-right">
+      <div class="tp-img-wrap">
+        <img src="CEH_8547.JPG" alt="아르더짐 트레이너">
+        <div class="tp-overlay">
+          <p class="tp-text">다시 오고 싶은<br>그런 공간</p>
+        </div>
+      </div>
+    </div>
+    <div class="tp-block tp-left">
+      <div class="tp-img-wrap">
+        <img src="CEH_8724.JPG" alt="아르더짐 트레이너">
+        <div class="tp-overlay">
+          <p class="tp-text">꾸준함의<br>출발점</p>
+        </div>
+      </div>
+    </div>
+    <div class="tp-block tp-right tp-last">
+      <div class="tp-img-wrap">
+        <img src="CEH_8728.JPG" alt="아르더짐 트레이너">
+        <div class="tp-overlay">
+          <p class="tp-text">친절한 이웃,<br>아르더짐</p>
+        </div>
+      </div>
+      <div class="tp-caption">ARDOR GYM</div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section class="story-intro-section">
+    <div class="story-section-wrapper">
+      <div class="story-intro-with-photo">
+        <div class="story-fade-in story-intro-text-col">
+          <p class="story-intro-quote" style="text-align:left; margin:0;">
+          운동이란 단순히 몸을 만드는 행위가 아니라,<br>
+          <em>삶의 질을 높이고 자신을 돌보는 가장 확실한 방법</em>이라 믿습니다.<br><br>
+          하지만 많은 분들이 여전히<br>
+          "운동은 어렵다", "어디서부터 시작해야 할지 모르겠다"고 느낍니다.<br><br>
+          아르더짐은 <em>'친절함'</em>으로 마음의 벽을 낮추고,<br>
+          <em>'전문성'</em>으로 몸의 변화를 확실히 만들어드립니다.
+        </p>
+        </div>
+        <div class="story-fade-in story-d2 story-intro-photo-col">
+          <div class="tp-img-wrap" style="border-radius:8px;">
+            <img src="CEH_8181.JPG" alt="아르더짐 트레이너" style="aspect-ratio:3/4;">
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -842,6 +948,15 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
         </div>
       </div>
     </div>
+      <div class="story-fade-in story-d2 story-consistency-photo-col">
+        <div class="tp-img-wrap" style="border-radius:8px;">
+          <img src="CEH_8321.JPG" alt="아르더짐 트레이너" style="aspect-ratio:3/4; filter:brightness(0.85);">
+        </div>
+        <div class="tp-img-wrap" style="border-radius:8px; margin-top:16px;">
+          <img src="CEH_8415.JPG" alt="아르더짐 트레이너" style="aspect-ratio:3/4; filter:brightness(0.85);">
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ===== ONE DAY GIVE CLASS ===== -->
@@ -877,6 +992,17 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
   <!-- ===== CLOSING ===== -->
   <section class="story-closing-section">
     <div class="story-section-wrapper">
+      <div class="story-fade-in" style="display:flex; gap:12px; margin-bottom:48px;">
+        <div class="tp-img-wrap" style="flex:1; border-radius:8px;">
+          <img src="CEH_8571.JPG" alt="아르더짐 트레이너" style="aspect-ratio:3/4; filter:brightness(0.85);">
+        </div>
+        <div class="tp-img-wrap" style="flex:1; border-radius:8px; margin-top:32px;">
+          <img src="CEH_8392.JPG" alt="아르더짐 트레이너" style="aspect-ratio:3/4; filter:brightness(0.85);">
+        </div>
+        <div class="tp-img-wrap" style="flex:1; border-radius:8px;">
+          <img src="CEH_8229.JPG" alt="아르더짐 트레이너" style="aspect-ratio:3/4; filter:brightness(0.85);">
+        </div>
+      </div>
       <div class="story-fade-in">
         <p class="story-closing-quote">
           아르더짐은 언제나<br>
