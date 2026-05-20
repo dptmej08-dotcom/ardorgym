@@ -11,7 +11,7 @@
 <meta name="keywords" content="아르더짐, 수원PT, 망포PT, 서천PT, 퍼스널트레이닝, PT샵, 수원PT샵, 망포PT샵, 서천PT샵, 영통PT, 영통PT샵, 망포헬스, 영통역PT, 망포역PT, 망포헬스장, 영통헬스">
 <meta property="og:type" content="website">
 <meta property="og:title" content="친절하고 다정한 이웃, PT전문 아르더짐">
-<meta property="og:description" content="수원 망포·용인 서천 PT 전문 아르더짐. NASM·NSCA 공인 트레이너의 1:1·2:1 맞춤 PT, 매칭핏, 가족결합PT. 친절하고 쾌적한 프라이빗 PT샵.">
+<meta property="og:description" content="망포&서천 PT 전문 아르더짐입니다. 친절하고 다정한 이웃처럼, NASM·NSCA 공인 트레이너가 회원님의 건강한 변화를 함께 만들어드립니다.">
 <meta property="og:image" content="https://ardorgym-one.vercel.app/pt전문아르더짐.jpg">
 <meta property="og:url" content="https://ardorgym-one.vercel.app">
 <meta name="robots" content="index, follow">
@@ -139,6 +139,7 @@ header { position:fixed; top:0; left:0; right:0; display:flex; align-items:cente
 .slideshow-track { display:flex; transition:transform 0.4s ease; }
 .slide { min-width:100%; }
 .slide img { width:100%; max-height:520px; object-fit:contain; display:block; background:#f2ede3; }
+.slide video { width:100%; max-height:520px; object-fit:cover; display:block; background:#000; }
 .slide-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(139,92,56,0.7); border:none; color:#f8f4ec; font-size:20px; width:44px; height:44px; cursor:pointer; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:background 0.2s; z-index:2; }
 .slide-btn:hover { background:var(--color-accent2); }
 .slide-btn.prev { left:12px; }
@@ -628,9 +629,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
   <!-- ===== INTRO ===== -->
   <section class="story-intro-section">
     <div class="story-section-wrapper">
-      <div class="story-intro-with-photo">
-        <div class="story-fade-in story-intro-text-col">
-          <p class="story-intro-quote" style="text-align:left; margin:0;">
+      <div class="story-fade-in">
+        <p class="story-intro-quote">
           운동이란 단순히 몸을 만드는 행위가 아니라,<br>
           <em>삶의 질을 높이고 자신을 돌보는 가장 확실한 방법</em>이라 믿습니다.<br><br>
           하지만 많은 분들이 여전히<br>
@@ -638,12 +638,6 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
           아르더짐은 <em>'친절함'</em>으로 마음의 벽을 낮추고,<br>
           <em>'전문성'</em>으로 몸의 변화를 확실히 만들어드립니다.
         </p>
-        </div>
-        <div class="story-fade-in story-d2 story-intro-photo-col">
-          <div class="tp-img-wrap" style="border-radius:8px;">
-            <img src="CEH_8181.JPG" alt="아르더짐 트레이너" style="aspect-ratio:3/4;">
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1490,9 +1484,10 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <p class="case-block-desc">한 분만 다이어트할 때 식단 눈치 보이셨나요?<br>함께하면 서로 응원하며 즐겁게!</p>
       <div class="slideshow" id="slideshow-couple">
         <div class="slideshow-track" id="track-couple">
-          <div class="slide"><img src="부부1.jpg" alt="부부 수업 1"></div>
-          <div class="slide"><img src="부부2.jpg" alt="부부 수업 2"></div>
-          <div class="slide"><img src="부부3.jpg" alt="부부 수업 3"></div>
+          <div class="slide"><video src="2대1수업1.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:520px;object-fit:contain;display:block;background:#f2ede3;"></video></div>
+          <div class="slide"><video src="2대1수업3.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:520px;object-fit:contain;display:block;background:#f2ede3;"></video></div>
+          <div class="slide"><video src="매칭핏11.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:520px;object-fit:contain;display:block;background:#f2ede3;"></video></div>
+          <div class="slide"><video src="2대1수업2.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:520px;object-fit:contain;display:block;background:#f2ede3;"></video></div>
         </div>
         <button class="slide-btn prev" onclick="moveSlide('couple',-1)">&#8249;</button>
         <button class="slide-btn next" onclick="moveSlide('couple',1)">&#8250;</button>
@@ -1501,6 +1496,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
         <button class="slide-dot active" onclick="goSlide('couple',0)"></button>
         <button class="slide-dot" onclick="goSlide('couple',1)"></button>
         <button class="slide-dot" onclick="goSlide('couple',2)"></button>
+        <button class="slide-dot" onclick="goSlide('couple',3)"></button>
       </div>
     </div>
 
@@ -1510,20 +1506,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
         <span class="case-block-name">👨‍👩‍👧 부모님과</span>
       </div>
       <p class="case-block-desc">자녀가 부모님 건강을 함께 챙기는 특별한 시간.<br>가족이 함께하면 더 오래 꾸준히!</p>
-      <div class="slideshow" id="slideshow-family">
-        <div class="slideshow-track" id="track-family">
-          <div class="slide"><img src="가족1.jpg" alt="가족 수업 1"></div>
-          <div class="slide"><img src="가족2.jpg" alt="가족 수업 2"></div>
-          <div class="slide"><img src="가족3.jpg" alt="가족 수업 3"></div>
-        </div>
-        <button class="slide-btn prev" onclick="moveSlide('family',-1)">&#8249;</button>
-        <button class="slide-btn next" onclick="moveSlide('family',1)">&#8250;</button>
-      </div>
-      <div class="slide-dots" id="dots-family">
-        <button class="slide-dot active" onclick="goSlide('family',0)"></button>
-        <button class="slide-dot" onclick="goSlide('family',1)"></button>
-        <button class="slide-dot" onclick="goSlide('family',2)"></button>
-      </div>
+      <div class="slide-placeholder"><p>사진 준비 중입니다.</p></div>
     </div>
 
     <div class="case-block">
@@ -1532,20 +1515,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
         <span class="case-block-name">👯‍♀️ 자매끼리</span>
       </div>
       <p class="case-block-desc">서로 격려하며 운동하면 혼자보다 훨씬 오래,<br>즐겁게 꾸준히!</p>
-      <div class="slideshow" id="slideshow-sisters">
-        <div class="slideshow-track" id="track-sisters">
-          <div class="slide"><img src="자매1.jpg" alt="자매 수업 1"></div>
-          <div class="slide"><img src="자매2.jpg" alt="자매 수업 2"></div>
-          <div class="slide"><img src="자매3.jpg" alt="자매 수업 3"></div>
-        </div>
-        <button class="slide-btn prev" onclick="moveSlide('sisters',-1)">&#8249;</button>
-        <button class="slide-btn next" onclick="moveSlide('sisters',1)">&#8250;</button>
-      </div>
-      <div class="slide-dots" id="dots-sisters">
-        <button class="slide-dot active" onclick="goSlide('sisters',0)"></button>
-        <button class="slide-dot" onclick="goSlide('sisters',1)"></button>
-        <button class="slide-dot" onclick="goSlide('sisters',2)"></button>
-      </div>
+      <div class="slide-placeholder"><p>사진 준비 중입니다.</p></div>
     </div>
 
     <div class="case-block">
@@ -1556,9 +1526,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <p class="case-block-desc">힘든 운동도 같이면 웃으면서!<br>수업 내내 즐거운 분위기가 이어져요.</p>
       <div class="slideshow" id="slideshow-friends">
         <div class="slideshow-track" id="track-friends">
-          <div class="slide"><img src="친구1.jpg" alt="친구 수업 1"></div>
-          <div class="slide"><img src="친구2.jpg" alt="친구 수업 2"></div>
-          <div class="slide"><img src="친구3.jpg" alt="친구 수업 3"></div>
+          <div class="slide"><video src="매칭핏10.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:520px;object-fit:contain;display:block;background:#f2ede3;"></video></div>
+          <div class="slide"><video src="매칭핏12.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:520px;object-fit:contain;display:block;background:#f2ede3;"></video></div>
         </div>
         <button class="slide-btn prev" onclick="moveSlide('friends',-1)">&#8249;</button>
         <button class="slide-btn next" onclick="moveSlide('friends',1)">&#8250;</button>
@@ -1566,7 +1535,6 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <div class="slide-dots" id="dots-friends">
         <button class="slide-dot active" onclick="goSlide('friends',0)"></button>
         <button class="slide-dot" onclick="goSlide('friends',1)"></button>
-        <button class="slide-dot" onclick="goSlide('friends',2)"></button>
       </div>
     </div>
 
