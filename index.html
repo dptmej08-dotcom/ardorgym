@@ -384,8 +384,14 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 .review-stars { color:#C4A882; font-size:14px; margin-bottom:10px; letter-spacing:2px; }
 .review-text { font-size:13px; line-height:1.8; color:#2C2C2C; font-weight:400; word-break:keep-all; }
 .space-photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-.space-photo-item img { width:100%; height:auto; object-fit:contain; border-radius:8px; display:block; }
+.space-photo-item img { width:100%; height:auto; object-fit:contain; border-radius:8px; display:block; cursor:pointer; transition:opacity 0.2s; }
+.space-photo-item img:hover { opacity:0.85; }
 @media(max-width:768px){ .space-photo-grid { grid-template-columns:repeat(2,1fr); } }
+/* 사진 확대 모달 */
+#photo-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; }
+#photo-modal.open { display:flex; }
+#photo-modal img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:8px; }
+#photo-modal-close { position:absolute; top:20px; right:20px; background:none; border:none; color:#fff; font-size:32px; cursor:pointer; line-height:1; }
 .banner-scroll-wrap { width:100%; overflow:hidden; background:#FAF8F5; padding:24px 0; }
 .banner-scroll-track { display:flex; gap:12px; width:max-content; animation:bannerScroll 30s linear infinite; }
 .banner-scroll-track:hover { animation-play-state:paused; }
@@ -2575,7 +2581,30 @@ storyTabs.forEach(tab => {
   </a>
 </div>
 
+<!-- 사진 확대 모달 -->
+<div id="photo-modal" onclick="closePhotoModal()">
+  <button id="photo-modal-close" onclick="closePhotoModal()">✕</button>
+  <img id="photo-modal-img" src="" alt="">
+</div>
+
 <script>
+// 사진 확대 모달
+function openPhotoModal(src) {
+  document.getElementById('photo-modal-img').src = src;
+  document.getElementById('photo-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePhotoModal() {
+  document.getElementById('photo-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePhotoModal(); });
+
+// 트레이너 사진에 클릭 이벤트 등록
+document.querySelectorAll('.space-photo-item img').forEach(img => {
+  img.addEventListener('click', () => openPhotoModal(img.src));
+});
+
 // 플로팅 버튼 스크롤 감지
 window.addEventListener('scroll', function() {
   const btns = document.getElementById('floating-btns');
