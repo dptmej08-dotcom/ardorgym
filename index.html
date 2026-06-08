@@ -384,7 +384,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 .review-stars { color:#C4A882; font-size:14px; margin-bottom:10px; letter-spacing:2px; }
 .review-text { font-size:13px; line-height:1.8; color:#2C2C2C; font-weight:400; word-break:keep-all; }
 .space-photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-.space-photo-item img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:8px; display:block; }
+.space-photo-item img { width:100%; height:auto; object-fit:contain; border-radius:8px; display:block; }
 @media(max-width:768px){ .space-photo-grid { grid-template-columns:repeat(2,1fr); } }
 .banner-scroll-wrap { width:100%; overflow:hidden; background:#FAF8F5; padding:24px 0; }
 .banner-scroll-track { display:flex; gap:12px; width:max-content; animation:bannerScroll 30s linear infinite; }
@@ -681,6 +681,9 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <!-- 공간 영상 -->
       <div class="story-fade-in" style="margin-top:48px;">
         <video src="아르더짐공간1.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:8px; display:block;"></video>
+      </div>
+      <div class="story-fade-in story-d1" style="margin-top:16px;">
+        <video src="아르더짐공간2.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:8px; display:block;"></video>
       </div>
     </div>
   </section>
