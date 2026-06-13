@@ -325,10 +325,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 .story-value-tab{padding:12px 20px;border:none;background:transparent;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:500;color:#A39B93;cursor:pointer;border-radius:100px;transition:all .3s ease;letter-spacing:1px;flex-shrink:0;white-space:nowrap}
 .story-value-tab.active{background:#2C2C2C;color:#fff}
 .story-value-tab:hover:not(.active){background:#EDE7DF;color:#6B6560}
-.story-value-display{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:900px;margin:0 auto;transition:opacity .4s ease}
+.story-value-display{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:700px;margin:0 auto;transition:opacity .4s ease}
 .story-value-display.switching{opacity:0}
 @media(max-width:768px){.story-value-display{grid-template-columns:1fr;gap:32px}}
 .story-value-visual{position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.story-value-visual-simple{text-align:center;padding:40px 0;}
 .story-value-visual-bg{position:absolute;width:100%;height:100%;border-radius:24px;background:#F3EDE6;transform:rotate(-3deg)}
 .story-value-visual-inner{position:relative;z-index:1;text-align:center}
 .story-value-num{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:600;color:#C4A882;opacity:.3;line-height:1}
@@ -639,16 +640,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
         </div>
       </div>
       <div class="story-value-display" id="storyValueDisplay">
-        <div class="story-fade-in story-from-left story-visible">
-          <div class="story-value-visual">
-            <div class="story-value-visual-bg"></div>
-            <div class="story-value-visual-inner">
-              <div class="story-value-num" id="svNum">01</div>
-              <div class="story-value-icon" id="svIcon">⏱</div>
-              <div class="story-value-eng" id="svEng">Time</div>
-            </div>
-          </div>
-        </div>
+
         <div class="story-fade-in story-from-right story-visible">
           <div class="story-value-content">
             <h3 id="svTitle">시간</h3>
@@ -686,9 +678,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
       <!-- 공간 영상 -->
       <div class="story-fade-in" style="margin-top:48px;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:16px; letter-spacing:3px; color:#C4A882; margin-bottom:12px;">서천점</p>
         <video src="아르더짐공간1.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:8px; display:block;"></video>
       </div>
-      <div class="story-fade-in story-d1" style="margin-top:16px;">
+      <div class="story-fade-in story-d1" style="margin-top:24px;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:16px; letter-spacing:3px; color:#C4A882; margin-bottom:12px;">망포점</p>
         <video src="아르더짐공간2.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:8px; display:block;"></video>
       </div>
     </div>
@@ -732,14 +726,18 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
         <!-- 선생님 사진 -->
         <div class="story-fade-in story-d2" style="margin-top:48px;">
+          <p style="font-family:'Cormorant Garamond',serif; font-size:16px; letter-spacing:3px; color:#C4A882; margin-bottom:16px;">서천점</p>
+          <div class="space-photo-grid" style="margin-bottom:32px;">
+            <div class="space-photo-item"><img src="태윤소개.jpg" alt="김태윤 트레이너" onclick="openPhotoModal(this.src)"></div>
+            <div class="space-photo-item"><img src="유성소개.jpg" alt="장유성 트레이너" onclick="openPhotoModal(this.src)"></div>
+            <div class="space-photo-item"><img src="명선소개1.jpg" alt="김명선 트레이너" onclick="openPhotoModal(this.src)"></div>
+            <div class="space-photo-item"><img src="승섭소개.jpg" alt="도승섭 트레이너" onclick="openPhotoModal(this.src)"></div>
+          </div>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:16px; letter-spacing:3px; color:#C4A882; margin-bottom:16px;">망포점</p>
           <div class="space-photo-grid">
-            <div class="space-photo-item"><img src="태윤소개.jpg" alt="김태윤 트레이너"></div>
-            <div class="space-photo-item"><img src="유성소개.jpg" alt="장유성 트레이너"></div>
-            <div class="space-photo-item"><img src="명선소개.jpg" alt="김명선 트레이너"></div>
-            <div class="space-photo-item"><img src="유준소개.jpg" alt="이유준 트레이너"></div>
-            <div class="space-photo-item"><img src="승현소개.jpg" alt="용승현 트레이너"></div>
-            <div class="space-photo-item"><img src="주명소개.jpg" alt="이주명 트레이너"></div>
-            <div class="space-photo-item"><img src="승섭소개.jpg" alt="트레이너"></div>
+            <div class="space-photo-item"><img src="명선소개2.jpg" alt="김명선 트레이너" onclick="openPhotoModal(this.src)"></div>
+            <div class="space-photo-item"><img src="유준소개.jpg" alt="이유준 트레이너" onclick="openPhotoModal(this.src)"></div>
+            <div class="space-photo-item"><img src="주명소개.jpg" alt="이주명 트레이너" onclick="openPhotoModal(this.src)"></div>
           </div>
         </div>
       </div>
@@ -2516,9 +2514,6 @@ storyTabs.forEach(tab => {
     tab.classList.add('active');
     storyDisplay.classList.add('switching');
     setTimeout(() => {
-      document.getElementById('svNum').textContent = v.num;
-      document.getElementById('svIcon').textContent = v.icon;
-      document.getElementById('svEng').textContent = v.eng;
       document.getElementById('svTitle').textContent = v.title;
       document.getElementById('svShort').textContent = v.short;
       document.getElementById('svBody').textContent = v.body;
@@ -2618,5 +2613,31 @@ window.addEventListener('scroll', function() {
   }
 }, { passive: true });
 </script>
+<!-- ===== 팝업 시작 (없앨 때 여기서부터 팝업 끝까지 삭제) ===== -->
+<div id="popup-wrap" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:10000; align-items:center; justify-content:center;">
+  <div style="position:relative; max-width:90vw; max-height:90vh;">
+    <img src="팝업1.jpg" alt="아르더짐 팝업" style="max-width:90vw; max-height:80vh; object-fit:contain; display:block; border-radius:8px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; background:#2C2C2C; border-radius:0 0 8px 8px; padding:12px 20px;">
+      <button onclick="closePopup(true)" style="background:none; border:none; color:rgba(255,255,255,0.6); font-size:13px; cursor:pointer; font-family:'Noto Sans KR',sans-serif; letter-spacing:0.5px;">오늘 하루 보지 않기</button>
+      <button onclick="closePopup(false)" style="background:none; border:none; color:#fff; font-size:13px; font-weight:700; cursor:pointer; font-family:'Noto Sans KR',sans-serif; letter-spacing:0.5px;">닫기 ✕</button>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var today = new Date().toDateString();
+  var hidden = localStorage.getItem('popupHidden');
+  if (hidden !== today) {
+    document.getElementById('popup-wrap').style.display = 'flex';
+  }
+})();
+function closePopup(hideToday) {
+  if (hideToday) {
+    localStorage.setItem('popupHidden', new Date().toDateString());
+  }
+  document.getElementById('popup-wrap').style.display = 'none';
+}
+</script>
+<!-- ===== 팝업 끝 ===== -->
 </body>
 </html>
