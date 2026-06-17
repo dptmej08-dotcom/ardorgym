@@ -2621,31 +2621,6 @@ window.addEventListener('scroll', function() {
   }
 }, { passive: true });
 </script>
-<!-- ===== 팝업 시작 (없앨 때 여기서부터 팝업 끝까지 삭제) ===== -->
-<div id="popup-wrap" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:10000; align-items:center; justify-content:center;">
-  <div style="position:relative; max-width:90vw; max-height:90vh;">
-    <img src="팝업1.jpg" alt="아르더짐 팝업" style="max-width:90vw; max-height:80vh; object-fit:contain; display:block; border-radius:8px;">
-    <div style="display:flex; justify-content:space-between; align-items:center; background:#2C2C2C; border-radius:0 0 8px 8px; padding:12px 20px;">
-      <button onclick="closePopup(true)" style="background:none; border:none; color:rgba(255,255,255,0.6); font-size:13px; cursor:pointer; font-family:'Noto Sans KR',sans-serif; letter-spacing:0.5px;">오늘 하루 보지 않기</button>
-      <button onclick="closePopup(false)" style="background:none; border:none; color:#fff; font-size:13px; font-weight:700; cursor:pointer; font-family:'Noto Sans KR',sans-serif; letter-spacing:0.5px;">닫기 ✕</button>
-    </div>
-  </div>
-</div>
-<script>
-(function() {
-  var today = new Date().toDateString();
-  var hidden = localStorage.getItem('popupHidden');
-  if (hidden !== today) {
-    document.getElementById('popup-wrap').style.display = 'flex';
-  }
-})();
-function closePopup(hideToday) {
-  if (hideToday) {
-    localStorage.setItem('popupHidden', new Date().toDateString());
-  }
-  document.getElementById('popup-wrap').style.display = 'none';
-}
-</script>
-<!-- ===== 팝업 끝 ===== -->
+
 </body>
 </html>
