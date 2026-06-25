@@ -135,11 +135,11 @@ header { position:fixed; top:0; left:0; right:0; display:flex; align-items:cente
 .video-grid > div { flex:1; min-width:200px; }
 .video-grid video, .video-grid img { width:100%; border-radius:4px; display:block; }
 .video-label { text-align:center; margin-top:8px; font-size:13px; color:var(--color-accent); font-weight:700; }
-.slideshow { position:relative; width:100%; background:#000; border-radius:4px; overflow:hidden; }
+.slideshow { position:relative; width:100%; background:transparent; border-radius:4px; overflow:hidden; }
 .slideshow-track { display:flex; transition:transform 0.4s ease; }
 .slide { min-width:100%; }
-.slide img { width:100%; height:auto; object-fit:contain; display:block; background:#f2ede3; }
-.slide video { width:100%; height:auto; object-fit:contain; display:block; background:#000; }
+.slide img { width:100%; height:auto; display:block; background:transparent; }
+.slide video { width:100%; height:auto; display:block; background:#000; }
 .slide-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(139,92,56,0.7); border:none; color:#f8f4ec; font-size:20px; width:44px; height:44px; cursor:pointer; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:background 0.2s; z-index:2; }
 .slide-btn:hover { background:var(--color-accent2); }
 .slide-btn.prev { left:12px; }
@@ -465,7 +465,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
   .membership-link-btn { padding:16px 18px; }
 
   /* ── 슬라이드 ── */
-  .slide img { max-height:260px; }
+
   .slide-btn { width:36px; height:36px; font-size:16px; }
 
   /* ── 지도 ── */
@@ -1458,7 +1458,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <div class="case-block">
       <div class="case-block-header">
         <span class="case-block-badge">COUPLE</span>
-        <span class="case-block-name">👫 부부끼리 · 커플끼리</span>
+        <span class="case-block-name">👫 부부 · 커플이 함께</span>
       </div>
       <p class="case-block-desc">한 분만 다이어트할 때 식단 눈치 보이셨나요?<br>함께하면 서로 응원하며 즐겁게!</p>
       <div class="slideshow" id="slideshow-couple">
@@ -1482,25 +1482,16 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <div class="case-block">
       <div class="case-block-header">
         <span class="case-block-badge">FAMILY</span>
-        <span class="case-block-name">👨‍👩‍👧 부모님과</span>
+        <span class="case-block-name">👨‍👩‍👧 가족과 함께</span>
       </div>
-      <p class="case-block-desc">자녀가 부모님 건강을 함께 챙기는 특별한 시간.<br>가족이 함께하면 더 오래 꾸준히!</p>
-      <div class="slide-placeholder"><p>사진 준비 중입니다.</p></div>
-    </div>
-
-    <div class="case-block">
-      <div class="case-block-header">
-        <span class="case-block-badge">SISTERS</span>
-        <span class="case-block-name">👯‍♀️ 자매끼리</span>
-      </div>
-      <p class="case-block-desc">서로 격려하며 운동하면 혼자보다 훨씬 오래,<br>즐겁게 꾸준히!</p>
+      <p class="case-block-desc">부모님과, 자매끼리, 형제끼리 — 가족이 함께하면 더 오래 꾸준히!<br>자녀가 부모님 건강을 함께 챙기는 특별한 시간.</p>
       <div class="slide-placeholder"><p>사진 준비 중입니다.</p></div>
     </div>
 
     <div class="case-block">
       <div class="case-block-header">
         <span class="case-block-badge">FRIENDS</span>
-        <span class="case-block-name">🤝 친구끼리</span>
+        <span class="case-block-name">🤝 친구와 함께</span>
       </div>
       <p class="case-block-desc">힘든 운동도 같이면 웃으면서!<br>수업 내내 즐거운 분위기가 이어져요.</p>
       <div class="slideshow" id="slideshow-friends">
