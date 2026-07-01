@@ -138,8 +138,10 @@ header { position:fixed; top:0; left:0; right:0; display:flex; align-items:cente
 .slideshow { position:relative; width:100%; background:transparent; border-radius:4px; overflow:hidden; }
 .slideshow-track { display:flex; transition:transform 0.4s ease; }
 .slide { min-width:100%; }
-.slide img { width:100%; height:auto; display:block; background:transparent; }
-.slide video { width:100%; height:auto; display:block; background:#000; }
+.slide { min-width:100%; display:flex; align-items:center; justify-content:center; background:transparent; }
+.slide img { width:100%; height:auto; max-height:60vh; object-fit:contain; display:block; background:transparent; }
+.slide video { width:100%; height:auto; max-height:70vh; object-fit:contain; display:block; background:#000; }
+#slideshow-oneday .slide img { max-height:40vh; }
 .slide-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(139,92,56,0.7); border:none; color:#f8f4ec; font-size:20px; width:44px; height:44px; cursor:pointer; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:background 0.2s; z-index:2; }
 .slide-btn:hover { background:var(--color-accent2); }
 .slide-btn.prev { left:12px; }
@@ -1746,8 +1748,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
         <p class="matching-info-value">서킷 · 러닝 · 웰니스</p>
       </div>
     </div>
-  
-    <!-- 섹션 1: 현재 프로그램 -->
+
+    <!-- 섹션 2: 현재 프로그램 -->
     <div class="matching-section">
       <p class="matching-section-num">02</p>
       <h3 class="matching-section-title">현재 진행 중인 클래스</h3>
@@ -1769,15 +1771,6 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
         <div class="matching-promise-item">
           <p class="matching-promise-title">💡 일상 운동 가이드</p>
           <p class="matching-promise-desc">회원님들의 일상에 실질적으로 도움이 되는 운동들을 알려드려요. PT 시간 외에도 혼자서 잘 운동할 수 있도록 도와드립니다.</p>
-        </div>
-      </div>
-    </div>
-
-      </p>
-      <div class="matching-promise-list">
-        <div class="matching-promise-item">
-          <p class="matching-promise-title">💬 참가자 한마디</p>
-          <p class="matching-promise-desc">"이런 운동은 헬스장 아니면 접하기 어려운데, 직접 알려주시니까 되게 좋네요."<br>운동이 멀게 느껴지던 분이 용기 내서 체험하고 남겨주신 말씀이에요. 이 한마디가 저희가 이 클래스를 계속하는 이유랍니다.</p>
         </div>
       </div>
     </div>
@@ -1840,90 +1833,12 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <h2 class="content-page-title">PT 가격표</h2>
     <div class="content-page-divider"></div>
 
-    <!-- 1:1 개인 PT -->
+    <!-- 가격표 이미지 -->
     <div class="price-section-title">1:1 개인 PT</div>
-    <div class="price-grid">
-      <div class="price-card best">
-        <div class="price-best-badge">BEST</div>
-        <p class="price-name">10회</p>
-        <p class="price-period">PT기간 40일</p>
-        <p class="price-original">800,000원</p>
-        <p class="price-amount">605,000원</p>
-        <p class="price-per">회당 55,000원 · 부가세 별도</p>
-      </div>
-      <div class="price-card best">
-        <div class="price-best-badge">BEST</div>
-        <p class="price-name">20회</p>
-        <p class="price-period">PT기간 80일</p>
-        <p class="price-original">1,600,000원</p>
-        <p class="price-amount">1,100,000원</p>
-        <p class="price-per">회당 50,000원 · 부가세 별도</p>
-      </div>
-      <div class="price-card">
-        <p class="price-name">30회</p>
-        <p class="price-period">PT기간 120일</p>
-        <p class="price-original">2,400,000원</p>
-        <p class="price-amount">1,485,000원</p>
-        <p class="price-per">회당 45,000원 · 부가세 별도</p>
-      </div>
-    </div>
+    <img src="1대1가격표.jpg" alt="1:1 PT 가격표" style="width:100%; display:block; border-radius:8px; margin-bottom:32px;">
 
-    <!-- 가족결합 피티 -->
-    <div class="price-grid" style="margin-top:12px;">
-      <div class="price-card price-card-info" style="grid-column:1/-1;">
-        <p class="price-name">가족 결합피티</p>
-        <p class="price-desc">나눠서 운동하고 건강은 더하고!<br>가족끼리 나눠쓰는 횟수 — 엄마한번 아빠한번 PT로 관리하기</p>
-      </div>
-    </div>
-
-    <!-- 2:1 그룹 PT -->
     <div class="price-section-title">2:1 그룹 PT</div>
-    <div class="price-grid">
-      <div class="price-card">
-        <p class="price-name">10회</p>
-        <p class="price-period">PT기간 40일</p>
-        <p class="price-amount">385,000원</p>
-        <p class="price-per">회당 38,500원 · 부가세 별도</p>
-      </div>
-      <div class="price-card">
-        <p class="price-name">20회</p>
-        <p class="price-period">PT기간 80일</p>
-        <p class="price-amount">660,000원</p>
-        <p class="price-per">회당 33,000원 · 부가세 별도</p>
-      </div>
-    </div>
-
-    <!-- 시그니처 매칭핏 -->
-    <div class="price-grid" style="margin-top:12px;">
-      <div class="price-card price-card-info" style="grid-column:1/-1;">
-        <p class="price-name">시그니처 2:1 매칭핏</p>
-        <p class="price-desc">운동 파트너 찾아드립니다.<br>나와 비슷한 근력과 분위기의 이웃이 필요해요!<br>시간, 성별, 운동 목적에 맞춰 함께 운동할 이웃을 매칭해드려요!</p>
-      </div>
-    </div>
-
-    <!-- 안내사항 -->
-    <div class="price-notice">
-      <p>✱ PT 기간은 10회 당 40일이며, 20회 80일, 30회 120일입니다.</p>
-      <p class="price-notice-highlight">PT기간 만료시 개인운동 및 신발장의 이용이 제한됩니다.</p>
-      <p style="margin-top:12px; font-size:13px; color:var(--color-muted); line-height:2;">
-        아르더짐에서는 피티이용권을 구매시 피티기간동안 개인운동을 자유롭게 별도의 비용없이 가능하며,<br>일반 회원권을 판매하지 않아 사람이 많을 시간에도 복잡이지않고 쾌적하게 수업 및 개인운동을 진행하실 수 있습니다.
-      </p>
-    </div>
-
-    <!-- 이미지로 확인하기 -->
-    <div style="text-align:center; margin-top:40px;">
-      <button class="price-img-btn" onclick="document.getElementById('price-img-modal').style.display='flex'">
-        🖼 이미지로 확인하기
-      </button>
-    </div>
-
-    <!-- 이미지 모달 -->
-    <div id="price-img-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:999; align-items:center; justify-content:center;" onclick="this.style.display='none'">
-      <div style="position:relative; max-width:90vw; max-height:90vh;" onclick="event.stopPropagation()">
-        <img src="%EA%B0%80%EA%B2%A9%ED%91%9C.png" alt="아르더짐 가격표" style="max-width:90vw; max-height:85vh; object-fit:contain; display:block; border-radius:8px;">
-        <button onclick="document.getElementById('price-img-modal').style.display='none'" style="position:absolute; top:-16px; right:-16px; background:var(--color-accent); border:none; color:#fff; width:36px; height:36px; border-radius:50%; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">✕</button>
-      </div>
-    </div>
+    <img src="2대1가격표.jpg" alt="2:1 PT 가격표" style="width:100%; display:block; border-radius:8px;">
 
   </div>
   <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
