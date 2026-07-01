@@ -681,11 +681,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <!-- 공간 영상 -->
       <div class="story-fade-in" style="margin-top:48px;">
         <p style="font-family:'Cormorant Garamond',serif; font-size:16px; letter-spacing:3px; color:#C4A882; margin-bottom:12px;">서천점</p>
-        <video src="아르더짐공간1.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:8px; display:block;"></video>
+        <video class="lazy-video" data-src="아르더짐공간1.mp4" muted loop playsinline preload="none" style="width:100%; border-radius:8px; display:block;"></video>
       </div>
       <div class="story-fade-in story-d1" style="margin-top:24px;">
         <p style="font-family:'Cormorant Garamond',serif; font-size:16px; letter-spacing:3px; color:#C4A882; margin-bottom:12px;">망포점</p>
-        <video src="아르더짐공간2.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:8px; display:block;"></video>
+        <video class="lazy-video" data-src="아르더짐공간2.mp4" muted loop playsinline preload="none" style="width:100%; border-radius:8px; display:block;"></video>
       </div>
     </div>
   </section>
@@ -1194,8 +1194,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <button class="slide-dot" onclick="goSlide('1on1',12)"></button>
     </div>
     <div class="program-media-grid">
-      <div class="program-media-item"><video src="1대1영상1.mp4" autoplay muted loop playsinline preload="none"></video></div>
-      <div class="program-media-item"><video src="1대1영상2.mp4" autoplay muted loop playsinline preload="none"></video></div>
+      <div class="program-media-item"><video class="lazy-video" data-src="1대1영상1.mp4" muted loop playsinline preload="none"></video></div>
+      <div class="program-media-item"><video class="lazy-video" data-src="1대1영상2.mp4" muted loop playsinline preload="none"></video></div>
     </div>
 
     <!-- 나맞트 섹션 -->
@@ -1465,10 +1465,10 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <p class="case-block-desc">한 분만 다이어트할 때 식단 눈치 보이셨나요?<br>함께하면 서로 응원하며 즐겁게!</p>
       <div class="slideshow" id="slideshow-couple">
         <div class="slideshow-track" id="track-couple">
-          <div class="slide"><video src="2대1수업1.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
-          <div class="slide"><video src="2대1수업5.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
-          <div class="slide"><video src="2대1수업6.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
-          <div class="slide"><video src="매칭핏11.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
+          <div class="slide"><video class="lazy-video" data-src="2대1수업1.mp4" muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
+          <div class="slide"><video class="lazy-video" data-src="2대1수업5.mp4" muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
+          <div class="slide"><video class="lazy-video" data-src="2대1수업6.mp4" muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
+          <div class="slide"><video class="lazy-video" data-src="매칭핏11.mp4" muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
         </div>
         <button class="slide-btn prev" onclick="moveSlide('couple',-1)">&#8249;</button>
         <button class="slide-btn next" onclick="moveSlide('couple',1)">&#8250;</button>
@@ -1498,8 +1498,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <p class="case-block-desc">힘든 운동도 같이면 웃으면서!<br>수업 내내 즐거운 분위기가 이어져요.</p>
       <div class="slideshow" id="slideshow-friends">
         <div class="slideshow-track" id="track-friends">
-          <div class="slide"><video src="매칭핏10.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
-          <div class="slide"><video src="매칭핏12.mp4" autoplay muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
+          <div class="slide"><video class="lazy-video" data-src="매칭핏10.mp4" muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
+          <div class="slide"><video class="lazy-video" data-src="매칭핏12.mp4" muted loop playsinline preload="none" style="width:100%;max-height:70vh;object-fit:contain;display:block;background:#000;"></video></div>
         </div>
         <button class="slide-btn prev" onclick="moveSlide('friends',-1)">&#8249;</button>
         <button class="slide-btn next" onclick="moveSlide('friends',1)">&#8250;</button>
@@ -1659,8 +1659,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <!-- 미디어 섹션 -->
     <div class="price-section-title" style="margin-top:56px;">📸 매칭핏 현장</div>
     <div class="program-media-grid">
-      <div class="program-media-item"><video src="매칭핏1.mp4" autoplay muted loop playsinline preload="none"></video></div>
-      <div class="program-media-item"><video src="매칭핏2.mp4" autoplay muted loop playsinline preload="none"></video></div>
+      <div class="program-media-item"><video class="lazy-video" data-src="매칭핏1.mp4" muted loop playsinline preload="none"></video></div>
+      <div class="program-media-item"><video class="lazy-video" data-src="매칭핏2.mp4" muted loop playsinline preload="none"></video></div>
     </div>
 
     <!-- 마무리 문구 -->
@@ -1816,9 +1816,9 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
     <!-- 영상 -->
     <div class="program-media-grid">
-      <div class="program-media-item"><video src="원데이9.mp4" autoplay muted loop playsinline preload="none"></video></div>
-      <div class="program-media-item"><video src="원데이13.mp4" autoplay muted loop playsinline preload="none"></video></div>
-      <div class="program-media-item"><video src="원데이14.mp4" autoplay muted loop playsinline preload="none"></video></div>
+      <div class="program-media-item"><video class="lazy-video" data-src="원데이9.mp4" muted loop playsinline preload="none"></video></div>
+      <div class="program-media-item"><video class="lazy-video" data-src="원데이13.mp4" muted loop playsinline preload="none"></video></div>
+      <div class="program-media-item"><video class="lazy-video" data-src="원데이14.mp4" muted loop playsinline preload="none"></video></div>
     </div>
 
   </div>
@@ -2018,9 +2018,9 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
     <div class="branch-content" id="seocheon-video">
       <div class="video-grid">
-        <div style="flex:1"><video src="회원서천1.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
-        <div style="flex:1"><video src="회원서천2.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
-        <div style="flex:1"><video src="회원서천3.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
+        <div style="flex:1"><video class="lazy-video" data-src="회원서천1.mp4" muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
+        <div style="flex:1"><video class="lazy-video" data-src="회원서천2.mp4" muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
+        <div style="flex:1"><video class="lazy-video" data-src="회원서천3.mp4" muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
       </div>
     </div>
 
@@ -2205,9 +2205,9 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
     <div class="branch-content" id="mangpo-video">
       <div class="video-grid">
-        <div style="flex:1"><video src="회원망포2.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
-        <div style="flex:1"><video src="회원망포3.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
-        <div style="flex:1"><video src="회원망포4.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
+        <div style="flex:1"><video class="lazy-video" data-src="회원망포2.mp4" muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
+        <div style="flex:1"><video class="lazy-video" data-src="회원망포3.mp4" muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
+        <div style="flex:1"><video class="lazy-video" data-src="회원망포4.mp4" muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
       </div>
     </div>
 
@@ -2273,7 +2273,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
           <button class="slide-dot" onclick="goSlide('mangpo-parking',3)"></button>
         </div>
         <div class="parking-img-wrap" style="margin-top:16px;">
-          <video src="망포주차.mp4" autoplay muted loop playsinline style="width:100%; display:block; border-radius:4px;"></video>
+          <video class="lazy-video" data-src="망포주차.mp4" muted loop playsinline style="width:100%; display:block; border-radius:4px;"></video>
         </div>
         <div class="parking-info">
           <div class="parking-info-row">
@@ -2356,14 +2356,42 @@ function toggleSubmenu(id, btn) {
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const t=document.getElementById('page-'+name);
-  if (t) { t.classList.add('active'); window.scrollTo(0,0); }
+  if (t) { t.classList.add('active'); window.scrollTo(0,0); loadLazyVideosIn(t); }
 }
 function switchTab(branch, tab, btn) {
   btn.closest('.branch-tabs').querySelectorAll('.branch-tab').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('[id^="'+branch+'-"]').forEach(c=>c.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById(branch+'-'+tab).classList.add('active');
+  const t=document.getElementById(branch+'-'+tab);
+  t.classList.add('active');
+  loadLazyVideosIn(t);
 }
+
+// ── 영상 지연 로딩: 화면에 보이거나 해당 페이지/탭이 열릴 때만 자동재생 ──
+function loadLazyVideosIn(root) {
+  if (!root) return;
+  root.querySelectorAll('video.lazy-video[data-src]').forEach(v => {
+    v.src = v.dataset.src;
+    v.removeAttribute('data-src');
+    v.load();
+    v.play().catch(() => {});
+  });
+}
+const lazyVideoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const v = entry.target;
+      if (v.dataset.src) {
+        v.src = v.dataset.src;
+        v.removeAttribute('data-src');
+        v.load();
+        v.play().catch(() => {});
+      }
+      lazyVideoObserver.unobserve(v);
+    }
+  });
+}, { rootMargin: '300px' });
+document.querySelectorAll('video.lazy-video[data-src]').forEach(v => lazyVideoObserver.observe(v));
 
 // 패럴랙스 효과
 function applyParallax() {
