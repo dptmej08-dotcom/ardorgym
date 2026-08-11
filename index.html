@@ -404,6 +404,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 .banner-scroll-item img { width:100%; height:100%; object-fit:cover; display:block; }
 @keyframes bannerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 @media(max-width:768px){ .banner-scroll-item { width:200px; height:140px; } }
+.age-card { display:flex; flex-direction:column; gap:8px; padding:28px 20px; background:#FAF8F5; border:1px solid rgba(139,92,56,0.15); border-radius:12px; text-decoration:none; transition:background 0.2s, transform 0.2s; }
+.age-card:hover { background:rgba(139,92,56,0.06); transform:translateY(-2px); }
+.age-card-num { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; color:var(--color-accent); letter-spacing:2px; }
+.age-card-label { font-size:13px; color:var(--color-soft); font-weight:300; }
+.age-card-arrow { font-size:18px; color:var(--color-accent); margin-top:8px; }
 .case-block { margin-bottom:48px; padding-bottom:48px; border-bottom:1px solid rgba(139,92,56,0.1); }
 .case-block:last-of-type { border-bottom:none; }
 .case-block-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
@@ -541,6 +546,9 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <a href="#" onclick="closeMenu();showPage('price-pt')">PT 가격표</a>
     <a href="#" onclick="closeMenu();showPage('price-membership')">월 구독 회원권 안내</a>
   </div>
+</div>
+<div class="nav-item">
+  <button class="nav-btn" style="justify-content:flex-start;" onclick="closeMenu();showPage('page-beforeafter')">회원님 Before&After</button>
 </div>
 <div class="nav-branch-label">지점 안내</div>
 <div class="nav-item"><button class="nav-branch-btn" onclick="closeMenu();showPage('branch-seocheon')">▸ 서천점</button></div>
@@ -961,6 +969,143 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
   <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
 </div>
+<!-- Before&After 페이지 -->
+<div class="page" id="page-beforeafter">
+  <div class="content-page">
+    <button class="back-btn" onclick="showPage('home')">← 홈으로</button>
+    <p class="content-page-eyebrow">MEMBER STORY</p>
+    <h2 class="content-page-title">회원님 Before &amp; After</h2>
+    <div class="content-page-divider"></div>
+    <p class="matching-intro">아르더짐 회원님들의 실제 변화 이야기입니다.<br>꾸준함이 만들어낸 결과를 함께 나눠요 💪</p>
+
+    <!-- 블로그 글 영역 -->
+    <div id="beforeafter-contents" style="margin-top:32px;">
+      <div style="display:flex; flex-direction:column; gap:48px;">
+
+        <!-- 20대 -->
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span class="case-block-badge">20대</span>
+          </div>
+          <div class="slideshow" id="slideshow-ba20">
+            <div class="slideshow-track" id="track-ba20">
+              <div class="slide"><img src="20대인바디1.jpeg" alt="20대 인바디 변화 1" loading="lazy" style="cursor:pointer;" onclick="openPhotoModal(this.src)" onclick="openPhotoModal(this.src)" style="cursor:pointer;"></div>
+              <div class="slide"><img src="20대인바디2.jpeg" alt="20대 인바디 변화 2" loading="lazy" style="cursor:pointer;" onclick="openPhotoModal(this.src)" onclick="openPhotoModal(this.src)" style="cursor:pointer;"></div>
+            </div>
+            <button class="slide-btn prev" onclick="moveSlide('ba20',-1)">&#8249;</button>
+            <button class="slide-btn next" onclick="moveSlide('ba20',1)">&#8250;</button>
+          </div>
+          <div class="slide-dots" id="dots-ba20" style="margin-bottom:16px;">
+            <button class="slide-dot active" onclick="goSlide('ba20',0)"></button>
+            <button class="slide-dot" onclick="goSlide('ba20',1)"></button>
+          </div>
+          <a href="https://blog.naver.com/ardorgym/224211670053" target="_blank" class="blog-card" style="margin-top:12px;">
+            <div class="blog-card-icon">N</div>
+            <div class="blog-card-text"><strong>20대 회원님 변화 보기</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
+        </div>
+
+        <!-- 30대 -->
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span class="case-block-badge">30대</span>
+          </div>
+          <div class="slideshow" id="slideshow-ba30">
+            <div class="slideshow-track" id="track-ba30">
+              <div class="slide"><img src="30대인바디1.jpeg" alt="30대 인바디 변화 1" loading="lazy" style="cursor:pointer;" onclick="openPhotoModal(this.src)" onclick="openPhotoModal(this.src)" style="cursor:pointer;"></div>
+              <div class="slide"><img src="30대인바디2.jpeg" alt="30대 인바디 변화 2" loading="lazy" style="cursor:pointer;" onclick="openPhotoModal(this.src)" onclick="openPhotoModal(this.src)" style="cursor:pointer;"></div>
+              <div class="slide"><img src="30대인바디3.jpeg" alt="30대 인바디 변화 3" loading="lazy" style="cursor:pointer;" onclick="openPhotoModal(this.src)" onclick="openPhotoModal(this.src)" style="cursor:pointer;"></div>
+            </div>
+            <button class="slide-btn prev" onclick="moveSlide('ba30',-1)">&#8249;</button>
+            <button class="slide-btn next" onclick="moveSlide('ba30',1)">&#8250;</button>
+          </div>
+          <div class="slide-dots" id="dots-ba30" style="margin-bottom:16px;">
+            <button class="slide-dot active" onclick="goSlide('ba30',0)"></button>
+            <button class="slide-dot" onclick="goSlide('ba30',1)"></button>
+            <button class="slide-dot" onclick="goSlide('ba30',2)"></button>
+          </div>
+          <a href="https://blog.naver.com/ardorgym/224370935548" target="_blank" class="blog-card" style="margin-top:12px;">
+            <div class="blog-card-icon">N</div>
+            <div class="blog-card-text"><strong>30대 회원님 변화 보기</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
+        </div>
+
+        <!-- 40대 -->
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span class="case-block-badge">40대</span>
+          </div>
+          <div class="slideshow" id="slideshow-ba40">
+            <div class="slideshow-track" id="track-ba40">
+              <div class="slide"><img src="40대인바디1.jpeg" alt="40대 인바디 변화 1" loading="lazy" style="cursor:pointer;" onclick="openPhotoModal(this.src)" onclick="openPhotoModal(this.src)" style="cursor:pointer;"></div>
+            </div>
+            <button class="slide-btn prev" onclick="moveSlide('ba40',-1)">&#8249;</button>
+            <button class="slide-btn next" onclick="moveSlide('ba40',1)">&#8250;</button>
+          </div>
+          <div class="slide-dots" id="dots-ba40" style="margin-bottom:16px;">
+            <button class="slide-dot active" onclick="goSlide('ba40',0)"></button>
+          </div>
+          <a href="https://blog.naver.com/ardorgym/223427117477" target="_blank" class="blog-card" style="margin-top:12px;">
+            <div class="blog-card-icon">N</div>
+            <div class="blog-card-text"><strong>40대 회원님 변화 보기</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
+        </div>
+
+        <!-- 10대, 50대, 60대 - 사진 없이 블로그 링크만 -->
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span class="case-block-badge">10대</span>
+          </div>
+          <a href="https://blog.naver.com/ardorgym/223660858877" target="_blank" class="blog-card">
+            <div class="blog-card-icon">N</div>
+            <div class="blog-card-text"><strong>10대 회원님 변화 보기</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
+        </div>
+
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span class="case-block-badge">50대</span>
+          </div>
+          <a href="https://blog.naver.com/ardorgym/223439734554" target="_blank" class="blog-card">
+            <div class="blog-card-icon">N</div>
+            <div class="blog-card-text"><strong>50대 회원님 변화 보기</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
+        </div>
+
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span class="case-block-badge">60대 이상</span>
+          </div>
+          <a href="https://blog.naver.com/ardorgym/224210326317" target="_blank" class="blog-card">
+            <div class="blog-card-icon">N</div>
+            <div class="blog-card-text"><strong>60대 이상 회원님 변화 보기</strong><span>자세히 보기</span></div>
+            <div class="blog-card-arrow">→</div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 더 보기 버튼 -->
+    <div style="text-align:center; margin-top:48px; margin-bottom:32px;">
+      <a href="https://blog.naver.com/ardorgym" target="_blank" class="membership-link-btn" style="display:inline-flex; text-decoration:none;">
+        <span class="membership-link-icon">N</span>
+        <span class="membership-link-text">
+          <strong>더 많은 후기 보러가기</strong>
+          <small>네이버 블로그에서 확인하세요</small>
+        </span>
+        <span class="membership-link-arrow">→</span>
+      </a>
+    </div>
+  </div>
+  <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
+</div>
+
 <!-- STORY 페이지 -->
 <div class="page" id="page-story">
   <div class="content-page">
@@ -2535,31 +2680,5 @@ window.addEventListener('scroll', function() {
   }
 }, { passive: true });
 </script>
-<!-- ===== 팝업 시작 (없앨 때 여기서부터 팝업 끝까지 삭제) ===== -->
-<div id="popup-wrap" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:10000; align-items:center; justify-content:center;">
-  <div style="position:relative; max-width:90vw; max-height:90vh;">
-    <img src="팝업1.png" alt="아르더짐 팝업" style="max-width:90vw; max-height:80vh; object-fit:contain; display:block; border-radius:8px;">
-    <div style="display:flex; justify-content:space-between; align-items:center; background:#2C2C2C; border-radius:0 0 8px 8px; padding:12px 20px;">
-      <button onclick="closePopup(true)" style="background:none; border:none; color:rgba(255,255,255,0.6); font-size:13px; cursor:pointer; font-family:'Noto Sans KR',sans-serif; letter-spacing:0.5px;">오늘 하루 보지 않기</button>
-      <button onclick="closePopup(false)" style="background:none; border:none; color:#fff; font-size:13px; font-weight:700; cursor:pointer; font-family:'Noto Sans KR',sans-serif; letter-spacing:0.5px;">닫기 ✕</button>
-    </div>
-  </div>
-</div>
-<script>
-(function() {
-  var today = new Date().toDateString();
-  var hidden = localStorage.getItem('popupHidden');
-  if (hidden !== today) {
-    document.getElementById('popup-wrap').style.display = 'flex';
-  }
-})();
-function closePopup(hideToday) {
-  if (hideToday) {
-    localStorage.setItem('popupHidden', new Date().toDateString());
-  }
-  document.getElementById('popup-wrap').style.display = 'none';
-}
-</script>
-<!-- ===== 팝업 끝 ===== -->
-</body>
+
 </html>
